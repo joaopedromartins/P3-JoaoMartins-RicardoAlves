@@ -74,12 +74,6 @@ public class Basica implements Serializable {
 			calc.setExp(aux);
 			//obtem o valor do calculo em radianos
 			aux3=calc.getExp();
-			double aux1=0;
-			double aux2=0;
-		//	aux1 = Double.parseDouble(aux3);
-			//converter para graus
-		//	aux2=Math.toDegrees(aux1);
-			//deveria ser o aux2
 			this.resultado=aux3+"";
 			
 		}else{
