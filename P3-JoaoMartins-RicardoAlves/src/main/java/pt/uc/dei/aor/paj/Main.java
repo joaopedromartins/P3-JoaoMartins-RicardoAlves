@@ -8,7 +8,7 @@ import javax.inject.Named;
 
 @Named 
 @RequestScoped
-public class Basica implements Serializable {
+public class Main implements Serializable {
 
 	private static final long serialVersionUID = 3730437403554200689L;
 
@@ -23,7 +23,7 @@ public class Basica implements Serializable {
 	private String resultado;
 
 
-	public Basica() {
+	public Main() {
 		this.display = "0.0";
 		this.resultado = "0.0";
 		this.firstdigit = "true";
