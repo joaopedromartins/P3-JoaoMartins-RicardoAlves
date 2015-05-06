@@ -21,6 +21,9 @@ public class Main implements Serializable {
 	private String firstdigit;
 	private String btnradio;
 	private String resultado;
+	private String username;
+	private String password;
+	private boolean userLogged=false;
 
 
 	public Main() {
@@ -28,6 +31,9 @@ public class Main implements Serializable {
 		this.resultado = "0.0";
 		this.firstdigit = "true";
 		this.btnradio = "rad";
+		this.setUsername("");
+		this.setPassword("");
+		this.setUserLogged(false);
 	}
 
 	//Getter e Setter da variável display referente ao valor da expressão introduzida pelo utilizador 
@@ -59,6 +65,30 @@ public class Main implements Serializable {
 	public void setBtnradio(String btnradio) {
 		this.btnradio = btnradio;
 	}
+	
+	//Getter e Setter associados à variável username
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	//Getter e Setter associados à variável password
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	//Getter associados à variável userlogged
+	public boolean isUserLogged() {
+		return userLogged;
+	}
+	public void setUserLogged(boolean userLogged) {
+		this.userLogged = userLogged;
+	}
 
 	//função de interface entre o cliente e o servidor
 	public void btnequal() {
@@ -87,4 +117,12 @@ public class Main implements Serializable {
 		setValor(this.display);
 		this.setFirstdigit("true");
 	}
+	
+	//funcao para efectuar logout
+	public void btnlogout() {
+		this.setUsername("");
+		this.setPassword("");
+		this.setUserLogged(false);
+	}
+	
 }
