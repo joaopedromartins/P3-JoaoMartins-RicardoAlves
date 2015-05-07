@@ -48,11 +48,11 @@
 							</h:panelGrid>
 						
 						<h:panelGroup style="display:block; text-align:centre">
-							<h:inputHidden id="firstdigit" value="#{basica.firstdigit}" />
+							<h:inputHidden id="firstdigit" value="#{main.firstdigit}" />
 							<h:inputTextarea id="basicdisplay"
 								styleClass="txtareabasicdisplay"
 								title="Preencha aqui a sua expressao matemática"
-								value="#{basica.display}" rows="2" cols="49" />
+								value="#{main.display}" rows="2" cols="49" />
 						</h:panelGroup>
 
 
@@ -92,7 +92,7 @@
 							<p:commandButton id="btncoma" class="btn-numeric" type="button"
 								value="." onclick="btnoperator('.');" />
 							<h:commandButton id="btnequal" styleClass="btn-equal"
-								type="submit" actionListener="#{basica.btnequal()}" value="="
+								type="submit" actionListener="#{main.btnequal()}" value="="
 								action="basic.xhtml" />
 							<p:commandButton id="btndivby" class="btn-numeric" type="button"
 								value="&#247;" onclick="btnoperator('/');" />

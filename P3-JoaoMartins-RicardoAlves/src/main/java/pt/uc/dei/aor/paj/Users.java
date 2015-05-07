@@ -16,10 +16,10 @@ public class Users implements Serializable {
 	@Inject private User utilizador;
 	
 	public Users() {
+
 			users = new ArrayList<User>();
 			users.add(new User ("ricardo", "123"));
 			users.add(new User ("joao", "123"));
-		
 	}
 
 	public ArrayList<User> getUsers() {
@@ -30,6 +30,7 @@ public class Users implements Serializable {
 
 	public void addUser(User u) {
 		synchronized(users){
+			//falta testar se ja existe no array
 			users.add(u);
 		}
 	}
