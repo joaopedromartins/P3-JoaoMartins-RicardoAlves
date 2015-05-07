@@ -16,6 +16,7 @@ public class Main implements Serializable {
 	@Inject Estatistica est;
 	@Inject PickListView pickHist;
 	@Inject Conversor conv;
+	@Inject Users userslist;
 
 	private String display;
 	private String firstdigit;
@@ -120,9 +121,18 @@ public class Main implements Serializable {
 	
 	//funcao para efectuar logout
 	public void btnlogout() {
-		this.setUsername("");
-		this.setPassword("");
+		this.setUsername(null);
+		this.setPassword(null);
 		this.setUserLogged(false);
 	}
 	
+	//funcao para efectuar login
+	public void userlogin() {
+		if (userslist.checkUser().equals("Login efectuado com sucesso")) {
+			setUserLogged(true);
+		}
+		else {
+			setUserLogged(false);
+		}
+	}
 }
