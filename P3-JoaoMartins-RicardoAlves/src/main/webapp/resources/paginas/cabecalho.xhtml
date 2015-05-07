@@ -3,14 +3,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:form id="cabecahoform">
-		<h:outputText value="Bem vindo, #{main.username}"
-			rendered="#{!empty main.username}" />
-		<h:outputText value="Bem vindo ao nosso site!"
-			rendered="#{empty main.username}" />
-		<h:commandButton value="Logout" styleClass="btn-logout" type="submit"
-			actionListener="#{main.btnlogout()}" action="../pages/login.xhtml"
-			rendered="#{!empty main.username}" />
+	<h:form id="cabecalhoform" >
+		<h:outputStylesheet library="stylesheets" name="../css/template.css"/>
+		
+		<center>
+			<BR />
+			<h:outputText value="Bem vindo, #{main.username}" styleClass="txtcabecalho"
+					rendered="#{!empty main.username}" />
+			<h:outputText value="Bem vindo ao nosso site!" styleClass="txtcabecalho"
+					rendered="#{empty main.username}" />
+			<BR />
+			<h:panelGrid columns="2" cellpadding="6" cellspacing="6">
+				<h:commandButton value="Terminar sessão" styleClass="btn" type="submit"
+					actionListener="#{main.btnlogout()}" action="../paginas/login.xhtml"
+					rendered="#{!empty main.username}" />
+				<h:commandButton value="Preferencias" styleClass="btn" type="submit"
+					action="../paginas/userconfig.xhtml"
+					rendered="#{!empty main.username}" />
+			</h:panelGrid>
+		</center>
 	</h:form>
 		
 </ui:composition>
