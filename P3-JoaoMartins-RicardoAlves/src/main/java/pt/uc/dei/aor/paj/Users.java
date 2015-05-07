@@ -22,20 +22,20 @@ public class Users implements Serializable {
 			users.add(new User ("joao", "123"));
 	}
 
-	public ArrayList<User> getUsers() {
+	public synchronized ArrayList<User> getUsers() {
 		synchronized(users){
 			return users;
 		}
 	} 
 
-	public void addUser(User u) {
-		synchronized(users){
+	public synchronized void addUser(User u) {
+		
 			//falta testar se ja existe no array
 			users.add(u);
-		}
+		
 	}
 	
-	public String checkUser(){
+	public synchronized String checkUser(){
 		String message="Username inválido";
 			for(User u:users){
 				if(utilizador.getUsername().equals(u.getUsername())){
