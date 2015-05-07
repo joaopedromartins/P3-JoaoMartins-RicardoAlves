@@ -24,6 +24,7 @@ public class Main implements Serializable {
 	private String resultado;
 	private String username;
 	private String password;
+	private String cpassword;
 	private boolean userLogged=false;
 
 
@@ -83,6 +84,14 @@ public class Main implements Serializable {
 		this.password = password;
 	}
 
+	public String getCpassword() {
+		return cpassword;
+	}
+
+	public void setCpassword(String cpassword) {
+		this.cpassword = cpassword;
+	}
+
 	//Getter associados à variável userlogged
 	public boolean isUserLogged() {
 		return userLogged;
@@ -135,4 +144,14 @@ public class Main implements Serializable {
 			setUserLogged(false);
 		}
 	}
+	
+	//funcao para efectuar signup
+		public void usersignup() {
+			if (userslist.checkUser().equals("Login efectuado com sucesso")) {
+				setUserLogged(true);
+			}
+			else {
+				setUserLogged(false);
+			}
+		}
 }
