@@ -11,9 +11,9 @@
 	<h:body>
 		<h:form id="cabecahoform">
 			<h:outputText value="Bem vindo, #{main.username}"
-				disabled="#{main.userLogged}" />
+				disabled="#{empty main.username}" />
 			<h:commandButton value="Logout" styleClass="btn-logout" type="submit"
-				actionListener="#{main.btnlogout()}" action="login.xhtml" />
+				actionListener="#{main.btnlogout()}" action="login.xhtml" disabled="#{empty main.username}" />
 		</h:form>
 	</h:body>
 </ui:composition>

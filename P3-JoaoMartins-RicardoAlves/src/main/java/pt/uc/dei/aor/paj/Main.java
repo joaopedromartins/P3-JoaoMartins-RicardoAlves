@@ -31,9 +31,9 @@ public class Main implements Serializable {
 		this.resultado = "0.0";
 		this.firstdigit = "true";
 		this.btnradio = "rad";
-		this.setUsername("");
-		this.setPassword("");
-		this.setUserLogged(false);
+		this.setUsername("Joao");
+		this.setPassword("123");
+		this.setUserLogged(true);
 	}
 
 	//Getter e Setter da variável display referente ao valor da expressão introduzida pelo utilizador 
