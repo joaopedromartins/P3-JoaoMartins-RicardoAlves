@@ -128,7 +128,6 @@ public class Main implements Serializable {
 	
 	//funcao para efectuar login
 	public void userlogin() {
-		User u = new User(this.username, this.password);
 		if (userslist.checkUser().equals("Login efectuado com sucesso")) {
 			setUserLogged(true);
 		}
@@ -136,5 +135,4 @@ public class Main implements Serializable {
 			setUserLogged(false);
 		}
 	}
-	
 }
