@@ -3,20 +3,14 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:head>
-		<title>Cabecalho</title>
-		<link rel="stylesheet" type="text/css" href="../css/calculadora.css" />
-	</h:head>
-
-	<h:body>
-		<h:form id="cabecahoform">
-			<h:outputText value="Bem vindo, #{main.username}"
-				rendered="#{!empty main.username}" />
-			<h:outputText value="Bem vindo ao nosso site!"
-				rendered="#{empty main.username}" />
-			<h:commandButton value="Logout" styleClass="btn-logout" type="submit"
-				actionListener="#{main.btnlogout()}" action="../pages/login.xhtml"
-				rendered="#{!empty main.username}" />
-		</h:form>
-	</h:body>
+	<h:form id="cabecahoform">
+		<h:outputText value="Bem vindo, #{main.username}"
+			rendered="#{!empty main.username}" />
+		<h:outputText value="Bem vindo ao nosso site!"
+			rendered="#{empty main.username}" />
+		<h:commandButton value="Logout" styleClass="btn-logout" type="submit"
+			actionListener="#{main.btnlogout()}" action="../pages/login.xhtml"
+			rendered="#{!empty main.username}" />
+	</h:form>
+		
 </ui:composition>

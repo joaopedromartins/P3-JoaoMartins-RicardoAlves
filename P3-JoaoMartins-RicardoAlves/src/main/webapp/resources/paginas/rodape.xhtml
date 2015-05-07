@@ -4,14 +4,9 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets">
     
-    <h:head>
-		<title>Rodape</title>
-		<link rel="stylesheet" type="text/css" href="../css/calculadora.css" />
-	</h:head>
-
-    <h:body>
-		<marquee behavior="alternate">
+    <ui:define name="rodape">
+		<marquee behavior="alternate" class="rodape" >
 			<h:outputText value="Programação Avançada em Java - Projeto 3, realizado por João Martins e Ricardo Alves."/>
 		</marquee>
-	</h:body>	
+	</ui:define>
 </ui:composition>	
