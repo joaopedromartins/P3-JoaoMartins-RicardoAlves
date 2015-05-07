@@ -7,7 +7,7 @@ html,body{
 }
 
 body{
-	background-image: url("../images/fundo2.jpg");
+	background-image: url("../imagens/walpaper.jpg");
 }
 
 .form-layout {
@@ -26,6 +26,26 @@ body{
     padding-right-ltr-source: physical;
     padding-right-rtl-source: physical;
 }
+
+/* Janela login */
+#login_table{
+	font:normal 1.2em arial;
+    align: center;
+    valign: middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -236,3 +256,4 @@ footer{
 	padding: 10px;
 	background-color:#ddd;
 }
+
