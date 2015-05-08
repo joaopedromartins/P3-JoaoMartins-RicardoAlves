@@ -76,7 +76,7 @@ public class Usersinterface implements Serializable {
 	
 	//funcao para efectuar login
 	public String userlogin() {
-		if (users.checkUser(username, password).equals("Login efectuado com sucesso")) {
+		if ( users.checkUser(username, password) ) {
 			setUserLogged(username);
 			setMsgerro(null);
 			return "calculadora";

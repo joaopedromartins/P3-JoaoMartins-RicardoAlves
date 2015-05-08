@@ -7,7 +7,7 @@
 
 	<ui:define name="conteudo">
 
-		<h:form>
+		
 			<h:outputStylesheet library="stylesheets" name="../css/template.css" />
 			<center>
 				<h:outputText styleClass="txtconteudo"
@@ -24,7 +24,9 @@
 							<p:panel id="signup" header="Registo de Utilizador"
 								footer="#{usersinterface.msgerro}" >
 
+								<h:form>
 								<h:panelGrid columns="3" cellpadding="10">
+								
 									<h:outputText value="Username:" />
 									<h:inputText id="username" title="username"
 										value="#{usersinterface.username}" required="true"
@@ -40,7 +42,7 @@
 								<br />
 								<h:commandButton type="submit" value="Login"
 									styleClass="btn" action="#{usersinterface.userlogin()}" />
-
+								</h:form>
 								<br />
 								<br />
 								<br />
@@ -49,16 +51,18 @@
 									value="Se ainda não tiver uma conta, carregue no botão em baixo para ir para a página de Registo." />
 								<br />
 								<br />
-								<h:commandButton type="button" value="Registo" styleClass="btn"
+								<h:form>
+								<h:commandButton type="submit" value="Registo" styleClass="btn"
 									action="signup" />
 								<br />
+								</h:form>
 							</p:panel>
 						</div>
 						<div class="ui-grid-col-2" />
 					</div>
 				</div>
 			</center>
-		</h:form>
+		
 
 	</ui:define>
 </ui:composition>

@@ -35,17 +35,13 @@ public class Users implements Serializable {
 	}
 
 	//metodo para verificar utilizador e password
-	public synchronized String checkUser(String username, String password){
+	public synchronized boolean checkUser(String username, String password){
 		for(User u:users){
 			if(username.equals(u.getUsername())){
-				if(u.checkPassword(password)){
-					return "Login efectuado com sucesso.";
-				}else{
-					return "Password inválida.";
-				}
+				return (u.checkPassword(password));
 			}
 		}
-		return "Utilizador inválido.";
+		return false;
 	}
 
 }
