@@ -7,7 +7,7 @@ import javax.inject.Named;
 
 @Named 
 @SessionScoped
-public class UsersInterface implements Serializable {
+public class Usersinterface implements Serializable {
 	private static final long serialVersionUID = -8310185641498834904L;
 
 	@Inject Users users;
@@ -19,7 +19,7 @@ public class UsersInterface implements Serializable {
 	private String userLogged;
 
 
-	public UsersInterface() {
+	public Usersinterface() {
 		this.setUserLogged(null);
 	}
 
@@ -114,7 +114,7 @@ public class UsersInterface implements Serializable {
 					return "calculadora";
 				}
 				else {
-					return "signin";
+					return "signup";
 				}
 			}
 			else {

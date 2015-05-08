@@ -8,7 +8,7 @@
 	<ui:define name="conteudo">
 
 		<h:form>
-			<h:outputStylesheet library="stylesheets" name="../css/template.css" />
+			<h:outputStylesheet library="stylesheets" name="./resources/css/template.css" />
 			<center>
 				<h:outputText styleClass="txtconteudo"
 					value="Faça login com para entrar no nosso site." />
@@ -22,30 +22,30 @@
 						<div class="ui-grid-col-2" />
 						<div class="ui-grid-col-8">
 							<p:panel id="signup" header="Registo de Utilizador"
-								footer="#{UsersInterface.msgerro}" >
+								footer="#{usersinterface.msgerro}" >
 
 								<h:panelGrid columns="3" cellpadding="10">
 									<h:outputText value="Username:" />
 									<h:inputText id="username" title="username"
-										value="#{UsersInterface.username}" required="true"
+										value="#{usersinterface.username}" required="true"
 										requiredMessage="Preencha o seu nome" maxlength="25" />
 									<h:message for="username" errorClass="errorMessage" />
 									<h:outputText value="Password:" />
 									<h:inputSecret id="password" title="password"
-										value="#{UsersInterface.password}" required="true"
+										value="#{usersinterface.password}" required="true"
 										requiredMessage="Preencha aqui a password pretendida"
 										maxlength="25" />
 									<h:message for="password" errorClass="errorMessage" />
 									<h:outputText value="Confirme password:" />
 									<h:inputSecret id="cpassword" title="confirmação password"
-										value="#{UsersInterface.cpassword}" required="true"
+										value="#{usersinterface.cpassword}" required="true"
 										requiredMessage="Confirme aqui a password pretendida"
 										maxlength="25" />
 									<h:message for="cpassword" errorClass="errorMessage" />
 								</h:panelGrid>
 								<br />
 								<h:commandButton type="submit" value="Criar Registo"
-									styleClass="btn" actionListener="#{UsersInterface.usersignup()}" action="calculadora.xhtml" />
+									styleClass="btn" actionListener="#{usersinterface.usersignup()}" action="calculadora" />
 
 								<br />
 								<br />
@@ -56,7 +56,7 @@
 								<br />
 								<br />
 								<h:commandButton type="button" value="Login" styleClass="btn"
-									action="login.xhtml" />
+									action="login" />
 								<br />
 							</p:panel>
 						</div>

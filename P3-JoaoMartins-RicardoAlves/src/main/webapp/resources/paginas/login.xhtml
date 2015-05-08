@@ -8,7 +8,7 @@
 	<ui:define name="conteudo">
 
 		<h:form>
-			<h:outputStylesheet library="stylesheets" name="./resources/css/template.css" />
+			<h:outputStylesheet library="stylesheets" name="../css/template.css" />
 			<center>
 				<h:outputText styleClass="txtconteudo"
 					value="Faça login com para entrar no nosso site." />
@@ -22,35 +22,35 @@
 						<div class="ui-grid-col-2" />
 						<div class="ui-grid-col-8">
 							<p:panel id="signup" header="Registo de Utilizador"
-								footer="#{UsersInterface.msgerro}" >
+								footer="#{usersinterface.msgerro}" >
 
 								<h:panelGrid columns="3" cellpadding="10">
 									<h:outputText value="Username:" />
 									<h:inputText id="username" title="username"
-										value="#{UsersInterface.username}" required="true"
+										value="#{usersinterface.username}" required="true"
 										requiredMessage="Preencha o seu nome" maxlength="25" />
 									<h:message for="username" errorClass="errorMessage" />
 									<h:outputText value="Password:" />
 									<h:inputSecret id="password" title="password"
-										value="#{UsersInterface.password}" required="true"
+										value="#{usersinterface.password}" required="true"
 										requiredMessage="Preencha aqui a password pretendida"
 										maxlength="25" />
 									<h:message for="password" errorClass="errorMessage" />
 								</h:panelGrid>
 								<br />
 								<h:commandButton type="submit" value="Login"
-									styleClass="btn" action="#{UsersInterface.userlogin()}" />
+									styleClass="btn" action="#{usersinterface.userlogin()}" />
 
 								<br />
 								<br />
 								<br />
 
 								<h:outputText
-									value="Se já tiver uma conta, carregue no botão em baixo para ir para a página de login." />
+									value="Se ainda não tiver uma conta, carregue no botão em baixo para ir para a página de Registo." />
 								<br />
 								<br />
 								<h:commandButton type="button" value="Registo" styleClass="btn"
-									action="./resources/paginas/signin.xhtml" />
+									action="signup" />
 								<br />
 							</p:panel>
 						</div>
