@@ -8,7 +8,7 @@
 	<ui:define name="conteudo">
 
 		<h:form>
-			<h:outputStylesheet library="stylesheets" name="../css/template.css" />
+			<h:outputStylesheet library="stylesheets" name="./resources/css/template.css" />
 			<center>
 				<h:outputText styleClass="txtconteudo"
 					value="Faça login com para entrar no nosso site." />
@@ -22,24 +22,24 @@
 						<div class="ui-grid-col-2" />
 						<div class="ui-grid-col-8">
 							<p:panel id="signup" header="Registo de Utilizador"
-								footer="#{main.msgerro}" >
+								footer="#{UsersInterface.msgerro}" >
 
 								<h:panelGrid columns="3" cellpadding="10">
 									<h:outputText value="Username:" />
 									<h:inputText id="username" title="username"
-										value="#{main.username}" required="true"
+										value="#{UsersInterface.username}" required="true"
 										requiredMessage="Preencha o seu nome" maxlength="25" />
 									<h:message for="username" errorClass="errorMessage" />
 									<h:outputText value="Password:" />
 									<h:inputSecret id="password" title="password"
-										value="#{main.password}" required="true"
+										value="#{UsersInterface.password}" required="true"
 										requiredMessage="Preencha aqui a password pretendida"
 										maxlength="25" />
 									<h:message for="password" errorClass="errorMessage" />
 								</h:panelGrid>
 								<br />
 								<h:commandButton type="submit" value="Login"
-									styleClass="btn" action="#{main.userlogin()}" />
+									styleClass="btn" action="#{UsersInterface.userlogin()}" />
 
 								<br />
 								<br />
@@ -50,7 +50,7 @@
 								<br />
 								<br />
 								<h:commandButton type="button" value="Registo" styleClass="btn"
-									action="signin" />
+									action="./resources/paginas/signin.xhtml" />
 								<br />
 							</p:panel>
 						</div>

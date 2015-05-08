@@ -84,7 +84,7 @@ public class UsersInterface implements Serializable {
 		else {
 			setUserLogged(null);
 			setMsgerro("Erro: Utilizador ou password inválido(s)!");
-			return "index";
+			return "./index";
 		}
 	}
 	
@@ -129,3 +129,4 @@ public class UsersInterface implements Serializable {
 	
 	
 }
+

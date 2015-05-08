@@ -9,18 +9,18 @@
 		
 		<center>
 			<BR />
-			<h:outputText value="Bem vindo, #{main.userLogged}" styleClass="txtcabecalho"
-					rendered="#{!empty main.userLogged}" />
+			<h:outputText value="Bem vindo, #{usersinterface.userLogged}" styleClass="txtcabecalho"
+					rendered="#{!empty usersinterface.userLogged}" />
 			<h:outputText value="Bem vindo ao nosso site!" styleClass="txtcabecalho"
-					rendered="#{empty main.userLogged}" />
+					rendered="#{empty usersinterface.userLogged}" />
 			<BR />
 			<h:panelGrid columns="2" cellpadding="6" cellspacing="6">
 				<h:commandButton value="Terminar sessão" styleClass="btn" type="submit"
-					action="#{main.userlogout()}"
-					rendered="#{!empty main.userLogged}" />
+					action="#{usersinterface.userlogout()}"
+					rendered="#{!empty usersinterface.userLogged}" />
 				<h:commandButton value="Preferencias" styleClass="btn" type="button"
 					action="userconfig.xhtml"
-					rendered="#{!empty main.userLogged}" />
+					rendered="#{!empty usersinterface.userLogged}" />
 			</h:panelGrid>
 		</center>
 	</h:form>
