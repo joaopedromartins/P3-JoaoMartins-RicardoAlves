@@ -4,58 +4,48 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @ApplicationScoped
 public class Users implements Serializable {
-
 	private static final long serialVersionUID = 1L;
-	private ArrayList<User>users;
-	@Inject private User utilizador;
-	
+	private ArrayList<User> users;
+
 	public Users() {
-
-			users = new ArrayList<User>();
-			users.add(new User ("ricardo", "123"));
-			users.add(new User ("joao", "123"));
+		users = new ArrayList<User>();
+		users.add(new User ("ricardo", "123"));
+		users.add(new User ("joao", "123"));
 	}
 
-	public synchronized ArrayList<User> getUsers() {
-		synchronized(users){
-			return users;
-		}
-	} 
-
-	public synchronized void addUser(User u) {
-		
-			//falta testar se ja existe no array
-			users.add(u);
-		
+	//metodo para alterar password de um utilizador
+	public synchronized boolean setPass(User u, String password, String newpassword){
+		return u.setPassword(password, newpassword);
 	}
 	
-	public synchronized String checkUser(){
-		String message="Username inválido";
-			for(User u:users){
-				if(utilizador.getUsername().equals(u.getUsername())){
-					if(utilizador.getPassword().equals(u.getPassword())){
-						message="Login efectuado com sucesso";
-					}else{
-						message="Password inválida";
-					}
-					break;
+	//metodo para adicionar um utilizador
+	public synchronized String addUser(String username, String password) {
+		for(User u:users){
+			if(username.equals(u.getUsername())){
+				return "Erro: utilizador já existente!";
+			}
+		}
+		users.add( new User(username, password) );
+		return "Utilizador criado com sucesso.";
+	}
+
+	//metodo para verificar utilizador e password
+	public synchronized String checkUser(String username, String password){
+		for(User u:users){
+			if(username.equals(u.getUsername())){
+				if(u.checkPassword(password)){
+					return "Login efectuado com sucesso.";
+				}else{
+					return "Password inválida.";
 				}
 			}
-		return message;
+		}
+		return "Utilizador inválido.";
 	}
-	 
-	public void setUser(String username){
-		utilizador.setUsername(username);
-	}
-	
-	public void setPass(String password){
-		utilizador.setPassword(password);
-	}
-	
+
 }

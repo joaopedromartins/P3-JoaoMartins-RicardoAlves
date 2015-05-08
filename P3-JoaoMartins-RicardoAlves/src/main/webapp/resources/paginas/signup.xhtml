@@ -10,9 +10,10 @@
 		<h:form>
 			<h:outputStylesheet library="stylesheets" name="../css/template.css" />
 			<center>
-				<h:outputText value="Faça login com para entrar no nosso site." />
+				<h:outputText styleClass="txtconteudo"
+					value="Faça login com para entrar no nosso site." />
 				<BR />
-				<h:outputText
+				<h:outputText styleClass="txtconteudo"
 					value="Se é a primeira vez que nos visita, faça o seu registo em baixo." />
 				<BR />
 
@@ -21,7 +22,7 @@
 						<div class="ui-grid-col-2" />
 						<div class="ui-grid-col-8">
 							<p:panel id="signup" header="Registo de Utilizador"
-								footer="#{main.msgerro}" style="margin-bottom:20px">
+								footer="#{main.msgerro}" >
 
 								<h:panelGrid columns="3" cellpadding="10">
 									<h:outputText value="Username:" />
@@ -43,19 +44,19 @@
 									<h:message for="cpassword" errorClass="errorMessage" />
 								</h:panelGrid>
 								<br />
-								<p:commandButton type="submit" value="Criar Registo"
-									styleClass="btn" action="../paginas/calculadora.xhtml" />
+								<h:commandButton type="submit" value="Criar Registo"
+									styleClass="btn" actionListener="#{main.usersignup()}" action="calculadora.xhtml" />
 
 								<br />
 								<br />
 								<br />
 
 								<h:outputText
-									value="Se já tiver uma conta, carregue no botão em baixo para ir para a página de login" />
+									value="Se já tiver uma conta, carregue no botão em baixo para ir para a página de login." />
 								<br />
 								<br />
-								<p:commandButton type="submit" value="Login" styleClass="btn"
-									action="../paginas/login.xhtml" />
+								<h:commandButton type="submit" value="Login" styleClass="btn"
+									action="login.xhtml" />
 								<br />
 							</p:panel>
 						</div>

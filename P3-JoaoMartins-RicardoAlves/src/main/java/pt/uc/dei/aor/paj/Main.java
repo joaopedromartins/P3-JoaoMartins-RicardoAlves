@@ -16,7 +16,7 @@ public class Main implements Serializable {
 	@Inject Estatistica est;
 	@Inject PickListView pickHist;
 	@Inject Conversor conv;
-	@Inject Users userslist;
+	@Inject Users users;
 
 	private String display;
 	private String firstdigit;
@@ -26,7 +26,7 @@ public class Main implements Serializable {
 	private String password;
 	private String cpassword;
 	private String msgerro;
-	private boolean userLogged=false;
+	private String userLogged;
 
 
 	public Main() {
@@ -34,9 +34,7 @@ public class Main implements Serializable {
 		this.resultado = "0.0";
 		this.firstdigit = "true";
 		this.btnradio = "rad";
-		this.setUsername("Joao");
-		this.setPassword("123");
-		this.setUserLogged(true);
+		this.setUserLogged("joao");
 	}
 
 	//Getter e Setter da variável display referente ao valor da expressão introduzida pelo utilizador 
@@ -84,27 +82,27 @@ public class Main implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	//Getter e Setter associados à variável cpassword
 	public String getCpassword() {
 		return cpassword;
 	}
-
 	public void setCpassword(String cpassword) {
 		this.cpassword = cpassword;
 	}
 
 	//Getter associados à variável userlogged
-	public boolean isUserLogged() {
+	public String getUserLogged() {
 		return userLogged;
 	}
-	public void setUserLogged(boolean userLogged) {
+	public void setUserLogged(String userLogged) {
 		this.userLogged = userLogged;
 	}
 
+	//Getter associados à variável msgerro
 	public String getMsgerro() {
 		return msgerro;
 	}
-
 	public void setMsgerro(String msgerro) {
 		this.msgerro = msgerro;
 	}
@@ -138,29 +136,60 @@ public class Main implements Serializable {
 	}
 	
 	//funcao para efectuar logout
-	public void btnlogout() {
+	public void userlogout() {
 		this.setUsername(null);
 		this.setPassword(null);
-		this.setUserLogged(false);
+		this.setUserLogged(null);
 	}
 	
 	//funcao para efectuar login
-	public void userlogin() {
-		if (userslist.checkUser().equals("Login efectuado com sucesso")) {
-			setUserLogged(true);
+	public boolean userlogin() {
+		if (users.checkUser(username, password).equals("Login efectuado com sucesso")) {
+			setUserLogged(username);
+			setMsgerro(null);
+			return true;
 		}
 		else {
-			setUserLogged(false);
+			setUserLogged(null);
+			setMsgerro("Utilizador ou password inválido(s).");
+			return false;
 		}
 	}
 	
-	//funcao para efectuar signup
-		public void usersignup() {
-			if (userslist.checkUser().equals("Login efectuado com sucesso")) {
-				setUserLogged(true);
+	//funcao para efectuar registo de utilizador
+	public boolean usersignup() {
+		//Testar tamanho do utilizador
+		if (username.length()<2 ||username.length()<25) {
+			setMsgerro("Erro: Tamanho de utilizador inválido!");
+			return false;
+		}
+		else if (password.length()<2 ||password.length()<25) {
+			setMsgerro("Erro: Tamanho de password inválido!");
+			return false;
+		}
+		else if (!username.matches("[A-Za-z0-9]")) {
+			setMsgerro("Erro: Utilizador tem caracter(es) inválido(s)!");
+			return false;
+		}
+		else if (!password.matches("[A-Za-z0-9]")) {
+			setMsgerro("Erro: Password tem caracter(es) inválido(s)!");
+			return false;
+		}
+		else if (password.equals(cpassword) ) {
+			String msg=users.addUser(username, password);
+			if (msg.equals("Utilizador criado com sucesso.")) {
+				userlogin();
+				return true;
 			}
 			else {
-				setUserLogged(false);
+				setMsgerro(msg);
 			}
 		}
+		else {
+			setMsgerro("Erro: As passwords introduzidas não concidem!");
+		}
+		return false;
+	}
+	
+	
 }

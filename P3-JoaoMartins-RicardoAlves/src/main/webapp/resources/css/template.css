@@ -10,24 +10,6 @@ body{
 	background-image: url("../imagens/walpaper.jpg");
 }
 
-.tblleft {
-	position: left;
-	align: left;
-	text-align: left;
-}
-
-.tblcenter {
-	position: center;
-	align: center;
-	text-align: center;
-}
-
-.tblright {
-	position: right;
-	align: right;
-	text-align: right;
-}
-
 .txtcabecalho {
 	text-align: center;
 	color: #666666;
@@ -91,7 +73,6 @@ body{
 
 #container{
 	margin-top:40px!important;
-	width:1250px;
 	margin:40px auto 0px auto;
 	
 }

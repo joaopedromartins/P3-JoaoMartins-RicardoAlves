@@ -1,18 +1,16 @@
 package pt.uc.dei.aor.paj;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 import java.io.Serializable;
 
 @Named
-@SessionScoped
+@ApplicationScoped
 public class User implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
-	private boolean logged=false;
 	
 	public User() {	
 	}
@@ -25,25 +23,25 @@ public class User implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
 	public String getUsername() {
 		return username;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	//Setter de nova password, validando a anterior
+		public boolean setPassword(String password, String newpassword) {
+			if (this.password.equals(password)) {
+				this.password=newpassword;
+				return true;
+			}
+			else return false;
+		}
 	
-	public String getPassword() {
-		return password;
-	}
-
-	public boolean isLogged() {
-		return logged;
-	}
-
-	public void setLogged(boolean logged) {
-		this.logged = logged;
+	//metodo para validar password correcta
+	public boolean checkPassword(String password) {
+		if (this.password.equals(password)) {
+			return true;
+		}
+		else return false;
 	}
 	
 	
