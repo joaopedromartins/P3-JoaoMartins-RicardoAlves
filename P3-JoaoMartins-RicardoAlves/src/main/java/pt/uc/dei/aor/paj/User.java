@@ -1,14 +1,6 @@
 package pt.uc.dei.aor.paj;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-
-import java.io.Serializable;
-
-@Named
-@ApplicationScoped
-public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class User {
 	private String username;
 	private String password;
 	

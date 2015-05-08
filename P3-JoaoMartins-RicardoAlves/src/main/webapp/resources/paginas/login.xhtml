@@ -38,8 +38,8 @@
 									<h:message for="password" errorClass="errorMessage" />
 								</h:panelGrid>
 								<br />
-								<h:commandButton type="submit" value="Criar Registo"
-									styleClass="btn" actionListener="#{main.btnequal()}" action="calculadora.xhtml" />
+								<h:commandButton type="submit" value="Login"
+									styleClass="btn" action="#{main.userlogin()}" />
 
 								<br />
 								<br />
@@ -49,8 +49,8 @@
 									value="Se já tiver uma conta, carregue no botão em baixo para ir para a página de login." />
 								<br />
 								<br />
-								<h:commandButton type="submit" value="Login" styleClass="btn"
-									action="login.xhtml" />
+								<h:commandButton type="button" value="Registo" styleClass="btn"
+									action="signin" />
 								<br />
 							</p:panel>
 						</div>

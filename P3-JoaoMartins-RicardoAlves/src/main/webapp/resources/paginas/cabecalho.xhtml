@@ -16,7 +16,7 @@
 			<BR />
 			<h:panelGrid columns="2" cellpadding="6" cellspacing="6">
 				<h:commandButton value="Terminar sessão" styleClass="btn" type="submit"
-					actionListener="#{main.userlogout()}" action="login.xhtml"
+					action="#{main.userlogout()}"
 					rendered="#{!empty main.userLogged}" />
 				<h:commandButton value="Preferencias" styleClass="btn" type="button"
 					action="userconfig.xhtml"
