@@ -25,6 +25,7 @@ public class Main implements Serializable {
 	private String username;
 	private String password;
 	private String cpassword;
+	private String msgerro;
 	private boolean userLogged=false;
 
 
@@ -98,6 +99,14 @@ public class Main implements Serializable {
 	}
 	public void setUserLogged(boolean userLogged) {
 		this.userLogged = userLogged;
+	}
+
+	public String getMsgerro() {
+		return msgerro;
+	}
+
+	public void setMsgerro(String msgerro) {
+		this.msgerro = msgerro;
 	}
 
 	//função de interface entre o cliente e o servidor

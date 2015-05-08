@@ -39,6 +39,11 @@ body{
     font: normal 0.8em Arial;
 }
 
+.txtconteudo {
+	color:#666666;
+    font: normal 1.0em Arial;
+}
+
 .btn {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -80,7 +85,16 @@ body{
 	top:1px;
 }
 
+.ui-widget-content{
+  background-image: url("../imagens/fundo-painel.jpg")
+}
 
+#container{
+	margin-top:40px!important;
+	width:1250px;
+	margin:40px auto 0px auto;
+	
+}
 
 /* Janela login */
 #login_table{
