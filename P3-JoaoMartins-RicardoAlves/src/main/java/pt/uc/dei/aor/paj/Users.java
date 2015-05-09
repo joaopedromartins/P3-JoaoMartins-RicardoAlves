@@ -24,14 +24,14 @@ public class Users implements Serializable {
 	}
 	
 	//metodo para adicionar um utilizador
-	public synchronized String addUser(String username, String password) {
+	public synchronized boolean addUser(String username, String password) {
 		for(User u:users){
 			if(username.equals(u.getUsername())){
-				return "Erro: utilizador já existente!";
+				return false;
 			}
 		}
 		users.add( new User(username, password) );
-		return "Utilizador criado com sucesso.";
+		return true;
 	}
 
 	//metodo para verificar utilizador e password

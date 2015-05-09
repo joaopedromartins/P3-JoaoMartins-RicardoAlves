@@ -11,19 +11,15 @@ public class Usersinterface implements Serializable {
 	private static final long serialVersionUID = -8310185641498834904L;
 
 	@Inject Users users;
-
 	private String username;
 	private String password;
 	private String cpassword;
 	private String msgerro;
 	private String userLogged;
-
-
+	
 	public Usersinterface() {
 		this.setUserLogged(null);
 	}
-
-	
 
 	//Getter e Setter associados à variável username
 	public String getUsername() {
@@ -65,7 +61,6 @@ public class Usersinterface implements Serializable {
 		this.msgerro = msgerro;
 	}
 
-	
 	//funcao para efectuar logout
 	public String userlogout() {
 		this.setUsername(null);
@@ -80,11 +75,10 @@ public class Usersinterface implements Serializable {
 			setUserLogged(username);
 			setMsgerro(null);
 			return "calculadora";
-		}
-		else {
+		} else {
 			setUserLogged(null);
 			setMsgerro("Erro: Utilizador ou password inválido(s)!");
-			return "./index";
+			return "login";
 		}
 	}
 	
@@ -94,39 +88,28 @@ public class Usersinterface implements Serializable {
 		if (username.length()<2 ||username.length()>25) {
 			setMsgerro("Erro: Tamanho de utilizador inválido!");
 			return "signup";
-		}
-		else if (password.length()<2 ||password.length()>25) {
+		} else if (password.length()<2 ||password.length()>25) {
 			setMsgerro("Erro: Tamanho de password inválido!");
 			return "signup";
-		}
-		else if (!username.matches("[A-Za-z0-9]")) {
+		} else if (!username.matches("[A-Za-z0-9]")) {
 			setMsgerro("Erro: Utilizador tem caracter(es) inválido(s)!");
 			return "signup";
-		}
-		else if (!password.matches("[A-Za-z0-9]")) {
+		} else if (!password.matches("[A-Za-z0-9]")) {
 			setMsgerro("Erro: Password tem caracter(es) inválido(s)!");
 			return "signup";
-		}
-		else if (password.equals(cpassword) ) {
-			String msg=users.addUser(username, password);
-			if (msg.equals("Utilizador criado com sucesso.")) {
-				if (userlogin().equals("calculadora")) {
-					return "calculadora";
-				}
-				else {
-					return "signup";
-				}
+		} else if (password.equals(cpassword) ) {
+			if ( users.addUser(username, password) ) {
+				setMsgerro("Utilizador criado com sucesso.");
+				setUserLogged(username);
+				return "calculadora";
+			} else {
+				setMsgerro("Erro: Utilizador já existente!");
+				return "signup";
 			}
-			else {
-				setMsgerro(msg);
-			}
-		}
-		else {
+		} else {
 			setMsgerro("Erro: As passwords introduzidas não concidem!");
 		}
 		return "signup";
 	}
 	
-	
 }
-
