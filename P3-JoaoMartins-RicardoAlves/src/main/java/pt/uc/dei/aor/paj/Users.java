@@ -43,5 +43,14 @@ public class Users implements Serializable {
 		}
 		return false;
 	}
+	
+	public Userbean getUser(String username) {
+		for(Userbean u:users){
+			if(username.equals(u.getUsername())){
+				return u;
+			}
+		}
+		return null;
+	}
 
 }
