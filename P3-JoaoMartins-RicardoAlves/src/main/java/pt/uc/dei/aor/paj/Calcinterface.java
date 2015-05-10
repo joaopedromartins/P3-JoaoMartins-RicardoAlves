@@ -101,9 +101,9 @@ public class Calcinterface implements Serializable {
 	//função de interface entre o cliente e o servidor
 	public boolean typescientific() {
 		if (tipocalc.equals("cientifica")) {
-			return false;
-		} else {
 			return true;
+		} else {
+			return false;
 		}
 	}
 }
