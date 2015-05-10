@@ -347,12 +347,12 @@
 						<p:panelGrid columns="1" styleClass="painel" id="painelChat">
 							<f:facet name="header"> Forum de cálculo </f:facet>
 							<h:dataTable value="#{chatinterface.dezfrases}" />
-							<p:panelGrid columns="2">
+							<h:panelGrid columns="2">
 								<h:inputText value="#{chatinterface.frase}" />
 								<h:commandButton id="btnsend" styleClass="btn" type="submit"
 									actionListener="#{chatinterface.btnsend()}" value="Enviar"
 									action="calculadora.xhtml" />
-							</p:panelGrid>
+							</h:panelGrid>
 						</p:panelGrid>
 					</h:form>
 				</div>

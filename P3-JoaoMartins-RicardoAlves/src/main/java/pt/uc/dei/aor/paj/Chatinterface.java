@@ -8,7 +8,7 @@ import javax.inject.Named;
 
 @Named 
 @RequestScoped
-public class Msginterface  implements Serializable {
+public class Chatinterface  implements Serializable {
 	private static final long serialVersionUID = 1471294883116438933L;
 	
 	@Inject Messages messages;
