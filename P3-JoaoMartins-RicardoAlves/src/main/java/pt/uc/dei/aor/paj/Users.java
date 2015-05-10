@@ -10,33 +10,33 @@ import javax.inject.Named;
 @ApplicationScoped
 public class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private ArrayList<User> users;
+	private ArrayList<Userbean> users;
 
 	public Users() {
-		users = new ArrayList<User>();
-		users.add(new User ("ricardo", "123"));
-		users.add(new User ("joao", "123"));
+		users = new ArrayList<Userbean>();
+		users.add(new Userbean ("ricardo", "123"));
+		users.add(new Userbean ("joao", "123"));
 	}
 
 	//metodo para alterar password de um utilizador
-	public synchronized boolean setPass(User u, String password, String newpassword){
+	public synchronized boolean setPass(Userbean u, String password, String newpassword){
 		return u.setPassword(password, newpassword);
 	}
 	
 	//metodo para adicionar um utilizador
 	public synchronized boolean addUser(String username, String password) {
-		for(User u:users){
+		for(Userbean u:users){
 			if(username.equals(u.getUsername())){
 				return false;
 			}
 		}
-		users.add( new User(username, password) );
+		users.add( new Userbean(username, password) );
 		return true;
 	}
 
 	//metodo para verificar utilizador e password
 	public synchronized boolean checkUser(String username, String password){
-		for(User u:users){
+		for(Userbean u:users){
 			if(username.equals(u.getUsername())){
 				return (u.checkPassword(password));
 			}

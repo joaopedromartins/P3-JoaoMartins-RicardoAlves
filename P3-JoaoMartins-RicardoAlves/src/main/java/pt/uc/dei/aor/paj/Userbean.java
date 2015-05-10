@@ -1,13 +1,13 @@
 package pt.uc.dei.aor.paj;
 
-public class User {
+public class Userbean {
 	private String username;
 	private String password;
 	
-	public User() {	
+	public Userbean() {	
 	}
 	
-	public User (String username, String password){
+	public Userbean (String username, String password){
 		this.username=username;
 		this.password=password;
 	}
