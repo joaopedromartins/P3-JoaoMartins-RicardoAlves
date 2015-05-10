@@ -30,6 +30,7 @@ public class Calcinterface implements Serializable {
 		this.firstdigit = "true";
 		this.btnradio = "rad";
 		this.tipocalc = "cientifica";
+		//this.tipocalc = "basica";
 	}
 
 	//Getter e Setter da variável display referente ao valor da expressão introduzida pelo utilizador 

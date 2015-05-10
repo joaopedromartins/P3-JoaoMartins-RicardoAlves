@@ -198,7 +198,7 @@
 							</h:panelGrid>
 
 							<h:panelGrid columns="1" cellpadding="6" cellspacing="6">
-								<h:selectOneRadio value="#{calcinterface.btnradio}">
+								<h:selectOneRadio value="#{calcinterface.btnradio}" rendered="#{calcinterface.typescientific()}"  >
 									<f:selectItem itemValue="rad" itemLabel="Radianos" />
 									<f:selectItem itemValue="deg" itemLabel="Graus" />
 								</h:selectOneRadio>
