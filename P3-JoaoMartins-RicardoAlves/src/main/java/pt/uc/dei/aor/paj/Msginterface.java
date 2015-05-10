@@ -3,6 +3,7 @@ package pt.uc.dei.aor.paj;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named 
@@ -10,6 +11,7 @@ import javax.inject.Named;
 public class Msginterface  implements Serializable {
 	private static final long serialVersionUID = 1471294883116438933L;
 	
+	@Inject Messages messages;
 	private String username;
 	private String frase;
 
