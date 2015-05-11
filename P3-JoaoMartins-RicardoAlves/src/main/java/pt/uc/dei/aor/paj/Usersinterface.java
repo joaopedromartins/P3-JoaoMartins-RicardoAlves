@@ -47,12 +47,12 @@ public class Usersinterface implements Serializable {
 
 	//Getter associados à variável userlogged
 	public String getUserLogged() {
-		System.out.println("get user logges="+userLogged);
+		//System.out.println("get user logges="+userLogged);
 		return userLogged;
 	}
 	public void setUserLogged(String userLogged) {
 		this.userLogged = userLogged;
-		System.out.println("set user logges="+userLogged);
+		//System.out.println("set user logges="+userLogged);
 	}
 
 	//Getter associados à variável msgerro

@@ -12,12 +12,10 @@
 
 		<center>
 			<h:form>
-				
-				<h:selectOneRadio id="radiobasciet" value="#{calcinterface.tipocalc}"
-					>
+				<h:selectOneRadio id="radiobasciet" value="#{calcinterface.tipocalc}">
 					<f:selectItem itemValue="basica" itemLabel="Basica" />
 					<f:selectItem itemValue="cientifica" itemLabel="Cientifica" />
-					<f:ajax event="change" execute="radiobasciet" render="calculadoraform:calcbuttons"/>
+					<f:ajax event="change" execute="radiobasciet" render="calculadoraform:calcbuttons calculadoraform:radiobasicacientifica"/>
 				</h:selectOneRadio>
 				
 			</h:form>
@@ -188,12 +186,12 @@
 				<div class="ui-grid-col-4">
 
 					<p:panelGrid columns="1">
-						<f:facet name="header">
-							<h:outputText value="Calculadora #{calcinterface.tipocalc}" />
-						</f:facet>
-
 						<h:form id="calculadoraform">
-
+						
+							<f:facet name="header">
+								<h:outputText value="Calculadora #{calcinterface.tipocalc}" />
+							</f:facet>
+						
 							<h:panelGrid columns="1" cellpadding="6" cellspacing="6">
 								<div class="tipoCalc">
 									<em> <a href="../pages/basic.xhtml">Antiga Basica</a>
@@ -202,15 +200,16 @@
 									</em>
 								</div>
 							</h:panelGrid>
-
-							<h:panelGrid columns="1" cellpadding="6" cellspacing="6">
-								<h:selectOneRadio value="#{calcinterface.btnradio}"
-									rendered="#{calcinterface.typescientific()}">
-									<f:selectItem itemValue="rad" itemLabel="Radianos" />
-									<f:selectItem itemValue="deg" itemLabel="Graus" />
-								</h:selectOneRadio>
-							</h:panelGrid>
-
+							
+							<h:panelGroup id="radiobasicacientifica" style="display:block; text-align:centre">
+								<h:panelGrid columns="1" cellpadding="6" cellspacing="6">
+									<h:selectOneRadio value="#{calcinterface.btnradio}"
+										rendered="#{calcinterface.typescientific()}">
+										<f:selectItem itemValue="rad" itemLabel="Radianos" />
+										<f:selectItem itemValue="deg" itemLabel="Graus" />
+									</h:selectOneRadio>
+								</h:panelGrid>
+							</h:panelGroup>
 
 							<h:panelGroup id="calcdisplay"
 								style="display:block; text-align:centre">
@@ -225,6 +224,7 @@
 
 							<h:panelGroup id="calcbuttons"
 								style="display:block; text-align:centre">
+								
 								<h:panelGrid columns="4" cellpadding="2">
 									<h:commandButton id="btnopen" class="btn-fn" type="button"
 										value="(" onclick="btnparentices('(');"
