@@ -229,27 +229,3 @@ footer{
 	padding: 10px;
 	background-color:#ddd;
 }
-
-#login_table{
-	font:normal 1.2em arial;
-    align: center;
-    valign: middle;
-}
-
-
-
-
-#CLICAR:link {
-	color: #000000;
-	text-decoration: none;
-}
-#CLICAR:visited {
-	color: #000000;
-	text-decoration: none;
-}
-#CLICAR:active {
-	color: #000;
-}
-#CLICAR:hover {
-	color: #666;
-}

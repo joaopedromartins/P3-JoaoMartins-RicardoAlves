@@ -4,14 +4,10 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets">
     
-    <h:head>
-		<title>Rodape</title>
-		<link rel="stylesheet" type="text/css" href="../css/calculadora.css" />
-	</h:head>
-
-    <h:body>
+    
+		<h:outputStylesheet library="stylesheets" name="../css/template.css"/>
 		<marquee behavior="alternate">
-			<h:outputText value="Programação Avançada em Java - Projeto 3, realizado por João Martins e Ricardo Alves."/>
+			<h:outputText styleClass="txtrodape" value="Programação Avançada em Java - Projeto 3, realizado por João Martins e Ricardo Alves."/>
 		</marquee>
-	</h:body>	
-</ui:composition>	
+		
+</ui:composition>

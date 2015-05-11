@@ -4,58 +4,53 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @ApplicationScoped
 public class Users implements Serializable {
-
 	private static final long serialVersionUID = 1L;
-	private ArrayList<User>users;
-	@Inject private User utilizador;
-	
+	private ArrayList<Userbean> users;
+
 	public Users() {
-
-			users = new ArrayList<User>();
-			users.add(new User ("ricardo", "123"));
-			users.add(new User ("joao", "123"));
+		users = new ArrayList<Userbean>();
+		users.add(new Userbean ("ricardo", "123"));
+		users.add(new Userbean ("joao", "123"));
 	}
 
-	public synchronized ArrayList<User> getUsers() {
-		synchronized(users){
-			return users;
-		}
-	} 
-
-	public synchronized void addUser(User u) {
-		
-			//falta testar se ja existe no array
-			users.add(u);
-		
+	//metodo para alterar password de um utilizador
+	public synchronized boolean setPass(Userbean u, String password, String newpassword){
+		return u.setPassword(password, newpassword);
 	}
 	
-	public synchronized String checkUser(){
-		String message="Username inválido";
-			for(User u:users){
-				if(utilizador.getUsername().equals(u.getUsername())){
-					if(utilizador.getPassword().equals(u.getPassword())){
-						message="Login efectuado com sucesso";
-					}else{
-						message="Password inválida";
-					}
-					break;
-				}
+	//metodo para adicionar um utilizador
+	public synchronized boolean addUser(String username, String password) {
+		for(Userbean u:users){
+			if(username.equals(u.getUsername())){
+				return false;
 			}
-		return message;
+		}
+		users.add( new Userbean(username, password) );
+		return true;
 	}
-	 
-	public void setUser(String username){
-		utilizador.setUsername(username);
+
+	//metodo para verificar utilizador e password
+	public synchronized boolean checkUser(String username, String password){
+		for(Userbean u:users){
+			if(username.equals(u.getUsername())){
+				return (u.checkPassword(password));
+			}
+		}
+		return false;
 	}
 	
-	public void setPass(String password){
-		utilizador.setPassword(password);
+	public Userbean getUser(String username) {
+		for(Userbean u:users){
+			if(username.equals(u.getUsername())){
+				return u;
+			}
+		}
+		return null;
 	}
-	
+
 }

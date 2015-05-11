@@ -1,44 +1,36 @@
 package pt.uc.dei.aor.paj;
 
+
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named 
-@SessionScoped
-public class Main implements Serializable {
-
-	private static final long serialVersionUID = 3730437403554200689L;
-
+@RequestScoped
+public class Calcinterface implements Serializable {
+	private static final long serialVersionUID = -5031594103596986625L;
+	
 	@Inject Calculadora calc;
 	@Inject Estatistica est;
 	@Inject PickListView pickHist;
 	@Inject Conversor conv;
-	@Inject Users userslist;
 
 	private String display;
 	private String firstdigit;
 	private String btnradio;
 	private String resultado;
-	private String username;
-	private String password;
-	private boolean userLogged=false;
-	private boolean scientific=true;
+	private String tipocalc;
 
 
-
-	public Main() {
+	public Calcinterface() {
 		this.display = "0.0";
 		this.resultado = "0.0";
 		this.firstdigit = "true";
 		this.btnradio = "rad";
-		this.setUsername("Joao");
-		this.setPassword("123");
-		this.setUserLogged(true);
+		this.tipocalc = "cientifica";
+		//this.tipocalc = "basica";
 	}
 
 	//Getter e Setter da variável display referente ao valor da expressão introduzida pelo utilizador 
@@ -70,29 +62,15 @@ public class Main implements Serializable {
 	public void setBtnradio(String btnradio) {
 		this.btnradio = btnradio;
 	}
-	
-	//Getter e Setter associados à variável username
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
-	//Getter e Setter associados à variável password
-	public String getPassword() {
-		return password;
+	//Getter e Setter associados à variável basica/cientifica
+	public String getTipocalc() {
+		System.out.println("get tipoclac");
+		return tipocalc;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	//Getter associados à variável userlogged
-	public boolean isUserLogged() {
-		return userLogged;
-	}
-	public void setUserLogged(boolean userLogged) {
-		this.userLogged = userLogged;
+	public void setTipocalc(String tipocalc) {
+		this.tipocalc = tipocalc;
+		System.out.println("set tipoclac");
 	}
 
 	//função de interface entre o cliente e o servidor
@@ -121,35 +99,14 @@ public class Main implements Serializable {
 		//envio para os dados estatisticos
 		setValor(this.display);
 		this.setFirstdigit("true");
-		
-		pickHist.addTime(String.valueOf(calc.getTempo()));
 	}
 	
-	//funcao para efectuar logout
-	public void btnlogout() {
-		this.setUsername(null);
-		this.setPassword(null);
-		this.setUserLogged(false);
-	}
-	
-	//funcao para efectuar login
-	public void userlogin() {
-		if (userslist.checkUser().equals("Login efectuado com sucesso")) {
-			setUserLogged(true);
-		}
-		else {
-			setUserLogged(false);
+	//função de interface entre o cliente e o servidor
+	public boolean typescientific() {
+		if (tipocalc.equals("cientifica")) {
+			return true;
+		} else {
+			return false;
 		}
 	}
-	
-	public boolean getScientific(){
-		return scientific;
-	}
-	public void change(ActionEvent event) {
-		if(scientific){
-			scientific=false;
-		}else{
-			scientific=true;
-		}
-    }
-}  
+}
