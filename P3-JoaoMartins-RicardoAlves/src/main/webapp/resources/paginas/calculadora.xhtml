@@ -12,10 +12,12 @@
 		
 		<center>
 			<h:form>
-				<h:selectOneRadio value="#{calcinterface.tipocalc}">
-					<f:selectItem itemValue="basica" itemLabel="Basica" />
-					<f:selectItem itemValue="cientifica" itemLabel="Cientifica" />
-				</h:selectOneRadio>
+				<f:ajax render= "calcbuttons" >
+					<h:selectOneRadio value="#{calcinterface.tipocalc}">
+						<f:selectItem itemValue="basica" itemLabel="Basica" />
+						<f:selectItem itemValue="cientifica" itemLabel="Cientifica" />
+					</h:selectOneRadio>
+				</f:ajax>
 			</h:form>
 		</center>
 		<div id="container" class="ui-grid ui-grid-responsive">
@@ -205,7 +207,7 @@
 							</h:panelGrid>
 
 
-							<h:panelGroup style="display:block; text-align:centre">
+							<h:panelGroup id="calcdisplay" style="display:block; text-align:centre">
 							
 								<h:inputHidden id="firstdigit"
 									value="#{calcinterface.firstdigit}" />
@@ -215,7 +217,7 @@
 									value="#{calcinterface.display}" rows="2" cols="60" />
 							</h:panelGroup>
 
-
+							<h:panelGroup id="calcbuttons" style="display:block; text-align:centre">
 							<h:panelGrid columns="4" cellpadding="2" >
 								<h:commandButton id="btnopen" class="btn-fn" type="button"
 									value="(" onclick="btnparentices('(');"
@@ -290,6 +292,7 @@
 									value="&#960;" onclick="btnpi();"
 									rendered="#{calcinterface.typescientific()}" />
 							</h:panelGrid>
+							</h:panelGroup>
 
 							<h:panelGrid columns="2" >
 								<h:panelGrid columns="4" cellpadding="5">
