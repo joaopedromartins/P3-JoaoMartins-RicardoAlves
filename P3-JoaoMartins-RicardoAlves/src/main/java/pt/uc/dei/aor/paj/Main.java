@@ -3,11 +3,13 @@ package pt.uc.dei.aor.paj;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named 
-@RequestScoped
+@SessionScoped
 public class Main implements Serializable {
 
 	private static final long serialVersionUID = 3730437403554200689L;
@@ -25,6 +27,8 @@ public class Main implements Serializable {
 	private String username;
 	private String password;
 	private boolean userLogged=false;
+	private boolean scientific=true;
+
 
 
 	public Main() {
@@ -117,6 +121,8 @@ public class Main implements Serializable {
 		//envio para os dados estatisticos
 		setValor(this.display);
 		this.setFirstdigit("true");
+		
+		pickHist.addTime(String.valueOf(calc.getTempo()));
 	}
 	
 	//funcao para efectuar logout
@@ -135,4 +141,15 @@ public class Main implements Serializable {
 			setUserLogged(false);
 		}
 	}
-}
+	
+	public boolean getScientific(){
+		return scientific;
+	}
+	public void change(ActionEvent event) {
+		if(scientific){
+			scientific=false;
+		}else{
+			scientific=true;
+		}
+    }
+}  

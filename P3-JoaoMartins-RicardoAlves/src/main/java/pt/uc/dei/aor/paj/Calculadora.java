@@ -17,6 +17,7 @@ public class Calculadora implements Serializable{
 	private static final long serialVersionUID = 6030549976219071079L;
 	
 	private String exp;
+	private float tempoTotal;
 
 	
 	public Calculadora() {
@@ -47,13 +48,18 @@ public class Calculadora implements Serializable{
 //calcula o resultado da expressão pela lib Exp4j, apanhando as excepções apresentadas durante a execução da lib 
 	public String getExp(){
 		String result;
-
+		
+		long tempoInicial=System.nanoTime();
+		long tempoFinal=tempoInicial;
+		
 		try {
 			Expression e = new ExpressionBuilder(this.exp)
 			.operator(factorial)
 			.build();
 			
 			double result1 = e.evaluate();
+			
+			tempoFinal=System.nanoTime();
 			
 			result=result1+"";
 		} catch (NumberFormatException nfe) {
@@ -65,6 +71,9 @@ public class Calculadora implements Serializable{
 		}catch(IllegalArgumentException ne){
 			result="Argumentos inválidos";
 		}
+		tempoTotal =(tempoFinal - tempoInicial)/1000000000.0f;
+		System.out.println(tempoTotal);
+		
 		setExp(result);
 		return result;
 	}
@@ -72,6 +81,10 @@ public class Calculadora implements Serializable{
 	//actualização do valor da expressão a calcular
 	public void setExp(String exp) {
 		this.exp = exp;
+	}
+	
+	public float getTempo(){
+		return tempoTotal;
 	}
 
 

@@ -15,29 +15,34 @@ import javax.inject.Named;
 public class PickListView implements Serializable {
 	private static final long serialVersionUID = -1183677189929476404L;
 	
-	//private DualListModel<String> historico;
 	private List<String> hist;
-	//private List<String> selcecao;
-	
+	private List<String> temp;
 
 	
 	@PostConstruct
 	public void init() {
 		hist = new ArrayList<String>();
-	//	selcecao = new ArrayList<String>();
-		hist.add(" ");   
-	//	historico = new DualListModel<String>(hist, selcecao);
-	
+		temp = new ArrayList<String>();
+		hist.add(" "); 
+		temp.add(" "); 
+		
 	}
 
 	public void init(String exp){
 		hist.add(exp);
 		//historico.setSource(hist);
 	}
-
-
+	
+	public void addTime(String time){
+		temp.add(time);
+	}
+	
 	public List<String> getHist() {
 		return hist;
+	}
+	
+	public List<String> getTime() {
+		return temp;
 	}
 
 	public void setHist(List<String> hist) {
