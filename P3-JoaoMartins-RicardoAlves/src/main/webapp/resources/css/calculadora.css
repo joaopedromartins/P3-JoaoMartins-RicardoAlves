@@ -24,12 +24,10 @@
 }
 
 
-
-
-
-
-
-
+/* painel com imagem de fundo */
+.painelcomfundo {
+	background-image: url("../imagens/fundo-painel.jpg");
+}
 
 
 

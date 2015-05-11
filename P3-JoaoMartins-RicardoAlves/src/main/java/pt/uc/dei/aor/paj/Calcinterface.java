@@ -63,12 +63,14 @@ public class Calcinterface implements Serializable {
 		this.btnradio = btnradio;
 	}
 
+	//Getter e Setter associados à variável basica/cientifica
 	public String getTipocalc() {
+		System.out.println("get tipoclac");
 		return tipocalc;
 	}
-
 	public void setTipocalc(String tipocalc) {
 		this.tipocalc = tipocalc;
+		System.out.println("set tipoclac");
 	}
 
 	//função de interface entre o cliente e o servidor
