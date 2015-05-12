@@ -74,7 +74,7 @@ public class Usersinterface implements Serializable {
 		this.setPassword(null);
 		this.setUserLogged(null);
 		session.setAttribute("loggedin", false);
-		return "login?faces-redirect=true";
+		return "/resources/paginas/login";
 	}
 	
 	//funcao para efectuar login
@@ -83,7 +83,7 @@ public class Usersinterface implements Serializable {
 			setUserLogged(username);
 			setMsgerro(null);
 			session.setAttribute("loggedin", true);
-			return "calculadora?faces-redirect=true";
+			return "/resources/secure/calculadora";
 		} else {
 			setUserLogged(null);
 			setMsgerro("Erro: Utilizador ou password inválido(s)!");
@@ -116,7 +116,8 @@ public class Usersinterface implements Serializable {
 				setMsgerro("Utilizador criado com sucesso.");
 				setUserLogged(username);
 				//System.out.println("TESTE: valor da variavel="+userLogged);
-				return "calculadora?faces-redirect=true";
+				return "calculadora";
+				//return "../secure/calculadora?faces-redirect=true";
 			} else {
 				setMsgerro("Erro: Utilizador já existente!");
 				return "signup";
