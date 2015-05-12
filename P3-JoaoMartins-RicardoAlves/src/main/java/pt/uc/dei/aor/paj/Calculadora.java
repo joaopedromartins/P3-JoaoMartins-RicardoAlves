@@ -62,6 +62,8 @@ public class Calculadora implements Serializable{
 			tempoFinal=System.nanoTime();
 			
 			result=result1+"";
+			
+			
 		} catch (NumberFormatException nfe) {
 			result="NumberFormatException";
 		}catch(EmptyStackException ne){

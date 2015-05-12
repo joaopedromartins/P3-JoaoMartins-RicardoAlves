@@ -122,6 +122,13 @@ public class Calcinterface implements Serializable {
 	}
 	
 	//metodo que liga teclado à expressao/display 
+	public void ackey() {
+		this.expression = "0.0";
+		this.resultado = "0.0";
+		this.firstdigit=true;
+	}
+	
+	//metodo que liga teclado à expressao/display 
 	public void key(ActionEvent event) {
 		/*if (firstdigit) {
 			this.expression = "0.0";
@@ -132,12 +139,7 @@ public class Calcinterface implements Serializable {
 		}*/
 		String add = "";
 		switch(event.getComponent().getId()) {
-			case "AC": {
-				this.expression = "0.0";
-				this.resultado = "0.0";
-				this.firstdigit=true;
-				break;
-			} case "btndivby": {
+			case "btndivby": {
 				add = "/"; 
 				break;
 			} case "btntimes": {
@@ -247,7 +249,7 @@ public class Calcinterface implements Serializable {
 				System.out.println("TEST: Match: 0-9");
 				this.expression=""+e;
 				
-			} else if (e.matches("[+-*/]")) {
+			} else if (e.equals("-") || e.equals("+") || e.equals("/") || e.equals("*") ) {
 				System.out.println("TEST: Match: + - * / ");
 				this.expression = resultado + e;
 			} else {
