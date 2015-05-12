@@ -3,13 +3,13 @@ package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named 
-@RequestScoped
+@SessionScoped
 public class Calcinterface implements Serializable {
 	private static final long serialVersionUID = -5031594103596986625L;
 	
@@ -149,15 +149,6 @@ public class Calcinterface implements Serializable {
 			} case "btnminus": {
 				add = "-";	
 				break;
-			} case "del": {
-				if (this.expression.length() > 1) {
-					this.expression = this.expression.substring(0, expression.length()-1);
-				} else if (this.expression.length() == 1) {
-					this.expression = "0";
-				} else {
-					this.expression = "0";
-				}
-				break;
 			} case "btndot": {
 				add = ".";
 				break;
@@ -216,7 +207,6 @@ public class Calcinterface implements Serializable {
 				add = "log10(";
 				break;
 			} case "factor": {
-				this.addToExpression("!");
 				break;
 			} case "pot2": {
 				add = "^2";
@@ -242,7 +232,7 @@ public class Calcinterface implements Serializable {
 			}
 		}
 		if (add.length()>0) {
-			this.addToExpression(add);
+			addToExpression(add);
 		}
 		/*if (!op.equals("")) {
 			operators.add(op);

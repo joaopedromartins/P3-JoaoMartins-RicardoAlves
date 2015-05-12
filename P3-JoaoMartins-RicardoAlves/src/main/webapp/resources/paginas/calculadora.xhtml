@@ -5,8 +5,9 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<h:outputScript library="js" name="../js/calculadora.js" />
-	<h:outputStylesheet library="stylesheets" name="../css/template.css" />
+	<h:outputScript library="js" name="calculadora.js" />
+ 	<h:outputStylesheet library="stylesheets" name="../css/template.css" /> 
+<!--	<h:outputStylesheet library="css" name="template.css" /> -->
 
 	<ui:define name="conteudo">
 
@@ -215,11 +216,7 @@
 								</h:panelGrid>
 							</h:panelGroup>
 
-							<h:panelGroup id="calcdisplay"
-								style="display:block; text-align:centre">
-
-								<h:inputHidden id="firstdigit"
-									value="#{calcinterface.firstdigit}" />
+							<h:panelGroup id="calcdisplay" style="display:block; text-align:centre">
 								<h:inputTextarea id="scientificdisplay"
 									styleClass="txtareascientificdisplay"
 									title="Preencha aqui a sua expressao matemática"
@@ -307,8 +304,8 @@
 
 							<h:panelGrid columns="2">
 								<h:panelGrid columns="2">
+									<f:ajax render="calculadoraform:calcdisplay">
 									<h:panelGrid columns="4" cellpadding="5">
-									
 										<h:commandButton id="btn7" class="btn-numeric" action="calculadora"
 											value="7" actionListener="#{calcinterface.key}" />
 										<h:commandButton id="btn8" class="btn-numeric" action="calculadora"
@@ -339,12 +336,13 @@
 										<!-- botao em branco -->
 										<h:commandButton id="btn0" class="btn-numeric" action="calculadora"
 											value="0" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btncoma" class="btn-numeric" action="calculadora"
+										<h:commandButton id="btndot" class="btn-numeric" action="calculadora"
 											value="." actionListener="#{calcinterface.key}" />
 										<h:commandButton id="btndivby" class="btn-numeric"  action="calculadora" 
-											value="&#247;" onclick="btnoperator('/');" />
+											value="&#247;" actionListener="#{calcinterface.key}" />
 											
 									</h:panelGrid>
+									</f:ajax>
 	
 									<h:panelGrid columns="1" cellpadding="5">
 										<h:commandButton id="btnce" class="button" action="calculadora"
@@ -354,7 +352,6 @@
 										<h:commandButton id="btnequal" styleClass="btn-equal"
 											type="submit" actionListener="#{calcinterface.btnequal()}"
 											value="=" action="calculadora.xhtml" />
-	
 									</h:panelGrid>
 								</h:panelGrid>	
 							</h:panelGrid>
