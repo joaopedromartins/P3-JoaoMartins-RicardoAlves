@@ -15,12 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoginFilter implements Filter {
  
+	
     /**
      * Checks if user is logged in. If not it redirects to the login.xhtml page.
      */
+	@Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         // Get the loginBean from session attribute
-        Usersinterface loginBean = (Usersinterface)((HttpServletRequest)request).getSession().getAttribute("loginBean");
+        Usersinterface loginBean = (Usersinterface)((HttpServletRequest)request).getSession().getAttribute("usersinterface");
          
         // For the first application request there is no loginBean in the session so user needs to log in
         // For other requests loginBean is present but we need to check if user has logged in successfully
