@@ -27,8 +27,7 @@ public class Messages implements Serializable {
 	}
 
 	//metodo que devolve ultima pagina de mensagens
-	public Msgbean[] getMessages() {
-		synchronized(conversa){
+	public synchronized Msgbean[] getMessages() {
 			if (conversa.size()<1) {
 				return null;
 			} else if (conversa.size()<MAXMSG) {
@@ -44,12 +43,10 @@ public class Messages implements Serializable {
 				}
 				return paginamensagens;
 			}
-		}
 	}
 	
 	//metodo que devolve ultima pagina de mensagens ate à posicao pos
-	public Msgbean[] getMessages(int pos) {
-		synchronized(conversa){
+	public synchronized Msgbean[] getMessages(int pos) {
 			if (conversa.size()<1) {
 				return null;
 			} else if (conversa.size()<MAXMSG) {
@@ -70,12 +67,10 @@ public class Messages implements Serializable {
 				}
 				return paginamensagens;
 			}
-		}
 	}
 
-	public void addMessages(Msgbean m) {
-		synchronized(conversa){
+	public synchronized void addMessages(Msgbean m) {
 			conversa.add(m);
-		}
+		
 	}
 }

@@ -5,7 +5,7 @@ public class Msgbean {
 	private String frase;
 	
 	//construtor
-	Msgbean(Userbean emissor, String frase) {
+	public Msgbean(Userbean emissor, String frase) {
 		this.emissor=emissor;
 		if (frase.length()<256) {
 			this.frase=frase;
