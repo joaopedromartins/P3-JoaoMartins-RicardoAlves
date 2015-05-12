@@ -4,6 +4,7 @@ package pt.uc.dei.aor.paj;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,8 +18,10 @@ public class Calcinterface implements Serializable {
 	@Inject PickListView pickHist;
 	@Inject Conversor conv;
 
-	private String display;
-	private String firstdigit;
+	private String display;   /*APAGAR DEPOIS DE CONVERTER*/
+	
+	private String expression;
+	private boolean firstdigit;
 	private String btnradio;
 	private String resultado;
 	private String tipocalc;
@@ -27,7 +30,7 @@ public class Calcinterface implements Serializable {
 	public Calcinterface() {
 		this.display = "0.0";
 		this.resultado = "0.0";
-		this.firstdigit = "true";
+		this.firstdigit = true;
 		this.btnradio = "rad";
 		this.tipocalc = "cientifica";
 		//this.tipocalc = "basica";
@@ -48,10 +51,10 @@ public class Calcinterface implements Serializable {
 	} 
 
 	//Getter e Setter do valor associado ao primeiro digito da expressão
-	public String getFirstdigit() {
+	public boolean getFirstdigit() {
 		return firstdigit;
 	}
-	public void setFirstdigit(String firstdigit) {
+	public void setFirstdigit(boolean firstdigit) {
 		this.firstdigit = firstdigit;
 	}
 
@@ -71,6 +74,14 @@ public class Calcinterface implements Serializable {
 	public void setTipocalc(String tipocalc) {
 		this.tipocalc = tipocalc;
 		//System.out.println("set tipoclac");
+	}
+	
+	//Getter e Setter associados à variável expression
+	public String getExpression() {
+		return expression;
+	}
+	public void setExpression(String expression) {
+		this.expression = expression;
 	}
 
 	//função de interface entre o cliente e o servidor
@@ -98,15 +109,165 @@ public class Calcinterface implements Serializable {
 
 		//envio para os dados estatisticos
 		setValor(this.display);
-		this.setFirstdigit("true");
+		this.setFirstdigit(true);
 	}
 	
-	//função de interface entre o cliente e o servidor
+	//metodo que controla a visibilidade dos botoes calculadora cientifica
 	public boolean typescientific() {
 		if (tipocalc.equals("cientifica")) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	//metodo que liga teclado à expressao/display 
+	public void key(ActionEvent event) {
+		/*if (firstdigit) {
+			this.expression = "0.0";
+			firstdigit = false;
+		}
+		if (this.expression.equals("0")) {
+			this.expression = "";
+		}*/
+		String add = "";
+		switch(event.getComponent().getId()) {
+			case "AC": {
+				this.expression = "0.0";
+				this.resultado = "0.0";
+				this.firstdigit=true;
+				break;
+			} case "btndivby": {
+				add = "/"; 
+				break;
+			} case "btntimes": {
+				add = "*";
+				break;
+			} case "btnplus": {
+				add = "+";
+				break;
+			} case "btnminus": {
+				add = "-";	
+				break;
+			} case "del": {
+				if (this.expression.length() > 1) {
+					this.expression = this.expression.substring(0, expression.length()-1);
+				} else if (this.expression.length() == 1) {
+					this.expression = "0";
+				} else {
+					this.expression = "0";
+				}
+				break;
+			} case "btndot": {
+				add = ".";
+				break;
+			} case "btn0": {
+				add = "0";
+				break;
+			} case "btn1": {
+				add = "1";
+				break;
+			} case "btn2": {
+				add = "2";
+				break;
+			} case "btn3": {
+				add = "3";
+				break;
+			} case "btn4": {
+				add = "4";
+				break;
+			} case "btn5": {
+				add = "5";
+				break;
+			} case "btn6": {
+				add = "6";
+				break;
+			} case "btn7": {
+				add = "7";
+				break;
+			} case "btn8": {
+				add = "8";
+				break;
+			} case "btn9": {
+				add = "9";
+				break;
+			} case "sen": {
+				add = "sin(";
+				break;
+			} case "cos": {
+				add = "cos(";
+				break;
+			} case "tan": {
+				add = "tan(";
+				break;
+			} case "asen": {
+				add = "asin(";
+				break;
+			} case "acos": {
+				add = "acos(";
+				break;
+			} case "atan": {
+				add = "atan(";
+				break;
+			} case "ln": {
+				add = "log(";
+				break;
+			} case "log": {
+				add = "log10(";
+				break;
+			} case "factor": {
+				this.addToExpression("!");
+				break;
+			} case "pot2": {
+				add = "^2";
+				break;
+			} case "raiz2": {
+				add = "sqrt(";
+				break;
+			} case "euler": {
+				add = "e";
+				break;
+			} case "openP": {
+				add = "(";
+				break;
+			} case "closeP": {
+				add = ")";
+				break;
+			} case "modulo": {
+				add = "abs(";
+				break;
+			} case "pi": {
+				add = "PI";
+				break;
+			}
+		}
+		if (add.length()>0) {
+			this.addToExpression(add);
+		}
+		/*if (!op.equals("")) {
+			operators.add(op);
+		}*/
+	}
+	
+	public void addToExpression(String e) {
+		if (e.length()<1) {
+			return;
+		} else if (this.firstdigit) {
+			if( e.matches("[0-9]")) {
+				System.out.println("TEST: Match: 0-9");
+				this.expression=""+e;
+				
+			} else if (e.matches("[+-*/]")) {
+				System.out.println("TEST: Match: + - * / ");
+				this.expression = resultado + e;
+			} else {
+				System.out.println("TEST: FALTA VALIDAR FUNCOES");
+				this.expression=expression+e;
+			}
+		} else {
+			this.expression += e;
+		}
+		this.firstdigit=false;
+		this.resultado=expression;
 	}
 }

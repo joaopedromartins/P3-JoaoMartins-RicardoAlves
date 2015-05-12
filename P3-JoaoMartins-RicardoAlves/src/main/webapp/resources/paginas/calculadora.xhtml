@@ -12,12 +12,14 @@
 
 		<center>
 			<h:form>
-				<h:selectOneRadio id="radiobasciet" value="#{calcinterface.tipocalc}">
+				<h:selectOneRadio id="radiobasciet"
+					value="#{calcinterface.tipocalc}">
 					<f:selectItem itemValue="basica" itemLabel="Basica" />
 					<f:selectItem itemValue="cientifica" itemLabel="Cientifica" />
-					<f:ajax event="change" execute="radiobasciet" render="calculadoraform:calcbuttons calculadoraform:radiobasicacientifica headerform:calcheader"/>
+					<f:ajax event="change" execute="radiobasciet"
+						render="calculadoraform:calcbuttons calculadoraform:radiobasicacientifica headerform:calcheader" />
 				</h:selectOneRadio>
-				
+
 			</h:form>
 		</center>
 		<div id="container" class="ui-grid ui-grid-responsive">
@@ -187,8 +189,9 @@
 
 					<p:panelGrid columns="1">
 						<f:facet name="header">
-							<h:form id="headerform" >
-								<h:outputText id="calcheader" value="Calculadora #{calcinterface.tipocalc}" />
+							<h:form id="headerform">
+								<h:outputText id="calcheader"
+									value="Calculadora #{calcinterface.tipocalc}" />
 							</h:form>
 						</f:facet>
 						<h:form id="calculadoraform">
@@ -200,8 +203,9 @@
 									</em>
 								</div>
 							</h:panelGrid>
-							
-							<h:panelGroup id="radiobasicacientifica" style="display:block; text-align:centre">
+
+							<h:panelGroup id="radiobasicacientifica"
+								style="display:block; text-align:centre">
 								<h:panelGrid columns="1" cellpadding="6" cellspacing="6">
 									<h:selectOneRadio value="#{calcinterface.btnradio}"
 										rendered="#{calcinterface.typescientific()}">
@@ -224,7 +228,6 @@
 
 							<h:panelGroup id="calcbuttons"
 								style="display:block; text-align:centre">
-								
 								<h:panelGrid columns="4" cellpadding="2">
 									<h:commandButton id="btnopen" class="btn-fn" type="button"
 										value="(" onclick="btnparentices('(');"
@@ -299,56 +302,61 @@
 										value="&#960;" onclick="btnpi();"
 										rendered="#{calcinterface.typescientific()}" />
 								</h:panelGrid>
+
 							</h:panelGroup>
 
 							<h:panelGrid columns="2">
-								<h:panelGrid columns="4" cellpadding="5">
-									<h:commandButton id="btn1" class="btn-numeric" type="button"
-										value="1" onclick="btnnumeric('1');" />
-									<h:commandButton id="btn2" class="btn-numeric" type="button"
-										value="2" onclick="btnnumeric('2');" />
-									<h:commandButton id="btn3" class="btn-numeric" type="button"
-										value="3" onclick="btnnumeric('3');" />
-									<h:commandButton id="btnplus" class="btn-numeric" type="button"
-										value="+" onclick="btnoperator('+');" />
-
-									<h:commandButton id="btn4" class="btn-numeric" type="button"
-										value="4" onclick="btnnumeric('4');" />
-									<h:commandButton id="btn5" class="btn-numeric" type="button"
-										value="5" onclick="btnnumeric('5');" />
-									<h:commandButton id="btn6" class="btn-numeric" type="button"
-										value="6" onclick="btnnumeric('6');" />
-									<h:commandButton id="btnminus" class="btn-numeric"
-										type="button" value="-" onclick="btnoperator('-');" />
-
-									<h:commandButton id="btn7" class="btn-numeric" type="button"
-										value="7" onclick="btnnumeric('7');" />
-									<h:commandButton id="btn8" class="btn-numeric" type="button"
-										value="8" onclick="btnnumeric('8');" />
-									<h:commandButton id="btn9" class="btn-numeric" type="button"
-										value="9" onclick="btnnumeric('9');" />
-									<h:commandButton id="btntimes" class="btn-numeric"
-										type="button" value="&#215;" onclick="btnoperator('*');" />
-
-									<!-- botao em branco -->
-									<h:commandButton id="btn0" class="btn-numeric" type="button"
-										value="0" onclick="btnnumeric('0');" />
-									<h:commandButton id="btncoma" class="btn-numeric" type="button"
-										value="." onclick="btnoperator('.');" />
-									<h:commandButton id="btndivby" class="btn-numeric"
-										type="button" value="&#247;" onclick="btnoperator('/');" />
-								</h:panelGrid>
-
-								<h:panelGrid columns="1" cellpadding="5">
-									<h:commandButton id="btnce" class="button" type="button"
-										value="AC" onclick="btnclearexpression();" />
-									<h:commandButton id="btnclear" class="button" type="button"
-										value="C" onclick="btnclear();" />
-									<h:commandButton id="btnequal" styleClass="btn-equal"
-										type="submit" actionListener="#{calcinterface.btnequal()}"
-										value="=" action="scientific.xhtml" />
-
-								</h:panelGrid>
+								<h:panelGrid columns="2">
+									<h:panelGrid columns="4" cellpadding="5">
+									
+										<h:commandButton id="btn7" class="btn-numeric" action="calculadora"
+											value="7" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btn8" class="btn-numeric" action="calculadora"
+											value="8" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btn9" class="btn-numeric" action="calculadora"
+											value="9" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btnplus" class="btn-numeric" action="calculadora"
+											value="+" actionListener="#{calcinterface.key}" />
+	
+										<h:commandButton id="btn4" class="btn-numeric" action="calculadora"
+											value="4" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btn5" class="btn-numeric" action="calculadora"
+											value="5" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btn6" class="btn-numeric" action="calculadora"
+											value="6" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btnminus" class="btn-numeric" action="calculadora"
+											value="-" actionListener="#{calcinterface.key}" />
+	
+										<h:commandButton id="btn1" class="btn-numeric" action="calculadora"
+											value="1" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btn2" class="btn-numeric" action="calculadora"
+											value="2" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btn3" class="btn-numeric" action="calculadora"
+											value="3" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btntimes" class="btn-numeric" action="calculadora"
+											value="&#215;" actionListener="#{calcinterface.key}" />
+	
+										<!-- botao em branco -->
+										<h:commandButton id="btn0" class="btn-numeric" action="calculadora"
+											value="0" actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btncoma" class="btn-numeric" action="calculadora"
+											value="." actionListener="#{calcinterface.key}" />
+										<h:commandButton id="btndivby" class="btn-numeric"  action="calculadora" 
+											value="&#247;" onclick="btnoperator('/');" />
+											
+									</h:panelGrid>
+	
+									<h:panelGrid columns="1" cellpadding="5">
+										<h:commandButton id="btnce" class="button" action="calculadora"
+											value="AC" onclick="btnclearexpression();" />
+										<h:commandButton id="btnclear" class="button" action="calculadora"
+											value="C" onclick="btnclear();" />
+										<h:commandButton id="btnequal" styleClass="btn-equal"
+											type="submit" actionListener="#{calcinterface.btnequal()}"
+											value="=" action="calculadora.xhtml" />
+	
+									</h:panelGrid>
+								</h:panelGrid>	
 							</h:panelGrid>
 						</h:form>
 
