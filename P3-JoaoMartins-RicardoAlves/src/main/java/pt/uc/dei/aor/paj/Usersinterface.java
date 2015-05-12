@@ -1,9 +1,12 @@
 package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
+
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 @Named 
 @SessionScoped
@@ -16,6 +19,8 @@ public class Usersinterface implements Serializable {
 	private String cpassword;
 	private String msgerro;
 	private String userLogged;
+	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+
 	
 	public Usersinterface() {
 		this.setUserLogged(null);
@@ -68,6 +73,7 @@ public class Usersinterface implements Serializable {
 		this.setUsername(null);
 		this.setPassword(null);
 		this.setUserLogged(null);
+		session.setAttribute("loggedin", false);
 		return "login";
 	}
 	
@@ -76,6 +82,7 @@ public class Usersinterface implements Serializable {
 		if ( users.checkUser(username, password) ) {
 			setUserLogged(username);
 			setMsgerro(null);
+			session.setAttribute("loggedin", true);
 			return "calculadora";
 		} else {
 			setUserLogged(null);
