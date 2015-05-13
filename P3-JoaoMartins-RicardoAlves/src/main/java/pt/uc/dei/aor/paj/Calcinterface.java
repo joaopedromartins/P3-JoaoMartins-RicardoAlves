@@ -129,13 +129,60 @@ public class Calcinterface implements Serializable {
 		return "calculadora";
 	}
 	
+		
 	//metodo que liga teclado à expressao/display 
-		public String ckey() {
-			this.expression = "0.0";
-			this.resultado = "0.0";
-			this.firstdigit=true;
-			return "calculadora";
+	public String ckey() {
+		//Se display tem 0 ou 1 caracter
+		if ( this.expression.length() < 2) {
+			this.expression="";
 		}
+		//Se display tem mais do que 1 caracter
+		else {
+			String lastchar=this.expression.substring(this.expression.length()-1, this.expression.length()); 
+			//Se for operador
+			if (lastchar=="-" || lastchar=="+" || lastchar=="*" || lastchar=="/" || lastchar=="." || lastchar=="^" || lastchar=="!" ) {
+				this.expression=this.expression.substring(0, this.expression.length()-1);
+			}
+			//Se for numero
+			else if ( lastchar.matches("[0-9]") ){
+				for (int i=this.expression.length()-1;i>=0;i--) {
+					lastchar=this.expression.substring(i,i+1); 
+					if (  lastchar.matches("[0-9]") ) {
+						this.expression=this.expression.substring(0, this.expression.length()-1);
+					}
+					else if ( lastchar=="." ) {
+						this.expression=this.expression.substring(0, this.expression.length()-1);
+					}
+					else {
+						break;
+					}
+				}
+			}
+			//se for parentices
+			else if (lastchar=="(" || lastchar==")") {
+				this.expression=this.expression.substring(0, this.expression.length()-1);
+			}
+			//se for funcao
+			else if ( lastchar.matches("[a-z]") ) {
+				for (int i=this.expression.length()-1;i>=0;i--) {
+					lastchar=this.expression.substring(i,i+1); //substr(number, lenght)
+					if ( lastchar.matches("[a-z]") ) {
+						this.expression=this.expression.substring(0, this.expression.length()-1);
+						//alert("TEST: this.expression="+this.expression);
+					}
+					else {
+						break;
+					}
+				}
+			}
+			//qq outra situacao apaga ultimo caracter
+			else {
+				this.expression=this.expression.substring(0, this.expression.length()-1);
+			}
+		}
+		this.resultado=expression;
+		return "calculadora";
+	}
 	
 	//metodo que liga teclado à expressao/display 
 	public void key(ActionEvent event) {

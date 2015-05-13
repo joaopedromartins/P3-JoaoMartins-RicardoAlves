@@ -345,10 +345,11 @@
 										<f:ajax render="calculadoraform:calcdisplay">
 											<h:commandButton id="btnac" styleClass="btn-clear"
 												value="AC" action="#{calcinterface.ackey()}" />
+										</f:ajax>
+										<f:ajax render="calculadoraform:calcdisplay">	
 											<h:commandButton id="btnc" styleClass="btn-clear"
 												value="C" action="#{calcinterface.ckey()}" />
 										</f:ajax>
-										
 										
 										<h:commandButton id="btnequal" styleClass="btn-equal"
 											type="submit" actionListener="#{calcinterface.btnequal()}"
