@@ -87,6 +87,7 @@ public class Calcinterface implements Serializable {
 	//função de interface entre o cliente e o servidor
 	public void btnequal() {
 		String aux, aux3;
+		float tempo;
 		//envia o valor da expressão introduzida para o historico
 		pickHist.init(this.display);
 
@@ -99,17 +100,20 @@ public class Calcinterface implements Serializable {
 			//obtem o valor do calculo em radianos
 			aux3=calc.getExp();
 			this.resultado=aux3+"";
+			tempo = calc.getTempo();
 			
 		}else{
 			//envia o valor da expressão introduzida para efectuar o calculo
 			calc.setExp(this.display);
 			//o resultado toma o valor devolvido após calculo da expressao
 			this.resultado=calc.getExp();
+			tempo = calc.getTempo();
 		}
 
 		//envio para os dados estatisticos
 		setValor(this.display);
 		this.setFirstdigit(true);
+		pickHist.addTime(String.valueOf(tempo));
 	}
 	
 	//metodo que controla a visibilidade dos botoes calculadora cientifica

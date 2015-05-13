@@ -33,13 +33,21 @@
 							toggleOrientation="vertical" style="margin-bottom:20px">
 							<h:panelGrid columns="4" cellpadding="10">
 
-								<h:form>
-									<ul id="hist1">
-										<ui:repeat value="#{pickListView.hist}" var="item">
-											<li>#{item}</li>
-										</ui:repeat>
-									</ul>
-								</h:form>
+								<h:dataTable value="#{pickListView.hist}" var="item">
+								<h:column>
+									<f:facet name="header">Expressão:</f:facet>
+									#{item}
+								</h:column>
+								</h:dataTable>
+								
+								<h:dataTable value="#{pickListView.time}" var="time">
+								<h:column>
+									<f:facet name="header">Tempo (s):</f:facet>
+									#{time}
+								</h:column>
+								</h:dataTable>
+								
+								
 							</h:panelGrid>
 						</p:panel>
 
