@@ -32,7 +32,10 @@ public class Chatinterface  implements Serializable {
 	}
 	public void setFrase(String frase) {
 		//this.frase = frase;
-		messages.addConversas(usuario.getUsername(), frase);
+		if(frase==null||frase.equals("")){
+		}else{
+			messages.addConversas(usuario.getUsername(), frase);
+		}
 	}
 	
 	

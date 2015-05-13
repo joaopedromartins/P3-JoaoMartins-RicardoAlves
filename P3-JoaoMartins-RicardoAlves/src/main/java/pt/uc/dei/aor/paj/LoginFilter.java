@@ -24,7 +24,7 @@ public class LoginFilter implements Filter {
         // Get the loginBean from session attribute
 		HttpServletRequest req = (HttpServletRequest) request;
 		
-		System.out.println(req.getSession().getAttribute("loggedin"));
+		//System.out.println(req.getSession().getAttribute("loggedin"));
 		
 		if (req.getSession().getAttribute("loggedin") != null){
 			

@@ -366,6 +366,9 @@
 
 				<div class="ui-grid-col-3">
 					<h:form id="chatform">
+					
+							<p:poll interval="3" update="chatform"/>
+							
 						<p:panelGrid columns="1" styleClass="painel" id="painelChat">
 							<f:facet name="header"> Forum de cálculo </f:facet>
 							
@@ -374,26 +377,27 @@
 							toggleOrientation="vertical" style="margin-bottom:20px">
 							<h:panelGrid columns="4" cellpadding="10">
 
-
 									<ul id="allchat">
 										<ui:repeat value="#{chatinterface.todasConversas()}" var="item">
 											<li>#{item}</li>
 										</ui:repeat>
 									</ul>
-									
+							
 							</h:panelGrid>
 							</p:panel>
+							
 							
 							<h:panelGrid columns="2">
 								<h:inputText id="setfrase" value="#{chatinterface.frase}" />
 								
-							<f:ajax render="@form" execute="setfrase">
-								<h:commandButton id="btnsend" styleClass="btn" type="submit"
+								<f:ajax render="@form" execute="setfrase">
+									<h:commandButton id="btnsend" styleClass="btn" type="submit"
 									value="Enviar" action="#{chatinterface.btnsend()}" />
-							</f:ajax>
+								</f:ajax>
+							
 							</h:panelGrid>
 							
-						</p:panelGrid>
+							</p:panelGrid>
 					</h:form>
 				</div>
 			</div>
