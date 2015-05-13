@@ -11,6 +11,7 @@ import javax.inject.Named;
 @RequestScoped
 public class Basica implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	@Inject Calculadora calc;
 	@Inject Estatistica est;
 	@Inject PickListView pickHist;
@@ -73,8 +74,8 @@ public class Basica implements Serializable {
 			calc.setExp(aux);
 			//obtem o valor do calculo em radianos
 			aux3=calc.getExp();
-			double aux1=0;
-			double aux2=0;
+		//	double aux1=0;
+		//	double aux2=0;
 		//	aux1 = Double.parseDouble(aux3);
 			//converter para graus
 		//	aux2=Math.toDegrees(aux1);
