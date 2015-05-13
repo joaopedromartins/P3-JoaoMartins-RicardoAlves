@@ -1,6 +1,7 @@
 package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -13,6 +14,7 @@ public class Chatinterface  implements Serializable {
 	
 	@Inject Messages messages;
 	@Inject Users users;
+	@Inject Usersinterface usuario;
 	private String username;
 	private String frase;
 	private String[][] pagina;
@@ -29,7 +31,8 @@ public class Chatinterface  implements Serializable {
 		return frase;
 	}
 	public void setFrase(String frase) {
-		this.frase = frase;
+		//this.frase = frase;
+		messages.addConversas(usuario.getUsername(), frase);
 	}
 	
 	
@@ -45,12 +48,17 @@ public class Chatinterface  implements Serializable {
 	
 	
 	//passar esta funcao para o Usersinterface
-	public String btnsend(String username) {
-		Userbean u=users.getUser(username);
-		if (u!=null) {
-			messages.addMessages( new Msgbean(u, frase) );
-		}
+	public String btnsend() {
+//		Userbean u=users.getUser(username);
+//		if (u!=null) {
+//			messages.addMessages( new Msgbean(u, frase) );
+//		}
 		return "calculadora";
+	}
+	
+	
+	public ArrayList<String> todasConversas(){
+		return messages.recebeConversas();
 	}
 	
 	

@@ -368,7 +368,23 @@
 					<h:form>
 						<p:panelGrid columns="1" styleClass="painel" id="painelChat">
 							<f:facet name="header"> Forum de cálculo </f:facet>
-							<h:dataTable />
+							
+							
+							<p:panel id="pnlchat" toggleable="true"
+							toggleOrientation="vertical" style="margin-bottom:20px">
+							<h:panelGrid columns="4" cellpadding="10">
+
+								<h:form>
+									<ul id="allchat">
+										<ui:repeat value="#{chatinterface.todasConversas()}" var="item">
+											<li>#{item}</li>
+										</ui:repeat>
+									</ul>
+								</h:form>
+							</h:panelGrid>
+							</p:panel>
+							
+							
 							<h:panelGrid columns="2">
 								<h:inputText value="#{chatinterface.frase}" />
 								<h:commandButton id="btnsend" styleClass="btn" type="submit"

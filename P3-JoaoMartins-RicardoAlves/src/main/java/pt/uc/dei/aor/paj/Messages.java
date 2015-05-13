@@ -11,9 +11,11 @@ public class Messages implements Serializable {
 	
 	private ArrayList<Msgbean> conversa;
 	private final int MAXMSG=10;
+	private ArrayList<String> todasConversas;
 	
 	public Messages() {
 		conversa = new ArrayList<>();
+		todasConversas = new ArrayList<>();
 	}
 	
 	//Getter tamanho da conversa
@@ -73,4 +75,16 @@ public class Messages implements Serializable {
 			conversa.add(m);
 		
 	}
+	
+	
+	
+	
+	public synchronized void addConversas(String username, String frase){
+		todasConversas.add("<"+username+">: "+frase);
+	}
+	
+	public synchronized ArrayList<String> recebeConversas(){
+		return todasConversas;
+	}
+	
 }
