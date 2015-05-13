@@ -367,7 +367,7 @@
 				<div class="ui-grid-col-3">
 					<h:form id="chatform">
 					
-							<p:poll interval="3" update="chatform"/>
+<!-- 							<p:poll interval="3" update="chatform"/> -->
 							
 						<p:panelGrid columns="1" styleClass="painel" id="painelChat">
 							<f:facet name="header"> Forum de cálculo </f:facet>
@@ -393,6 +393,11 @@
 								<f:ajax render="@form" execute="setfrase">
 									<h:commandButton id="btnsend" styleClass="btn" type="submit"
 									value="Enviar" action="#{chatinterface.btnsend()}" />
+								</f:ajax>
+								
+								<f:ajax render="pnlchat">
+									<h:commandButton id="btnhidden" type="submit" style="display:none;"
+									value="Hidden" action="calculadora" />
 								</f:ajax>
 							
 							</h:panelGrid>

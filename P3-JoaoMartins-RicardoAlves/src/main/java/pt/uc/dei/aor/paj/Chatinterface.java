@@ -31,11 +31,11 @@ public class Chatinterface  implements Serializable {
 		return frase;
 	}
 	public void setFrase(String frase) {
-		//this.frase = frase;
-		if(frase==null||frase.equals("")){
-		}else{
-			messages.addConversas(usuario.getUsername(), frase);
-		}
+		this.frase = frase;
+//		if(frase==null||frase.equals("")){
+//		}else{
+//			messages.addConversas(usuario.getUsername(), frase);
+//		}
 	}
 	
 	
@@ -56,6 +56,13 @@ public class Chatinterface  implements Serializable {
 //		if (u!=null) {
 //			messages.addMessages( new Msgbean(u, frase) );
 //		}
+		if(frase==null||frase.equals("")){
+		}else{
+			messages.addConversas(usuario.getUsername(), frase);
+		}
+		
+		this.frase="";
+		
 		return "calculadora";
 	}
 	
