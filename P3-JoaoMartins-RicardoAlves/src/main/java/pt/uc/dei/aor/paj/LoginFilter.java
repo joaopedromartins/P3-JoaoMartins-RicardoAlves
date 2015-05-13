@@ -53,7 +53,7 @@ public class LoginFilter implements Filter {
     }
  
     public void init(FilterConfig config) throws ServletException {
-    	System.out.println("filter is working");
+    	//System.out.println("filter is working");
         // Nothing to do here!
     }
  

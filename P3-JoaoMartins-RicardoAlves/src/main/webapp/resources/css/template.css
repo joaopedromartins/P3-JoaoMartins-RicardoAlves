@@ -225,3 +225,9 @@ body {
     valign: button;
     font:18px Arial;
 }
+
+#pnlchat {
+	text-align: left;
+	color: #000000;
+	background: #ffffff;
+}

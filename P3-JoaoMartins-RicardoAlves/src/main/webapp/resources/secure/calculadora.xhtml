@@ -193,7 +193,7 @@
 							</h:form>
 						</f:facet>
 						<h:form id="calculadoraform">
-							<h:panelGrid columns="1" cellpadding="6" cellspacing="6">
+							<h:panelGrid columns="1" cellpadding="1" cellspacing="1">
 								<div class="tipoCalc">
 									<em> <a href="../pages/basic.xhtml">Antiga Basica</a>
 									</em> <em> <a href="../pages/scientific.xhtml">Antiga
@@ -370,12 +370,12 @@
 <!-- 							<p:poll interval="3" update="chatform"/> -->
 							
 						<p:panelGrid columns="1" styleClass="painel" id="painelChat">
-							<f:facet name="header"> Forum de cálculo </f:facet>
+							<f:facet name="header"> Fórum de cálculo </f:facet>
 							
 							
 							<p:panel id="pnlchat" toggleable="true"
-							toggleOrientation="vertical" style="margin-bottom:20px">
-							<h:panelGrid columns="4" cellpadding="10">
+							toggleOrientation="vertical" style="margin-bottom:0px">
+							<h:panelGrid columns="1" cellpadding="10">
 
 									<ul id="allchat">
 										<ui:repeat value="#{chatinterface.todasConversas()}" var="item">

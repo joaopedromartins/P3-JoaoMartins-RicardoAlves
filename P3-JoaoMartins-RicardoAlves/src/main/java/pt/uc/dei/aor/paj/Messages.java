@@ -1,7 +1,9 @@
 package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -80,7 +82,12 @@ public class Messages implements Serializable {
 	
 	
 	public synchronized void addConversas(String username, String frase){
-		todasConversas.add("<"+username+">: "+frase);
+		
+		Calendar cal = Calendar.getInstance();
+    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+    	String hora = sdf.format(cal.getTime());
+		
+		todasConversas.add("("+hora+") "+"<"+username+">: "+frase);
 	}
 	
 	public synchronized ArrayList<String> recebeConversas(){

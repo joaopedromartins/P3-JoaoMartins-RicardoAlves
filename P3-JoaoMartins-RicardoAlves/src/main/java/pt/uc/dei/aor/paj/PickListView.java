@@ -23,8 +23,6 @@ public class PickListView implements Serializable {
 	public void init() {
 		hist = new ArrayList<String>();
 		temp = new ArrayList<String>();
-		hist.add(" "); 
-		temp.add(" "); 
 		
 	}
 

@@ -32,7 +32,7 @@ public class Calcinterface implements Serializable {
 		this.resultado = "0.0";
 		this.firstdigit = true;
 		this.btnradio = "rad";
-		this.tipocalc = "cientifica";
+		this.tipocalc = "científica";
 		//this.tipocalc = "basica";
 	}
 
