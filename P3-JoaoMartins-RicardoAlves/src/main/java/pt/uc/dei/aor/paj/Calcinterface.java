@@ -292,7 +292,7 @@ public class Calcinterface implements Serializable {
 			return;
 		} else if (this.firstdigit) {
 			if( e.matches("[0-9]")) {
-				System.out.println("TEST: Match: 0-9");
+				//System.out.println("TEST: Match: 0-9");
 				this.expression=""+e;
 				
 			} else if (e.equals("-") || e.equals("+") || e.equals("/") || e.equals("*") ) {

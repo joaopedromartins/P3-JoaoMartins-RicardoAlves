@@ -74,7 +74,7 @@ public class Calculadora implements Serializable{
 			result="Argumentos inválidos";
 		}
 		tempoTotal =(tempoFinal - tempoInicial)/1000000000.0f;
-		System.out.println(tempoTotal);
+		//System.out.println(tempoTotal);
 		
 		setExp(result);
 		return result;
