@@ -122,21 +122,23 @@ public class Calcinterface implements Serializable {
 	}
 	
 	//metodo que liga teclado à expressao/display 
-	public void ackey() {
+	public String ackey() {
 		this.expression = "0.0";
 		this.resultado = "0.0";
 		this.firstdigit=true;
+		return "calculadora";
 	}
 	
 	//metodo que liga teclado à expressao/display 
-	public void key(ActionEvent event) {
-		/*if (firstdigit) {
+		public String ckey() {
 			this.expression = "0.0";
-			firstdigit = false;
+			this.resultado = "0.0";
+			this.firstdigit=true;
+			return "calculadora";
 		}
-		if (this.expression.equals("0")) {
-			this.expression = "";
-		}*/
+	
+	//metodo que liga teclado à expressao/display 
+	public void key(ActionEvent event) {
 		String add = "";
 		switch(event.getComponent().getId()) {
 			case "btndivby": {
@@ -236,9 +238,6 @@ public class Calcinterface implements Serializable {
 		if (add.length()>0) {
 			addToExpression(add);
 		}
-		/*if (!op.equals("")) {
-			operators.add(op);
-		}*/
 	}
 	
 	public void addToExpression(String e) {
