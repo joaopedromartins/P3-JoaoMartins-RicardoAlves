@@ -55,14 +55,23 @@
 
 						<p:panel class="est" id="pnlestatistica" header="Estatística"
 							toggleable="true" toggleOrientation="vertical">
-							<h:form>
+							
+							<h:form id="estatisticaform">
 								<ul>
 									<ui:repeat value="#{estatistica.resultado}" var="item">
 										<li>#{item}</li>
 									</ui:repeat>
 								</ul>
+								<f:ajax render="estatisticaform">
+									<h:commandButton id="btnhidden2" type="submit" style="display:none;"
+									value="Hidden" action="calculadora" />
+								</f:ajax>
 							</h:form>
 						</p:panel>
+
+
+
+<!-- ////////////////////////////////////////////////////////// -->
 
 						<br />
 
