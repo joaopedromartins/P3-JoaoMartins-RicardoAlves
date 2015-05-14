@@ -30,7 +30,7 @@
 							<p:panel id="pnlhistorico" header="Histórico de Operações"
 								footer="Clique na expressão para reutilizar" toggleable="true"
 								toggleOrientation="vertical" style="margin-bottom:20px">
-								
+								<h:panelGrid columns="4" cellpadding="10">
 								<h:dataTable value="#{pickListView.hist}" var="item">
 								<h:column>
 									<f:facet name="header">Expressão:</f:facet>
@@ -44,7 +44,7 @@
 									#{time}
 								</h:column>
 								</h:dataTable>
-								
+								</h:panelGrid>
 								
 							</p:panel>
 
