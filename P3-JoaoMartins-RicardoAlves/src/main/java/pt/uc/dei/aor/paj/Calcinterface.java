@@ -32,12 +32,12 @@ public class Calcinterface implements Serializable {
 		this.resultado = "0.0";
 		this.firstdigit = true;
 		this.btnradio = "rad";
-		this.tipocalc = "científica";
+		this.tipocalc = "cientÃ­fica";
 		//this.tipocalc = "basica";
 	}
 
-	//Getter e Setter da variável display referente ao valor da expressão introduzida pelo utilizador 
-	//e ao resultado final após calculo da expressão	
+	//Getter e Setter da variÃ¡vel display referente ao valor da expressÃ£o introduzida pelo utilizador 
+	//e ao resultado final apÃ³s calculo da expressÃ£o	
 	public String getDisplay() {
 		return this.resultado;
 	}
@@ -45,12 +45,12 @@ public class Calcinterface implements Serializable {
 		this.display = display;
 	}
 
-	//envio da expressão introduzida pelo utiliador para a classe estatística
+	//envio da expressÃ£o introduzida pelo utiliador para a classe estatÃ­stica
 	public void setValor(String display) {
 		est.setResultado(display);
 	} 
 
-	//Getter e Setter do valor associado ao primeiro digito da expressão
+	//Getter e Setter do valor associado ao primeiro digito da expressÃ£o
 	public boolean getFirstdigit() {
 		return firstdigit;
 	}
@@ -58,7 +58,7 @@ public class Calcinterface implements Serializable {
 		this.firstdigit = firstdigit;
 	}
 
-	//Getter e Setter associados à variável graus/radianos
+	//Getter e Setter associados Ã  variÃ¡vel graus/radianos
 	public String getBtnradio() {
 		return btnradio;
 	}
@@ -66,7 +66,7 @@ public class Calcinterface implements Serializable {
 		this.btnradio = btnradio;
 	}
 
-	//Getter e Setter associados à variável basica/cientifica
+	//Getter e Setter associados Ã  variÃ¡vel basica/cientifica
 	public String getTipocalc() {
 		//System.out.println("get tipoclac");
 		return tipocalc;
@@ -76,7 +76,7 @@ public class Calcinterface implements Serializable {
 		//System.out.println("set tipoclac");
 	}
 	
-	//Getter e Setter associados à variável expression
+	//Getter e Setter associados Ã  variÃ¡vel expression
 	public String getExpression() {
 		return expression;
 	}
@@ -84,28 +84,28 @@ public class Calcinterface implements Serializable {
 		this.expression = expression;
 	}
 
-	//função de interface entre o cliente e o servidor
-	public void btnequal() {
-		String aux, aux3;
+	//funÃ§Ã£o de interface entre o cliente e o servidor
+	public String btnequal() {
+		String aux1, aux2;
 		float tempo;
-		//envia o valor da expressão introduzida para o historico
+		//envia o valor da expressÃ£o introduzida para o historico
 		pickHist.init(this.display);
 
 		//caso a exp esteja em graus tem de converter antes de enviar para a lib
 		if (this.btnradio.equals("deg")){
 			//converte em radianos
-			aux=conv.decompoe(this.display);
+			aux1=conv.decompoe(this.display);
 			//envia para calculo
-			calc.setExp(aux);
+			calc.setExp(aux1);
 			//obtem o valor do calculo em radianos
-			aux3=calc.getExp();
-			this.resultado=aux3+"";
+			aux2=calc.getExp();
+			this.resultado=aux2+"";
 			tempo = calc.getTempo();
 			
 		}else{
-			//envia o valor da expressão introduzida para efectuar o calculo
+			//envia o valor da expressÃ£o introduzida para efectuar o calculo
 			calc.setExp(this.display);
-			//o resultado toma o valor devolvido após calculo da expressao
+			//o resultado toma o valor devolvido apÃ³s calculo da expressao
 			this.resultado=calc.getExp();
 			tempo = calc.getTempo();
 		}
@@ -113,7 +113,10 @@ public class Calcinterface implements Serializable {
 		//envio para os dados estatisticos
 		setValor(this.display);
 		this.setFirstdigit(true);
+		//acrescentar tempo do calculo ao historico
 		pickHist.addTime(String.valueOf(tempo));
+		//devolve pagina destino que e a propria pagina
+		return "calculadora";
 	}
 	
 	//metodo que controla a visibilidade dos botoes calculadora cientifica
@@ -125,7 +128,7 @@ public class Calcinterface implements Serializable {
 		}
 	}
 	
-	//metodo que liga teclado à expressao/display 
+	//metodo que liga tecla AC Ã  expressao/display 
 	public String ackey() {
 		this.expression = "0.0";
 		this.resultado = "0.0";
@@ -134,7 +137,7 @@ public class Calcinterface implements Serializable {
 	}
 	
 		
-	//metodo que liga teclado à expressao/display 
+	//metodo que liga tecla C Ã  expressao/display 
 	public String ckey() {
 		//Se display tem 0 ou 1 caracter
 		if ( this.expression.length() < 2) {
@@ -188,7 +191,22 @@ public class Calcinterface implements Serializable {
 		return "calculadora";
 	}
 	
-	//metodo que liga teclado à expressao/display 
+	//metodo que liga tecla ! Ã  expressao/display 
+	public void btnfactorial(ActionEvent event) {
+		if ( firstdigit == true){
+			this.expression = "("+ this.expression +"!)";
+			firstdigit = false;
+		} else if ( this.expression.length() < 1){
+			this.expression = "(0!)";
+		}
+		else {
+			this.expression += "!";
+		}
+		
+		this.resultado=expression;
+	}
+	
+	//metodo que liga teclado Ã  expressao/display 
 	public void key(ActionEvent event) {
 		String add = "";
 		switch(event.getComponent().getId()) {
@@ -237,51 +255,76 @@ public class Calcinterface implements Serializable {
 			} case "btn9": {
 				add = "9";
 				break;
-			} case "sen": {
-				add = "sin(";
-				break;
-			} case "cos": {
-				add = "cos(";
-				break;
-			} case "tan": {
-				add = "tan(";
-				break;
-			} case "asen": {
-				add = "asin(";
-				break;
-			} case "acos": {
-				add = "acos(";
-				break;
-			} case "atan": {
-				add = "atan(";
-				break;
-			} case "ln": {
-				add = "log(";
-				break;
-			} case "log": {
-				add = "log10(";
-				break;
-			} case "factor": {
-				break;
-			} case "pot2": {
-				add = "^2";
-				break;
-			} case "raiz2": {
-				add = "sqrt(";
-				break;
-			} case "euler": {
-				add = "e";
-				break;
-			} case "openP": {
+			} case "btnopen": {
 				add = "(";
 				break;
-			} case "closeP": {
+			} case "btnclose": {
 				add = ")";
 				break;
-			} case "modulo": {
+			} case "btnabs": {
 				add = "abs(";
 				break;
-			} case "pi": {
+			} case "btnacos": {
+				add = "acos(";
+				break;
+			} case "btnasin": {
+				add = "asin(";
+				break;
+			} case "btnatan": {
+				add = "atan(";
+				break;
+			} case "btncbrt": {
+				add = "cbrt(";
+				break;
+			} case "btnceil": {
+				add = "ceil(";
+				break;
+			} case "btncos": {
+				add = "cos(";
+				break;	
+			} case "btncosh": {
+				add = "cosh(";
+				break;
+			} case "btnexp": {
+				add = "exp(";
+				break;	
+			} case "btnfloor": {
+				add = "floor(";
+				break;	
+			} case "btnlog": {
+				add = "log(";
+				break;
+			} case "btnlog10": {
+				add = "log10(";
+				break;
+			} case "btnlog2": {
+				add = "log2(";
+				break;
+			} case "btnsin": {
+				add = "sin(";
+				break;
+			} case "btnsinh": {
+				add = "sinh(";
+				break;
+			} case "btnsqrt": {
+				add = "sqrt(";
+				break;
+			} case "btntan": {
+				add = "tan(";
+				break;
+			} case "btntanh": {
+				add = "tanh(";
+				break;
+			} case "btnfact": {
+				add = "!";
+				break;
+			} case "btn-x-power-y": {
+				add = "^";
+				break;
+			} case "btn-x-root-y": {
+				add = "^(1/";
+				break;
+			} case "btn-pi": {
 				add = "PI";
 				break;
 			}
@@ -295,17 +338,28 @@ public class Calcinterface implements Serializable {
 		if (e.length()<1) {
 			return;
 		} else if (this.firstdigit) {
-			if( e.matches("[0-9]")) {
-				//System.out.println("TEST: Match: 0-9");
+			if( e.matches("[0-9]") || e.equals("(") ) {
 				this.expression=""+e;
-				
-			} else if (e.equals("-") || e.equals("+") || e.equals("/") || e.equals("*") ) {
-				System.out.println("TEST: Match: + - * / ");
+			} else if(e.equals("PI")) {
+				//System.out.println("TEST: Match: PI");
+				this.expression="3.141592653589793";
+			} else if (e.equals("!") ) {
+				this.expression = "(" + resultado + e + ")";
+			} else if (e.equals(")") ) {
+				this.expression = "(" + resultado + e;	
+			} else if (e.equals("-") || e.equals("+") || e.equals("/") || e.equals("*") || e.equals("^") || e.equals("^(1/") ) {
+				//System.out.println("TEST: Match: + - * / ");
 				this.expression = resultado + e;
+			} else if (this.expression.equals("0.0") ){
+				//System.out.println("TEST: VALIDAR FUNCOES 0.0");
+				this.expression = e + "";
 			} else {
-				System.out.println("TEST: FALTA VALIDAR FUNCOES");
-				this.expression=expression+e;
+				//System.out.println("TEST: FALTA VALIDAR FUNCOES");
+				this.expression = e + resultado;
 			}
+		} else if(e.equals("PI")) {
+			//System.out.println("TEST: Match: PI");
+			this.expression += "3.141592653589793238";
 		} else {
 			this.expression += e;
 		}

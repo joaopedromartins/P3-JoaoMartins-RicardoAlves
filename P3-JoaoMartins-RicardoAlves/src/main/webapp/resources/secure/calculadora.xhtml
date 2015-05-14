@@ -5,13 +5,13 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
- 	<link rel="stylesheet" type="text/css" href="../css/template.css" /> 
+	<link rel="stylesheet" type="text/css" href="../css/template.css" />
 
 	<ui:define name="conteudo">
 
 		<center>
 			<h:form>
-				<h:selectOneRadio id="radiobasciet"
+				<h:selectOneRadio id="radiobasciet" styleClass="txtconteudo"
 					value="#{calcinterface.tipocalc}">
 					<f:selectItem itemValue="basica" itemLabel="Basica" />
 					<f:selectItem itemValue="cientifica" itemLabel="Cientifica" />
@@ -25,14 +25,12 @@
 			<div class="ui-grid-row ">
 				<div class="ui-grid-col-3">
 
-					<p:panelGrid columns="1" styleClass="painel">
+					<p:panelGrid columns="1" styleClass="painel" cellpadding="20" cellspacing="20">
 						<f:facet name="header"> Utilidades </f:facet>
-
-						<p:panel id="pnlhistorico" header="Histórico de Operações"
-							footer="Clique na expressão para reutilizar" toggleable="true"
-							toggleOrientation="vertical" style="margin-bottom:20px">
-							<h:panelGrid columns="4" cellpadding="10">
-
+							<p:panel id="pnlhistorico" header="Histórico de Operações"
+								footer="Clique na expressão para reutilizar" toggleable="true"
+								toggleOrientation="vertical" style="margin-bottom:20px">
+								
 								<h:dataTable value="#{pickListView.hist}" var="item">
 								<h:column>
 									<f:facet name="header">Expressão:</f:facet>
@@ -48,12 +46,10 @@
 								</h:dataTable>
 								
 								
-							</h:panelGrid>
-						</p:panel>
+							</p:panel>
 
-						<br />
 
-						<p:panel class="est" id="pnlestatistica" header="Estatística"
+							<p:panel class="est" id="pnlestatistica" header="Estatística"
 							toggleable="true" toggleOrientation="vertical">
 							
 							<h:form id="estatisticaform">
@@ -67,11 +63,8 @@
 									value="Hidden2" action="calculadora" />
 								</f:ajax>
 							</h:form>
-						</p:panel>
-
-
-
-<!-- ////////////////////////////////////////////////////////// -->
+							</p:panel>
+						
 
 						<br />
 
@@ -209,16 +202,10 @@
 									value="Calculadora #{calcinterface.tipocalc}" />
 							</h:form>
 						</f:facet>
-						<h:form id="calculadoraform">
-							<h:panelGrid columns="1" cellpadding="1" cellspacing="1">
-								<div class="tipoCalc">
-									<em> <a href="../pages/basic.xhtml">Antiga Basica</a>
-									</em> <em> <a href="../pages/scientific.xhtml">Antiga
-											Cientifica</a>
-									</em>
-								</div>
-							</h:panelGrid>
 
+
+						<h:form id="calculadoraform">
+							
 							<h:panelGroup id="radiobasicacientifica"
 								style="display:block; text-align:centre">
 								<h:panelGrid columns="1" cellpadding="6" cellspacing="6">
@@ -230,7 +217,8 @@
 								</h:panelGrid>
 							</h:panelGroup>
 
-							<h:panelGroup id="calcdisplay" style="display:block; text-align:centre">
+							<h:panelGroup id="calcdisplay"
+								style="display:block; text-align:centre">
 								<h:inputTextarea id="scientificdisplay"
 									styleClass="txtareascientificdisplay"
 									title="Preencha aqui a sua expressao matemática"
@@ -239,141 +227,180 @@
 
 							<h:panelGroup id="calcbuttons"
 								style="display:block; text-align:centre">
-								<h:panelGrid columns="4" cellpadding="2">
-									<h:commandButton id="btnopen" class="btn-fn" type="button"
-										value="(" onclick="btnparentices('(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnclose" class="btn-fn" type="button"
-										value=")" onclick="btnparentices(')');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnabs" class="btn-fn" type="button"
-										value="abs" onclick="btnfunction('abs(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnacos" class="btn-fn" type="button"
-										value="acos" onclick="btnfunction('acos(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnasin" class="btn-fn" type="button"
-										value="asin" onclick="btnfunction('asin(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnatan" class="btn-fn" type="button"
-										value="atan" onclick="btnfunction('atan(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btncbrt" class="btn-fn" type="button"
-										value="3 &#8730;x" onclick="btnfunction('cbrt(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnceil" class="btn-fn" type="button"
-										value="ceil" onclick="btnfunction('ceil(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btncos" class="btn-fn" type="button"
-										value="cos" onclick="btnfunction('cos(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btncosh" class="btn-fn" type="button"
-										value="cosh" onclick="btnfunction('cosh(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnexp" class="btn-fn" type="button"
-										value="exp" onclick="btnfunction('exp(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnfloor" class="btn-fn" type="button"
-										value="floor" onclick="btnfunction('floor(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnlog" class="btn-fn" type="button"
-										value="log" onclick="btnfunction('log(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnlog10" class="btn-fn" type="button"
-										value="log10" onclick="btnfunction('log10(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnlog2" class="btn-fn" type="button"
-										value="log2" onclick="btnfunction('log2(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnsin" class="btn-fn" type="button"
-										value="sin" onclick="btnfunction('sin(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnsinh" class="btn-fn" type="button"
-										value="sinh" onclick="btnfunction('sinh(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnsqrt" class="btn-fn" type="button"
-										value="&#8730;" onclick="btnfunction('sqrt(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btntan" class="btn-fn" type="button"
-										value="tan" onclick="btnfunction('tan(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btntanh" class="btn-fn" type="button"
-										value="tanh" onclick="btnfunction('tanh(');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btnfact" class="btn-fn" type="button"
-										value="!" onclick="btnfactorial();"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btn-x-power-y" class="btn-fn"
-										type="button" value="x&#696;" onclick="btnoperator('^');"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btn-x-root-y" class="btn-fn" type="button"
-										value="&#696;&#8730;x" onclick="btnxrooty();"
-										rendered="#{calcinterface.typescientific()}" />
-									<h:commandButton id="btn-x-log-y" class="btn-fn" type="button"
-										value="&#960;" onclick="btnpi();"
-										rendered="#{calcinterface.typescientific()}" />
-								</h:panelGrid>
-
+								<f:ajax render="calculadoraform:calcdisplay">
+									<h:panelGrid columns="6" cellpadding="5">
+										<h:commandButton id="btnopen" styleClass="btn-fn"
+											action="calculadora" value="("
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnclose" styleClass="btn-fn"
+											action="calculadora" value=")"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnabs" styleClass="btn-fn"
+											action="calculadora" value="abs"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnacos" styleClass="btn-fn"
+											action="calculadora" value="acos"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnasin" styleClass="btn-fn"
+											action="calculadora" value="asin"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnatan" styleClass="btn-fn"
+											action="calculadora" value="atan"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btncbrt" styleClass="btn-fn"
+											action="calculadora" value="3 &#8730;x"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnceil" styleClass="btn-fn"
+											action="calculadora" value="ceil"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btncos" styleClass="btn-fn"
+											action="calculadora" value="cos"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btncosh" styleClass="btn-fn"
+											action="calculadora" value="cosh"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnexp" styleClass="btn-fn"
+											action="calculadora" value="exp"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnfloor" styleClass="btn-fn"
+											action="calculadora" value="floor"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnlog" styleClass="btn-fn"
+											action="calculadora" value="log"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnlog10" styleClass="btn-fn"
+											action="calculadora" value="log10"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnlog2" styleClass="btn-fn"
+											action="calculadora" value="log2"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnsin" styleClass="btn-fn"
+											action="calculadora" value="sin"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnsinh" styleClass="btn-fn"
+											action="calculadora" value="sinh"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnsqrt" styleClass="btn-fn"
+											action="calculadora" value="&#8730;"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btntan" styleClass="btn-fn"
+											action="calculadora" value="tan"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btntanh" styleClass="btn-fn"
+											action="calculadora" value="tanh"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btnfact" styleClass="btn-fn"
+											action="calculadora" value="!"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btn-x-power-y" styleClass="btn-fn"
+											type="button" value="x&#696;"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btn-x-root-y" styleClass="btn-fn"
+											action="calculadora" value="&#696;&#8730;x"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+										<h:commandButton id="btn-pi" styleClass="btn-fn"
+											action="calculadora" value="&#960;"
+											actionListener="#{calcinterface.key}"
+											rendered="#{calcinterface.typescientific()}" />
+									</h:panelGrid>
+								</f:ajax>
 							</h:panelGroup>
 
 							<h:panelGrid columns="2">
 								<h:panelGrid columns="2">
 									<f:ajax render="calculadoraform:calcdisplay">
-									<h:panelGrid columns="4" cellpadding="5">
-										<h:commandButton id="btn7" styleClass="btn-numeric" action="calculadora"
-											value="7" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btn8" styleClass="btn-numeric" action="calculadora"
-											value="8" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btn9" styleClass="btn-numeric" action="calculadora"
-											value="9" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btnplus" styleClass="btn-numeric" action="calculadora"
-											value="+" actionListener="#{calcinterface.key}" />
-	
-										<h:commandButton id="btn4" styleClass="btn-numeric" action="calculadora"
-											value="4" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btn5" styleClass="btn-numeric" action="calculadora"
-											value="5" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btn6" styleClass="btn-numeric" action="calculadora"
-											value="6" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btnminus" styleClass="btn-numeric" action="calculadora"
-											value="-" actionListener="#{calcinterface.key}" />
-	
-										<h:commandButton id="btn1" styleClass="btn-numeric" action="calculadora"
-											value="1" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btn2" styleClass="btn-numeric" action="calculadora"
-											value="2" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btn3" styleClass="btn-numeric" action="calculadora"
-											value="3" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btntimes" styleClass="btn-numeric" action="calculadora"
-											value="&#215;" actionListener="#{calcinterface.key}" />
-	
-										<!-- botao em branco -->
-										<h:commandButton id="btn0" styleClass="btn-numeric" action="calculadora"
-											value="0" actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btndot" styleClass="btn-numeric" action="calculadora"
-											value="." actionListener="#{calcinterface.key}" />
-										<h:commandButton id="btndivby" styleClass="btn-numeric"  action="calculadora" 
-											value="&#247;" actionListener="#{calcinterface.key}" />
-											
-									</h:panelGrid>
+										<h:panelGrid columns="4" cellpadding="5">
+											<h:commandButton id="btn7" styleClass="btn-numeric"
+												action="calculadora" value="7"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btn8" styleClass="btn-numeric"
+												action="calculadora" value="8"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btn9" styleClass="btn-numeric"
+												action="calculadora" value="9"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btnplus" styleClass="btn-numeric"
+												action="calculadora" value="+"
+												actionListener="#{calcinterface.key}" />
+
+											<h:commandButton id="btn4" styleClass="btn-numeric"
+												action="calculadora" value="4"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btn5" styleClass="btn-numeric"
+												action="calculadora" value="5"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btn6" styleClass="btn-numeric"
+												action="calculadora" value="6"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btnminus" styleClass="btn-numeric"
+												action="calculadora" value="-"
+												actionListener="#{calcinterface.key}" />
+
+											<h:commandButton id="btn1" styleClass="btn-numeric"
+												action="calculadora" value="1"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btn2" styleClass="btn-numeric"
+												action="calculadora" value="2"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btn3" styleClass="btn-numeric"
+												action="calculadora" value="3"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btntimes" styleClass="btn-numeric"
+												action="calculadora" value="&#215;"
+												actionListener="#{calcinterface.key}" />
+
+											<!-- botao em branco -->
+											<h:commandButton id="btn0" styleClass="btn-numeric"
+												action="calculadora" value="0"
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btndot" styleClass="btn-numeric"
+												action="calculadora" value="."
+												actionListener="#{calcinterface.key}" />
+											<h:commandButton id="btndivby" styleClass="btn-numeric"
+												action="calculadora" value="&#247;"
+												actionListener="#{calcinterface.key}" />
+
+										</h:panelGrid>
 									</f:ajax>
-	
+
 									<h:panelGrid columns="1" cellpadding="5">
 										<f:ajax render="calculadoraform:calcdisplay">
-											<h:commandButton id="btnac" styleClass="btn-clear"
-												value="AC" action="#{calcinterface.ackey()}" />
+											<h:commandButton id="btnac" styleClass="btn-clear" value="AC"
+												action="#{calcinterface.ackey()}" />
+											<h:commandButton id="btnc" styleClass="btn-clear" value="C"
+												action="#{calcinterface.ckey()}" />
 										</f:ajax>
-										<f:ajax render="calculadoraform:calcdisplay">	
-											<h:commandButton id="btnc" styleClass="btn-clear"
-												value="C" action="#{calcinterface.ckey()}" />
-										</f:ajax>
-										
+
 										<h:commandButton id="btnequal" styleClass="btn-equal"
-											type="submit" actionListener="#{calcinterface.btnequal()}"
-											value="=" action="calculadora" />
-										
+											value="=" action="#{calcinterface.btnequal()}">
+											<!-- 										<f:ajax render="calculadoraform:calcdisplay utilidades:pnlestatistica utilidades:pnlhistorico"/> -->
+										</h:commandButton>
+
 									</h:panelGrid>
-								</h:panelGrid>	
+								</h:panelGrid>
 							</h:panelGrid>
 						</h:form>
 
@@ -416,7 +443,7 @@
 									<h:commandButton id="btnhidden" type="submit" style="display:none;"
 									value="Hidden" action="calculadora" />
 								</f:ajax>
-							
+															
 							</h:panelGrid>
 							
 							</p:panelGrid>
