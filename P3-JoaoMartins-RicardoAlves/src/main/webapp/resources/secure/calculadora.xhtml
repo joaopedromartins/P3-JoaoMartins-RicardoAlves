@@ -22,39 +22,48 @@
 		<div id="container" class="ui-grid ui-grid-responsive">
 			<div class="ui-grid-row ">
 				<div class="ui-grid-col-3">
-
-					<p:panelGrid columns="1" styleClass="painel" cellpadding="20" cellspacing="20">
+					
+					
+					<p:panelGrid columns="1" styleClass="painel"
+						style="margin-left:100px" cellpadding="20" cellspacing="20">
 						<f:facet name="header"> Utilidades </f:facet>
-							<p:panel id="pnlhistorico" header="Histórico de Operações"
-								footer="Clique na expressão para reutilizar" toggleable="true"
-								toggleOrientation="vertical" style="margin-bottom:20px">
-								<h:panelGrid columns="4" cellpadding="10">
-								<h:dataTable value="#{pickListView.hist}" var="item">
-								
-								<h:column>
-									<f:facet name="header">Expressão</f:facet>
-									<h:form>
-										<h:commandButton actionListener="#{calcinterface.reuse}" value="#{item}">
-											<f:attribute name="reut" value="#{item}"/>
-										</h:commandButton>
-									</h:form>
-								</h:column>
-								</h:dataTable>
-								
+
+						<p:panel id="pnlhistorico" header="Histórico de Operações"
+							footer="Clique na expressão para reutilizar" toggleable="true"
+							toggleOrientation="vertical" style="margin-bottom:20px">
+							<h:panelGrid columns="2" cellpadding="10"
+								styleClass="painelinterior">
+								<h:form id="formhistorico">
+									<h:panelGroup id="historicoexp">
+										<h:dataTable value="#{pickListView.hist}" var="item">
+											<h:column>
+												<f:facet name="header">Expressão</f:facet>
+		<!-- 										<h:form id="formhistorico"> -->
+													
+														<h:commandButton styleClass="btn-historico"
+															actionListener="#{calcinterface.reuse}" value="#{item}">
+															<f:attribute name="reut" value="#{item}" />
+														</h:commandButton>
+													
+		<!-- 										</h:form> -->
+											</h:column>
+										</h:dataTable>
+									</h:panelGroup>	
+								</h:form>
 								<h:dataTable value="#{pickListView.time}" var="time">
-								<h:column>
-									<f:facet name="header">Tempo</f:facet>
-									#{time} s
-								</h:column>
+									<h:column>
+										<f:facet name="header">Tempo</f:facet>
+										#{time} s
+									</h:column>
 								</h:dataTable>
-								</h:panelGrid>
-								
-							</p:panel>
+
+							</h:panelGrid>
+						</p:panel>
 
 
-							<p:panel class="est" id="pnlestatistica" header="Estatística"
+						<p:panel class="est" id="pnlestatistica" header="Estatística"
 							toggleable="true" toggleOrientation="vertical">
-							
+
 							<h:form id="estatisticaform">
 								<ul>
 									<ui:repeat value="#{estatistica.resultado}" var="item">
@@ -62,12 +71,12 @@
 									</ui:repeat>
 								</ul>
 								<f:ajax render="estatisticaform">
-									<h:commandButton id="btnhidden2" type="submit" style="display:none;"
-									value="Hidden2" action="calculadora" />
+									<h:commandButton id="btnhidden2" type="submit"
+										style="display:none;" value="Hidden2" action="calculadora" />
 								</f:ajax>
 							</h:form>
-							</p:panel>
-						
+						</p:panel>
+
 
 						<br />
 
@@ -208,7 +217,7 @@
 
 
 						<h:form id="calculadoraform">
-							
+
 							<h:panelGroup id="radiobasicacientifica"
 								style="display:block; text-align:centre">
 								<h:panelGrid columns="1" cellpadding="6" cellspacing="6">
@@ -397,11 +406,14 @@
 												action="#{calcinterface.ckey()}" />
 										</f:ajax>
 
-										<h:commandButton id="btnequal" styleClass="btn-equal"
-											value="=" action="#{calcinterface.btnequal()}">
-											<!-- 										<f:ajax render="calculadoraform:calcdisplay utilidades:pnlestatistica utilidades:pnlhistorico"/> -->
-										</h:commandButton>
-
+										 
+											<h:commandButton id="btnequal" styleClass="btn-equal" value="=" 
+												action="#{calcinterface.btnequal()}" >
+<!-- 		ESTE FUNCIONA										<f:ajax execute="calculadoraform:calcdisplay" render="@form"/> -->
+												<f:ajax execute="calculadoraform:calcdisplay" render="calculadoraform:calcdisplay" />
+												<f:ajax execute="formhistorico:historicoexp" render="formhistorico:historicoexp" />
+											</h:commandButton>
+										 
 									</h:panelGrid>
 								</h:panelGrid>
 							</h:panelGrid>
@@ -413,43 +425,44 @@
 
 				<div class="ui-grid-col-3">
 					<h:form id="chatform">
-					
-<!-- 							<p:poll interval="3" update="chatform"/> -->
-							
+
+						<!-- 							<p:poll interval="3" update="chatform"/> -->
+
 						<p:panelGrid columns="1" styleClass="painel" id="painelChat">
 							<f:facet name="header"> Fórum de cálculo </f:facet>
-							
-							
+
+
 							<p:panel id="pnlchat" toggleable="true"
-							toggleOrientation="vertical" style="margin-bottom:0px">
-							<h:panelGrid columns="1" cellpadding="10">
+								toggleOrientation="vertical" style="margin-bottom:0px">
+								<h:panelGrid columns="1" cellpadding="10">
 
 									<ul id="allchat">
-										<ui:repeat value="#{chatinterface.todasConversas()}" var="item">
+										<ui:repeat value="#{chatinterface.todasConversas()}"
+											var="item">
 											<li>#{item}</li>
 										</ui:repeat>
 									</ul>
-							
-							</h:panelGrid>
+
+								</h:panelGrid>
 							</p:panel>
-							
-							
+
+
 							<h:panelGrid columns="2">
 								<h:inputText id="setfrase" value="#{chatinterface.frase}" />
-								
+
 								<f:ajax render="@form" execute="setfrase">
 									<h:commandButton id="btnsend" styleClass="btn" type="submit"
-									value="Enviar" action="#{chatinterface.btnsend()}" />
+										value="Enviar" action="#{chatinterface.btnsend()}" />
 								</f:ajax>
-								
+
 								<f:ajax render="pnlchat">
-									<h:commandButton id="btnhidden" type="submit" style="display:none;"
-									value="Hidden" action="calculadora" />
+									<h:commandButton id="btnhidden" type="submit"
+										style="display:none;" value="Hidden" action="calculadora" />
 								</f:ajax>
-															
+
 							</h:panelGrid>
-							
-							</p:panelGrid>
+
+						</p:panelGrid>
 					</h:form>
 				</div>
 			</div>
