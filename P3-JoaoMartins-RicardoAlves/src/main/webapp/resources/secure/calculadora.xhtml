@@ -34,6 +34,14 @@
 									<f:facet name="header">Expressão:</f:facet>
 									#{item}
 								</h:column>
+								<h:column>
+									<f:facet name="header">Reutilizar</f:facet>
+									<h:form>
+										<h:commandButton actionListener="#{calinterface.reuse}" value="OK">
+											<f:attribute name="reut" value="#{item}"/>
+										</h:commandButton>
+									</h:form>
+								</h:column>
 								</h:dataTable>
 								
 								<h:dataTable value="#{pickListView.time}" var="time">
