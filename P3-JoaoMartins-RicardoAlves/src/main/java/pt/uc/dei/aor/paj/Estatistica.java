@@ -51,7 +51,7 @@ public class Estatistica implements Serializable{
 	//getter e setter do resultado 
 	public ArrayList<String> getResultado(){
 			String aux="";
-			this.resultado.add(aux);
+			//this.resultado.add(aux);
 		if (this.mapa.size()>0){
 			this.resultado=new ArrayList<String>();
 			for(String op:this.mapa.keySet()){
