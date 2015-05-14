@@ -2,6 +2,7 @@
 *.classpath
 *.project
 target/
+bin/
 .idea/
 *.iml
 atlassian-ide-plugin.xml
