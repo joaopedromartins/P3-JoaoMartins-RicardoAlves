@@ -366,10 +366,9 @@ public class Calcinterface implements Serializable {
 		this.firstdigit=false;
 		this.resultado=expression;
 	}
-//	////////////////////////////////////////////////////////
-	
+
 	public void reuse(ActionEvent ae) {
 		expression += (String)ae.getComponent().getAttributes().get("reut");
-		System.out.println(expression);
+		resultado = expression;
 	}
 }

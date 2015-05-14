@@ -30,14 +30,11 @@
 								toggleOrientation="vertical" style="margin-bottom:20px">
 								<h:panelGrid columns="4" cellpadding="10">
 								<h:dataTable value="#{pickListView.hist}" var="item">
+								
 								<h:column>
-									<f:facet name="header">Expressão:</f:facet>
-									#{item}
-								</h:column>
-								<h:column>
-									<f:facet name="header">Reutilizar</f:facet>
+									<f:facet name="header">Expressão</f:facet>
 									<h:form>
-										<h:commandButton actionListener="#{calcinterface.reuse}" value="OK">
+										<h:commandButton actionListener="#{calcinterface.reuse}" value="#{item}">
 											<f:attribute name="reut" value="#{item}"/>
 										</h:commandButton>
 									</h:form>
@@ -46,8 +43,8 @@
 								
 								<h:dataTable value="#{pickListView.time}" var="time">
 								<h:column>
-									<f:facet name="header">Tempo (s):</f:facet>
-									#{time}
+									<f:facet name="header">Tempo</f:facet>
+									#{time} s
 								</h:column>
 								</h:dataTable>
 								</h:panelGrid>
