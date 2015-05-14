@@ -81,6 +81,10 @@ body {
 	background-image: url("../imagens/fundo-painel.jpg");
 }
 
+.painelinterior {
+	background-image: url("../imagens/fundo-painel-interior.jpg");
+}
+
 .painel-com-fundo {
 	background-image: url("../imagens/fundo-painel.jpg");
 	align: center;
@@ -98,6 +102,16 @@ body {
 	font: normal 1.2em arial;
 	align: center;
 	valign: middle;
+}
+
+/* Botoes historico de operações */
+.btn-historico {
+	background-image: url("../imagens/fundo-painel-interior.jpg");
+	display: inline-block;
+	cursor: pointer;
+	color: #777777;
+	font-family: Arial;
+	min-width: 150px;
 }
 
 /* Botoes Numericos */
