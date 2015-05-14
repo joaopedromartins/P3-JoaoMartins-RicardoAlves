@@ -1,8 +1,8 @@
 window.onload =function() {
 	
 	setInterval(function(){
-		var btn = $("#estatisticaform\\:btnhidden2");
+		var btn2 = $("#estatisticaform\\:btnhidden2");
 		
-		btn[0].click();
+		btn2[0].click();
 	},1000);
 }
