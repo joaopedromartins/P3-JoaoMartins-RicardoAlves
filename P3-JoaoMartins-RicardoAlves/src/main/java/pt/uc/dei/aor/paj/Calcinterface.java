@@ -84,13 +84,11 @@ public class Calcinterface implements Serializable {
 		this.expression = expression;
 	}
 
-	//funÃ§Ã£o de interface entre o cliente e o servidor
+	//funcao de interface entre o cliente e o servidor
 	public String btnequal() {
 		String aux1, aux2;
 		float tempo;
-		//envia o valor da expressÃ£o introduzida para o historico
-		pickHist.init(this.display);
-
+		
 		//caso a exp esteja em graus tem de converter antes de enviar para a lib
 		if (this.btnradio.equals("deg")){
 			//converte em radianos
@@ -113,8 +111,15 @@ public class Calcinterface implements Serializable {
 		//envio para os dados estatisticos
 		setValor(this.display);
 		this.setFirstdigit(true);
+		
+		// FALTA TESTAR SE O RESULTADO E NUMERICO ANTES DE ENVIAR PARA HISTORICO
+		
+		//envia o valor da expressÃ£o introduzida para o historico
+		pickHist.init(this.display);
+				
 		//acrescentar tempo do calculo ao historico
 		pickHist.addTime(String.valueOf(tempo));
+		
 		//devolve pagina destino que e a propria pagina
 		return "calculadora";
 	}
