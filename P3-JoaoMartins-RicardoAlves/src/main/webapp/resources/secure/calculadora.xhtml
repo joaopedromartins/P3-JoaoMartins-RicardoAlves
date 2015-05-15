@@ -61,18 +61,37 @@
 						<br />
 						
 						<p:panel class="est" id="pnlestatistica" header="Estatística"
-							toggleable="true" toggleOrientation="vertical" collapsed="true" styleClass="painel-interior">
+							toggleable="true" toggleOrientation="vertical" collapsed="true" >
 
 							<h:form id="estatisticaform" >
-								<ul>
-									<ui:repeat value="#{estatistica.resultado}" var="item" >
-										<li>#{item}</li>
-									</ui:repeat>
-								</ul>
-								<f:ajax render="estatisticaform">
-									<h:commandButton id="btnhidden2" type="submit"
-										style="display:none;" value="Hidden2" action="calculadora" />
-								</f:ajax>
+								<h:panelGrid columns="3" cellpadding="10" styleClass="painel-interior">
+									<h:dataTable value="#{calcinterface.operador}" var="operador">
+										<h:column>
+											<f:facet name="header">Função</f:facet>
+											#{operador}
+										</h:column>
+									</h:dataTable>
+										
+									<h:dataTable value="#{calcinterface.vezes}" var="vezes">
+										<h:column>
+											<f:facet name="header">Quantidade</f:facet>
+											#{vezes}
+										</h:column>
+									</h:dataTable>
+									
+									<h:dataTable value="#{calcinterface.percentagem}" var="percentagem">
+										<h:column>
+											<f:facet name="header">Percentagem</f:facet>
+											#{percentagem} %
+										</h:column>
+									</h:dataTable>
+											
+									<f:ajax render="estatisticaform">
+										<h:commandButton id="btnhidden2" type="submit"
+											style="display:none;" value="Hidden2" action="calculadora" />
+									</f:ajax>
+											
+								</h:panelGrid>			
 							</h:form>
 						</p:panel>
 
