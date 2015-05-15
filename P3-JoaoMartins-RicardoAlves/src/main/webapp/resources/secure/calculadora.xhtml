@@ -22,11 +22,10 @@
 		<div id="container" class="ui-grid ui-grid-responsive">
 			<div class="ui-grid-row ">
 				<div class="ui-grid-col-3">
-					<br />
 					<p:panelGrid columns="1" styleClass="painel"
 						style="margin-left:100px" cellpadding="20" cellspacing="20">
 						<f:facet name="header"> Utilidades </f:facet>
-						<!-- linha em branco -->
+						<br />
 						<p:panel id="pnlhistorico" header="Histórico de Operações"
 							footer="Clique na expressão para reutilizar" toggleable="true"
 							toggleOrientation="vertical" style="margin-bottom:20px">
@@ -64,19 +63,6 @@
 							toggleable="true" toggleOrientation="vertical" collapsed="true" >
 
 							<h:form id="estatisticaform">
-								<ul>
-									<ui:repeat value="#{estatistica.resultado}" var="item">
-										<li>#{item}</li>
-									</ui:repeat>
-								</ul>
-								<f:ajax render="estatisticaform">
-									<h:commandButton id="btnhidden2" type="submit"
-										style="display:none;" value="Hidden2" action="calculadora" />
-								</f:ajax>
-							</h:form>
-							
-							
-							<h:form id="estatisticaform2">
 								<h:panelGrid columns="3" cellpadding="10" styleClass="painel-interior">
 									<h:dataTable value="#{calcinterface.operador}" var="operador">
 										<h:column>
@@ -99,8 +85,8 @@
 										</h:column>
 									</h:dataTable>
 											
-									<f:ajax render="estatisticaform2">
-										<h:commandButton id="btnhidden3" type="submit"
+									<f:ajax render="estatisticaform">
+										<h:commandButton id="btnhidden2" type="submit"
 											style="display:none;" value="Hidden2" action="calculadora" />
 									</f:ajax>
 											
@@ -442,10 +428,10 @@
 										</f:ajax>
 
 										 
-											<h:commandButton id="btnequal" styleClass="btn-equal" value="=" 
-												action="#{calcinterface.btnequal()}" >
-												<f:ajax execute="calculadoraform:calcdisplay" render="calculadoraform:calcdisplay formhistorico:historicoexp" />
-											</h:commandButton>
+										<h:commandButton id="btnequal" styleClass="btn-equal" value="=" 
+											action="#{calcinterface.btnequal()}" >
+											<f:ajax execute="calculadoraform:calcdisplay" render="calculadoraform:calcdisplay formhistorico:historicoexp" />
+										</h:commandButton>
 										 
 									</h:panelGrid>
 								</h:panelGrid>
