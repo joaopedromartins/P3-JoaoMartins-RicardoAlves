@@ -13,17 +13,18 @@ import javax.servlet.http.HttpSession;
 public class Usersinterface implements Serializable {
 	private static final long serialVersionUID = -8310185641498834904L;
 
-	@Inject Users users;
+	@Inject private Users users;
 	private String username;
 	private String password;
 	private String cpassword;
 	private String msgerro;
 	private String userLogged;
-	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+	private HttpSession session;
 
-	
+
 	public Usersinterface() {
 		this.setUserLogged(null);
+		this.session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 	}
 
 	//Getter e Setter associados à variável username
@@ -41,7 +42,7 @@ public class Usersinterface implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	//Getter e Setter associados à variável cpassword
 	public String getCpassword() {
 		return cpassword;
@@ -76,7 +77,7 @@ public class Usersinterface implements Serializable {
 		session.setAttribute("loggedin", false);
 		return "/resources/paginas/login";
 	}
-	
+
 	//funcao para efectuar login
 	public String userlogin() {
 		if ( users.checkUser(username, password) ) {
@@ -90,7 +91,7 @@ public class Usersinterface implements Serializable {
 			return "login";
 		}
 	}
-	
+
 	//funcao para efectuar registo de utilizador
 	public String usersignup() {
 		//Testar tamanho do utilizador
@@ -127,5 +128,5 @@ public class Usersinterface implements Serializable {
 		}
 		return "signup";
 	}
-	
+
 }

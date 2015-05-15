@@ -22,7 +22,7 @@ public class Users implements Serializable {
 	public synchronized boolean setPass(Userbean u, String password, String newpassword){
 		return u.setPassword(password, newpassword);
 	}
-	
+
 	//metodo para adicionar um utilizador
 	public synchronized boolean addUser(String username, String password) {
 		for(Userbean u:users){
@@ -43,7 +43,7 @@ public class Users implements Serializable {
 		}
 		return false;
 	}
-	
+
 	public Userbean getUser(String username) {
 		for(Userbean u:users){
 			if(username.equals(u.getUsername())){

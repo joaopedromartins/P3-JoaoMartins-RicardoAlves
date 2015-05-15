@@ -12,17 +12,17 @@ import javax.inject.Named;
 @ApplicationScoped
 public class Estatistica implements Serializable{
 	private static final long serialVersionUID = -8001386905558621067L;
-	
+
 	private HashMap<String, Integer> cont;
 	private TreeMap<String, Integer> mapa;
 	private ArrayList<String> resultado;
 	private ArrayList<String> operador;
 	private ArrayList<String> vezes;
 	private ArrayList<String> percentagem;
-	
-	
+
+
 	public Estatistica() {
-		
+
 		this.cont = new HashMap<String, Integer>();
 		this.cont.put("+",0);
 		this.cont.put("-",0);
@@ -56,8 +56,8 @@ public class Estatistica implements Serializable{
 
 	//getter e setter do resultado 
 	public ArrayList<String> getResultado(){
-			String aux="";
-			//this.resultado.add(aux);
+		String aux="";
+		//this.resultado.add(aux);
 		if (this.mapa.size()>0){
 			this.resultado=new ArrayList<String>();
 			for(String op:this.mapa.keySet()){
@@ -67,13 +67,13 @@ public class Estatistica implements Serializable{
 		}
 		return this.resultado; 
 	}
-	
+
 	public void setResultado(String exp){
 		decompoe(exp);
 		this.mapa=mapaOrdenado();	
 		estatistica();
 	}
-	
+
 	//decomposição da expressão caracter a caracter para contagem dos operadores
 	private void decompoe(String exp){
 		int j=exp.length();
@@ -104,84 +104,84 @@ public class Estatistica implements Serializable{
 				j=j-1;
 			}else
 				if (exp.startsWith("abs")){
-				adiciona("abs");
-				exp=exp.substring(3,j);
-				j=j-3;
-			}else if (exp.startsWith("acos")){
-				adiciona("acos");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("asin")){
-				adiciona("asin");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("atan")){
-				adiciona("atan");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("cbrt")){
-				adiciona("cbrt");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("ceil")){
-				adiciona("ceil");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("cosh")){
-				adiciona("cosh");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("cos")){
-				adiciona("cos");
-				exp=exp.substring(3,j);
-				j=j-3;
-			}else if (exp.startsWith("exp")){
-				adiciona("exp");
-				exp=exp.substring(3,j);
-				j=j-3;
-			}else if (exp.startsWith("floor")){
-				adiciona("floor");
-				exp=exp.substring(5,j);
-				j=j-5;
-			}else if (exp.startsWith("log2")){
-				adiciona("log2");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("log10")){
-				adiciona("log10");
-				exp=exp.substring(5,j);
-				j=j-5;
-			}else if (exp.startsWith("log")){
-				adiciona("log");
-				exp=exp.substring(3,j);
-				j=j-3;
-			}else if (exp.startsWith("sinh")){
-				adiciona("sinh");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("sin")){
-				adiciona("sin");
-				exp=exp.substring(3,j);
-				j=j-3;
-			}else if (exp.startsWith("sqrt")){
-				adiciona("sqrt");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("tanh")){
-				adiciona("tanh");
-				exp=exp.substring(4,j);
-				j=j-4;
-			}else if (exp.startsWith("tan")){
-				adiciona("tan");
-				exp=exp.substring(3,j);
-				j=j-3;
-			}else {
-				exp=exp.substring(1,j);
-				j=j-1;
-			}
+					adiciona("abs");
+					exp=exp.substring(3,j);
+					j=j-3;
+				}else if (exp.startsWith("acos")){
+					adiciona("acos");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("asin")){
+					adiciona("asin");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("atan")){
+					adiciona("atan");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("cbrt")){
+					adiciona("cbrt");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("ceil")){
+					adiciona("ceil");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("cosh")){
+					adiciona("cosh");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("cos")){
+					adiciona("cos");
+					exp=exp.substring(3,j);
+					j=j-3;
+				}else if (exp.startsWith("exp")){
+					adiciona("exp");
+					exp=exp.substring(3,j);
+					j=j-3;
+				}else if (exp.startsWith("floor")){
+					adiciona("floor");
+					exp=exp.substring(5,j);
+					j=j-5;
+				}else if (exp.startsWith("log2")){
+					adiciona("log2");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("log10")){
+					adiciona("log10");
+					exp=exp.substring(5,j);
+					j=j-5;
+				}else if (exp.startsWith("log")){
+					adiciona("log");
+					exp=exp.substring(3,j);
+					j=j-3;
+				}else if (exp.startsWith("sinh")){
+					adiciona("sinh");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("sin")){
+					adiciona("sin");
+					exp=exp.substring(3,j);
+					j=j-3;
+				}else if (exp.startsWith("sqrt")){
+					adiciona("sqrt");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("tanh")){
+					adiciona("tanh");
+					exp=exp.substring(4,j);
+					j=j-4;
+				}else if (exp.startsWith("tan")){
+					adiciona("tan");
+					exp=exp.substring(3,j);
+					j=j-3;
+				}else {
+					exp=exp.substring(1,j);
+					j=j-1;
+				}
 		}
 	}
-	
+
 	//actualiza o contador do operador
 	private void adiciona(String operador){
 		int contador=this.cont.get(operador);
@@ -200,15 +200,15 @@ public class Estatistica implements Serializable{
 		sortedMap.putAll(map);
 		return sortedMap;
 	}
-	
+
 	//devolve a quantidade por operador
 	private int getContOperador(String operador){
 		return this.cont.get(operador);
 	}
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
+
+
 	private void estatistica(){
 		ArrayList<String> result = new ArrayList<String>();
 		result = getResultado();
@@ -243,17 +243,17 @@ public class Estatistica implements Serializable{
 			}
 		}
 	}
-	
+
 	public synchronized ArrayList<String> getOperador(){
 		return this.operador;
 	}
-	
+
 	public synchronized ArrayList<String> getVezes(){
 		return this.vezes;
 	}
-	
+
 	public synchronized ArrayList<String> getPercentagem(){
 		return this.percentagem;
 	}
-	
+
 }

@@ -13,7 +13,7 @@ import javax.inject.Named;
 @SessionScoped
 public class Calcinterface implements Serializable {
 	private static final long serialVersionUID = -5031594103596986625L;
-	
+
 	@Inject private Calculadora calc;
 	@Inject private Estatistica est;
 	@Inject private PickListView pickHist;
@@ -74,12 +74,12 @@ public class Calcinterface implements Serializable {
 		this.tipocalc = tipocalc;
 		//System.out.println("set tipoclac");
 	}
-	
+
 	//funcao de interface entre o cliente e o servidor
 	public String btnequal() {
 		String aux1, aux2;
 		float tempo;
-		
+
 		//caso a exp esteja em graus tem de converter antes de enviar para a lib
 		if (this.btnradio.equals("deg")){
 			//converte em radianos
@@ -90,7 +90,7 @@ public class Calcinterface implements Serializable {
 			aux2=calc.getExp();
 			this.resultado=aux2+"";
 			tempo = calc.getTempo();
-			
+
 		}else{
 			//envia o valor da expressÃ£o introduzida para efectuar o calculo
 			calc.setExp(this.display);
@@ -98,31 +98,31 @@ public class Calcinterface implements Serializable {
 			this.resultado=calc.getExp();
 			tempo = calc.getTempo();
 		}
-		
+
 		// VERIFICAR SE O RESULTADO E NUMERICO ANTES DE ENVIAR PARA A ESTATISTICA
 		if (resultado.matches("[\\x00-\\x20]*[+-]?(NaN|Infinity|((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)" +
-						    "([eE][+-]?(\\p{Digit}+))?)|(\\.((\\p{Digit}+))([eE][+-]?(\\p{Digit}+))?)|" +
-						    "(((0[xX](\\p{XDigit}+)(\\.)?)|(0[xX](\\p{XDigit}+)?(\\.)(\\p{XDigit}+)))" +
-						    "[pP][+-]?(\\p{Digit}+)))[fFdD]?))[\\x00-\\x20]*")) {
+				"([eE][+-]?(\\p{Digit}+))?)|(\\.((\\p{Digit}+))([eE][+-]?(\\p{Digit}+))?)|" +
+				"(((0[xX](\\p{XDigit}+)(\\.)?)|(0[xX](\\p{XDigit}+)?(\\.)(\\p{XDigit}+)))" +
+				"[pP][+-]?(\\p{Digit}+)))[fFdD]?))[\\x00-\\x20]*")) {
 			//envio para os dados estatisticos
 			setValor(this.display);
 		}
-		
+
 		// NOTA: ENVIAR SEMPRE PARA A HISTORICO PARA QUE SEJA POSSIVEL CORRIGIR A EXPRESSAO
-		
+
 		//envia o valor da expressao introduzida para o historico
 		pickHist.init(this.display);
-		
+
 		//acrescentar tempo do calculo ao historico
 		pickHist.addTime(String.valueOf(tempo));
-		
+
 		//Sinaliza que proxima tecla e primeiro digito
 		this.setFirstdigit(true);
-		
+
 		//devolve pagina destino que e a propria pagina
 		return "calculadora";
 	}
-	
+
 	//metodo que controla a visibilidade dos botoes calculadora cientifica
 	public boolean typescientific() {
 		if (tipocalc.equals("cientifica")) {
@@ -131,7 +131,7 @@ public class Calcinterface implements Serializable {
 			return false;
 		}
 	}
-	
+
 	//metodo que liga tecla AC Ã  expressao/display 
 	public String ackey() {
 		this.display = "0.0";
@@ -139,8 +139,8 @@ public class Calcinterface implements Serializable {
 		this.firstdigit=true;
 		return "calculadora";
 	}
-	
-		
+
+
 	//metodo que liga tecla C Ã  expressao/display 
 	public String ckey() {
 		//Se display tem 0 ou 1 caracter
@@ -194,7 +194,7 @@ public class Calcinterface implements Serializable {
 		this.resultado=display;
 		return "calculadora";
 	}
-	
+
 	//metodo que liga tecla ! Ã  expressao/display 
 	public void btnfactorial(ActionEvent event) {
 		if ( firstdigit == true){
@@ -206,138 +206,138 @@ public class Calcinterface implements Serializable {
 		else {
 			this.display += "!";
 		}
-		
+
 		this.resultado=display;
 	}
-	
+
 	//metodo que liga teclado a  expressao/display 
 	public void key(ActionEvent event) {
 		String add = "";
 		switch(event.getComponent().getId()) {
-			case "btndivby": {
-				add = "/"; 
-				break;
-			} case "btntimes": {
-				add = "*";
-				break;
-			} case "btnplus": {
-				add = "+";
-				break;
-			} case "btnminus": {
-				add = "-";	
-				break;
-			} case "btndot": {
-				add = ".";
-				break;
-			} case "btn0": {
-				add = "0";
-				break;
-			} case "btn1": {
-				add = "1";
-				break;
-			} case "btn2": {
-				add = "2";
-				break;
-			} case "btn3": {
-				add = "3";
-				break;
-			} case "btn4": {
-				add = "4";
-				break;
-			} case "btn5": {
-				add = "5";
-				break;
-			} case "btn6": {
-				add = "6";
-				break;
-			} case "btn7": {
-				add = "7";
-				break;
-			} case "btn8": {
-				add = "8";
-				break;
-			} case "btn9": {
-				add = "9";
-				break;
-			} case "btnopen": {
-				add = "(";
-				break;
-			} case "btnclose": {
-				add = ")";
-				break;
-			} case "btnabs": {
-				add = "abs(";
-				break;
-			} case "btnacos": {
-				add = "acos(";
-				break;
-			} case "btnasin": {
-				add = "asin(";
-				break;
-			} case "btnatan": {
-				add = "atan(";
-				break;
-			} case "btncbrt": {
-				add = "cbrt(";
-				break;
-			} case "btnceil": {
-				add = "ceil(";
-				break;
-			} case "btncos": {
-				add = "cos(";
-				break;	
-			} case "btncosh": {
-				add = "cosh(";
-				break;
-			} case "btnexp": {
-				add = "exp(";
-				break;	
-			} case "btnfloor": {
-				add = "floor(";
-				break;	
-			} case "btnlog": {
-				add = "log(";
-				break;
-			} case "btnlog10": {
-				add = "log10(";
-				break;
-			} case "btnlog2": {
-				add = "log2(";
-				break;
-			} case "btnsin": {
-				add = "sin(";
-				break;
-			} case "btnsinh": {
-				add = "sinh(";
-				break;
-			} case "btnsqrt": {
-				add = "sqrt(";
-				break;
-			} case "btntan": {
-				add = "tan(";
-				break;
-			} case "btntanh": {
-				add = "tanh(";
-				break;
-			} case "btnfact": {
-				add = "!";
-				break;
-			} case "btn-x-power-y": {
-				add = "^";
-				break;
-			} case "btn-x-root-y": {
-				add = "^(1/";
-				break;
-			} case "btn-pi": {
-				add = "PI";
-				break;
-			}
+		case "btndivby": {
+			add = "/"; 
+			break;
+		} case "btntimes": {
+			add = "*";
+			break;
+		} case "btnplus": {
+			add = "+";
+			break;
+		} case "btnminus": {
+			add = "-";	
+			break;
+		} case "btndot": {
+			add = ".";
+			break;
+		} case "btn0": {
+			add = "0";
+			break;
+		} case "btn1": {
+			add = "1";
+			break;
+		} case "btn2": {
+			add = "2";
+			break;
+		} case "btn3": {
+			add = "3";
+			break;
+		} case "btn4": {
+			add = "4";
+			break;
+		} case "btn5": {
+			add = "5";
+			break;
+		} case "btn6": {
+			add = "6";
+			break;
+		} case "btn7": {
+			add = "7";
+			break;
+		} case "btn8": {
+			add = "8";
+			break;
+		} case "btn9": {
+			add = "9";
+			break;
+		} case "btnopen": {
+			add = "(";
+			break;
+		} case "btnclose": {
+			add = ")";
+			break;
+		} case "btnabs": {
+			add = "abs(";
+			break;
+		} case "btnacos": {
+			add = "acos(";
+			break;
+		} case "btnasin": {
+			add = "asin(";
+			break;
+		} case "btnatan": {
+			add = "atan(";
+			break;
+		} case "btncbrt": {
+			add = "cbrt(";
+			break;
+		} case "btnceil": {
+			add = "ceil(";
+			break;
+		} case "btncos": {
+			add = "cos(";
+			break;	
+		} case "btncosh": {
+			add = "cosh(";
+			break;
+		} case "btnexp": {
+			add = "exp(";
+			break;	
+		} case "btnfloor": {
+			add = "floor(";
+			break;	
+		} case "btnlog": {
+			add = "log(";
+			break;
+		} case "btnlog10": {
+			add = "log10(";
+			break;
+		} case "btnlog2": {
+			add = "log2(";
+			break;
+		} case "btnsin": {
+			add = "sin(";
+			break;
+		} case "btnsinh": {
+			add = "sinh(";
+			break;
+		} case "btnsqrt": {
+			add = "sqrt(";
+			break;
+		} case "btntan": {
+			add = "tan(";
+			break;
+		} case "btntanh": {
+			add = "tanh(";
+			break;
+		} case "btnfact": {
+			add = "!";
+			break;
+		} case "btn-x-power-y": {
+			add = "^";
+			break;
+		} case "btn-x-root-y": {
+			add = "^(1/";
+			break;
+		} case "btn-pi": {
+			add = "PI";
+			break;
+		}
 		}
 		if (add.length()>0) {
 			addToExpression(add);
 		}
 	}
-	
+
 	public void addToExpression(String e) {
 		if (e.length()<1) {
 			return;
@@ -379,17 +379,17 @@ public class Calcinterface implements Serializable {
 		}
 		resultado = display;
 	}
-	
+
 	//////////////////////////////////////////////////////////////////
-	
+
 	public synchronized ArrayList<String> getOperador(){
 		return est.getOperador();
 	}
-	
+
 	public synchronized ArrayList<String> getVezes(){
 		return est.getVezes();
 	}
-	
+
 	public synchronized ArrayList<String> getPercentagem(){
 		return est.getPercentagem();
 	}

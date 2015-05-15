@@ -10,7 +10,6 @@ import javax.inject.Named;
 public class Conversor implements Serializable {
 
 	private static final long serialVersionUID = -289276448456559729L;
-
 	private String expressao;
 
 	public String getExpressao() {
@@ -25,7 +24,7 @@ public class Conversor implements Serializable {
 	private String toRadian(String exp){
 		double aux=0;
 		double aux1=0, aux2=0,aux3=0;
-		
+
 		int i=exp.length();
 		int j=0;
 		String valor="";
@@ -44,7 +43,7 @@ public class Conversor implements Serializable {
 				j++;
 			}
 		}
-		
+
 		if(contem){
 			aux=Double.parseDouble(valor);
 			aux1=Math.toRadians(aux);
@@ -53,22 +52,22 @@ public class Conversor implements Serializable {
 			aux1=(aux1+aux3)/2;
 
 		}else{
-		aux = Double.parseDouble(exp);
-		//converter para radianos
-		aux1=Math.toRadians(aux);
+			aux = Double.parseDouble(exp);
+			//converter para radianos
+			aux1=Math.toRadians(aux);
 		}
 		exp=aux1+"";
 		return exp;
 
 	}
 
-	
+
 	//decomposição das operações
 	//decomposição da expressão caracter a caracter para contagem dos operadores
 	public String decompoe(String exp){
 		int j=exp.length();
 		String convertida="", aux="";
-		
+
 		if (exp.startsWith("-")){
 			convertida+=exp.charAt(0);
 			exp=exp.substring(1,j);
@@ -104,53 +103,53 @@ public class Conversor implements Serializable {
 			}else if (exp.startsWith("cosh")){
 
 				convertida+="cosh(";
-				 exp=exp.substring(5,j);
-				 aux=pesquisa(exp);
-				 convertida+=aux;
-				 exp=eliminaP(exp);
-				 j=exp.length();
+				exp=exp.substring(5,j);
+				aux=pesquisa(exp);
+				convertida+=aux;
+				exp=eliminaP(exp);
+				j=exp.length();
 
-				
+
 			}else if (exp.startsWith("cos")){
 
 				convertida+="cos(";
-				 exp=exp.substring(4,j);
-				 aux=pesquisa(exp);
-				 convertida+=aux;
-				 exp=eliminaP(exp);
-				 j=exp.length();
+				exp=exp.substring(4,j);
+				aux=pesquisa(exp);
+				convertida+=aux;
+				exp=eliminaP(exp);
+				j=exp.length();
 
-				
+
 			}else if (exp.startsWith("sinh")){
 
 				convertida+="sinh(";
-				 exp=exp.substring(5,j);
-				 aux=pesquisa(exp);
-				 convertida+=aux;
-				 exp=eliminaP(exp);
-				 j=exp.length();
-				
-				
+				exp=exp.substring(5,j);
+				aux=pesquisa(exp);
+				convertida+=aux;
+				exp=eliminaP(exp);
+				j=exp.length();
+
+
 			}else if (exp.startsWith("sin")){
 
 				convertida+="sin(";
-				 exp=exp.substring(4,j);
-				 aux=pesquisa(exp);
-				 convertida+=aux;
-				 exp=eliminaP(exp);
-				 j=exp.length();
+				exp=exp.substring(4,j);
+				aux=pesquisa(exp);
+				convertida+=aux;
+				exp=eliminaP(exp);
+				j=exp.length();
 
-				
+
 			}else if (exp.startsWith("tanh")){
 
 				convertida+="tanh(";
-				 exp=exp.substring(5,j);
-				 aux=pesquisa(exp);
-				 convertida+=aux;
-				 exp=eliminaP(exp);
-				 j=exp.length();
+				exp=exp.substring(5,j);
+				aux=pesquisa(exp);
+				convertida+=aux;
+				exp=eliminaP(exp);
+				j=exp.length();
 
-				
+
 			}else if (exp.startsWith("tan")){
 
 				convertida+="tan(";
@@ -181,15 +180,15 @@ public class Conversor implements Serializable {
 
 		return aux;
 	}
-	
-private static String eliminaP(String exp){
-		
+
+	private static String eliminaP(String exp){
+
 		int j=exp.length();
 		while (!exp.startsWith(")")){
 			exp=exp.substring(1,j);
 			j=j-1;
 		}
-	
+
 		return exp;
 	}
 }

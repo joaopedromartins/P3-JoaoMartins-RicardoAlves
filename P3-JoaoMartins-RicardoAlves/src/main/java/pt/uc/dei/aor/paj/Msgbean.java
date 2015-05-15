@@ -3,7 +3,7 @@ package pt.uc.dei.aor.paj;
 public class Msgbean {
 	private Userbean emissor;
 	private String frase;
-	
+
 	//construtor
 	public Msgbean(Userbean emissor, String frase) {
 		this.emissor=emissor;
@@ -13,15 +13,15 @@ public class Msgbean {
 			this.frase=frase.substring(0, 254);
 		}
 	}
-	
+
 	// Getter para o User emissor
 	public Userbean getEmissor() {
 		return emissor;
 	}
-	
+
 	// Getter para a String frase da mensagem
 	public String getFrase() {
 		return frase;
 	}
-		
+
 }
