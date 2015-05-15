@@ -2,6 +2,7 @@ package pt.uc.dei.aor.paj;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
@@ -369,5 +370,19 @@ public class Calcinterface implements Serializable {
 			display += (String)ae.getComponent().getAttributes().get("exphist");
 		}
 		resultado = display;
+	}
+	
+	//////////////////////////////////////////////////////////////////
+	
+	public synchronized ArrayList<String> getOperador(){
+		return est.getOperador();
+	}
+	
+	public synchronized ArrayList<String> getVezes(){
+		return est.getVezes();
+	}
+	
+	public synchronized ArrayList<String> getPercentagem(){
+		return est.getPercentagem();
 	}
 }
