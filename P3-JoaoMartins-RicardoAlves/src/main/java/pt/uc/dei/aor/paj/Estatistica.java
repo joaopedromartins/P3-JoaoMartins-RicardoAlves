@@ -16,6 +16,9 @@ public class Estatistica implements Serializable{
 	private HashMap<String, Integer> cont;
 	private TreeMap<String, Integer> mapa;
 	private ArrayList<String> resultado;
+	private ArrayList<String> operador;
+	private ArrayList<String> vezes;
+	private ArrayList<String> percentagem;
 	
 	
 	public Estatistica() {
@@ -46,6 +49,9 @@ public class Estatistica implements Serializable{
 		this.cont.put("!",0);
 		this.mapa=new TreeMap<String, Integer>();
 		this.resultado=new ArrayList<String>();
+		this.operador=new ArrayList<String>();
+		this.vezes=new ArrayList<String>();
+		this.percentagem=new ArrayList<String>();
 	}
 
 	//getter e setter do resultado 
@@ -65,6 +71,7 @@ public class Estatistica implements Serializable{
 	public void setResultado(String exp){
 		decompoe(exp);
 		this.mapa=mapaOrdenado();
+		estatistica();
 		
 	}
 	
@@ -198,6 +205,54 @@ public class Estatistica implements Serializable{
 	//devolve a quantidade por operador
 	private int getContOperador(String operador){
 		return this.cont.get(operador);
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	private void estatistica(){
+		ArrayList<String> result = new ArrayList<String>();
+		result = getResultado();
+		operador.clear();
+		vezes.clear();
+		percentagem.clear();
+		if(result.size()>0){
+			int total=0;
+			for(String s:result){
+				String[] ps = s.split(":");
+				String p2 = ps[1];
+				total += Integer.parseInt(p2);
+			}
+			if(total>0){
+				for(String s:result){
+					String[] parts = s.split(":");
+					String part1 = parts[0];
+					String part2 = parts[1];
+					if(part2.equals("0")){
+						break;
+					}else{
+						operador.add(part1);
+						vezes.add(part2);
+						int number = Integer.parseInt(part2);
+						double per = ((number/total)*100);
+						String part3 = String.format("%.1f", per);
+						percentagem.add(part3);
+					}
+				}
+			}
+		}
+	}
+	
+	public synchronized ArrayList<String> getOperador(){
+		return this.operador;
+	}
+	
+	public synchronized ArrayList<String> getVezes(){
+		return this.vezes;
+	}
+	
+	public synchronized ArrayList<String> getPercentagem(){
+		return this.percentagem;
 	}
 	
 }
