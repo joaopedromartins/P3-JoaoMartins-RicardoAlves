@@ -14,10 +14,10 @@ import javax.inject.Named;
 public class Calcinterface implements Serializable {
 	private static final long serialVersionUID = -5031594103596986625L;
 	
-	@Inject Calculadora calc;
-	@Inject Estatistica est;
-	@Inject PickListView pickHist;
-	@Inject Conversor conv;
+	@Inject private Calculadora calc;
+	@Inject private Estatistica est;
+	@Inject private PickListView pickHist;
+	@Inject private Conversor conv;
 
 	private String display;   
 	private boolean firstdigit;
