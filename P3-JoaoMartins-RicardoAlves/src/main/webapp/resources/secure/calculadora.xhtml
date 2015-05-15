@@ -26,7 +26,6 @@
 <!-- 					<p:panelGrid columns="1" styleClass="painel" -->
 <!-- 						style="margin-left:100px; margin-right:60px" cellpadding="20" cellspacing="20"> -->
 						<f:facet name="header"> Utilidades </f:facet>
-						<br />
 						<p:panel id="pnlhistorico" header="Histórico de Operações"
 							footer="Clique na expressão para reutilizar" toggleable="true"
 							toggleOrientation="vertical" style="margin-bottom:20px">
@@ -106,125 +105,126 @@
 						<br />
 
 						<p:panel class="est" id="pnlajuda" header="Funções Disponíveis"
-							toggleable="true" toggleTitle="true" toggleOrientation="vertical" collapsed="true" styleClass="painel-ajuda ">
-							<table class="tabela" >
-								<tbody>
-									<tr>
-										<td>abs</td>
-										<td>Valor Absoluto</td>
-										<td>abs(...)</td>
-									</tr>
-									<tr>
-										<td>acos</td>
-										<td>Arc coseno</td>
-										<td>acos(...)</td>
-									</tr>
-									<tr>
-										<td>asin</td>
-										<td>Arco seno</td>
-										<td>asin(...)</td>
-									</tr>
-									<tr>
-										<td>atan</td>
-										<td>Arco tangente</td>
-										<td>atan(...)</td>
-									</tr>
-									<tr>
-										<td>cbrt</td>
-										<td>Raíz cúbica</td>
-										<td>cbrt(...)</td>
-									</tr>
-									<tr>
-										<td>ceil</td>
-										<td>Arredondamento superior</td>
-										<td>ceil(...)</td>
-									</tr>
-									<tr>
-										<td>cos</td>
-										<td>Coseno</td>
-										<td>cos(...)</td>
-									</tr>
-									<tr>
-										<td>cosh</td>
-										<td>Coseno hiperbólico</td>
-										<td>cosh(...)</td>
-									</tr>
-									<tr>
-										<td>exp</td>
-										<td>Potência de base "e" (Número de Euler)</td>
-										<td>cosh(...)</td>
-									</tr>
-									<tr>
-										<td>floor</td>
-										<td>Arredondamento inferior</td>
-										<td>floor(...)</td>
-									</tr>
-									<tr>
-										<td>log</td>
-										<td>Logarítmo de base "e"</td>
-										<td>log(...)</td>
-									</tr>
-									<tr>
-										<td>log10</td>
-										<td>Logarítmo de base 10</td>
-										<td>log10(...)</td>
-									</tr>
-									<tr>
-										<td>log2</td>
-										<td>Logarítmo de base 2</td>
-										<td>log2(...)</td>
-									</tr>
-									<tr>
-										<td>sin</td>
-										<td>Seno</td>
-										<td>sin(...)</td>
-									</tr>
-									<tr>
-										<td>sinh</td>
-										<td>Seno hiperbólico</td>
-										<td>sinh(...)</td>
-									</tr>
-									<tr>
-										<td>sqrt</td>
-										<td>Raíz quadrada</td>
-										<td>sqrt(...)</td>
-									</tr>
-									<tr>
-										<td>tan</td>
-										<td>Tangente</td>
-										<td>tan(...)</td>
-									</tr>
-									<tr>
-										<td>tanh</td>
-										<td>Tangente hiperbólico</td>
-										<td>tanh(...)</td>
-									</tr>
-
-									<tr>
-										<td>x^y</td>
-										<td>x elevado a y</td>
-										<td>(..)x^y(...)</td>
-									</tr>
-									<tr>
-										<td>xSQRTy</td>
-										<td>Raíz indíce x de y</td>
-										<td>(y)xSQRTy(x)</td>
-									</tr>
-									<tr>
-										<td>!</td>
-										<td>Factorial</td>
-										<td>(...)!</td>
-									</tr>
-									<tr>
-										<td>!</td>
-										<td>(!)+(..)</td>
-										<td>Não permite o cálculo de ! numa expressão sem o
-											factorial estar inserido em()</td>
-									</tr>
-								</tbody>
-							</table>
+							toggleable="true" toggleTitle="true" toggleOrientation="vertical" collapsed="true" >
+							<h:panelGrid columns="1" styleClass="painel-ajuda">
+								<table class="tabela" >
+									<tbody>
+										<tr>
+											<td>abs</td>
+											<td>Valor Absoluto</td>
+											<td>abs(...)</td>
+										</tr>
+										<tr>
+											<td>acos</td>
+											<td>Arc coseno</td>
+											<td>acos(...)</td>
+										</tr>
+										<tr>
+											<td>asin</td>
+											<td>Arco seno</td>
+											<td>asin(...)</td>
+										</tr>
+										<tr>
+											<td>atan</td>
+											<td>Arco tangente</td>
+											<td>atan(...)</td>
+										</tr>
+										<tr>
+											<td>cbrt</td>
+											<td>Raíz cúbica</td>
+											<td>cbrt(...)</td>
+										</tr>
+										<tr>
+											<td>ceil</td>
+											<td>Arredondamento superior</td>
+											<td>ceil(...)</td>
+										</tr>
+										<tr>
+											<td>cos</td>
+											<td>Coseno</td>
+											<td>cos(...)</td>
+										</tr>
+										<tr>
+											<td>cosh</td>
+											<td>Coseno hiperbólico</td>
+											<td>cosh(...)</td>
+										</tr>
+										<tr>
+											<td>exp</td>
+											<td>Potência de base "e" (Número de Euler)</td>
+											<td>cosh(...)</td>
+										</tr>
+										<tr>
+											<td>floor</td>
+											<td>Arredondamento inferior</td>
+											<td>floor(...)</td>
+										</tr>
+										<tr>
+											<td>log</td>
+											<td>Logarítmo de base "e"</td>
+											<td>log(...)</td>
+										</tr>
+										<tr>
+											<td>log10</td>
+											<td>Logarítmo de base 10</td>
+											<td>log10(...)</td>
+										</tr>
+										<tr>
+											<td>log2</td>
+											<td>Logarítmo de base 2</td>
+											<td>log2(...)</td>
+										</tr>
+										<tr>
+											<td>sin</td>
+											<td>Seno</td>
+											<td>sin(...)</td>
+										</tr>
+										<tr>
+											<td>sinh</td>
+											<td>Seno hiperbólico</td>
+											<td>sinh(...)</td>
+										</tr>
+										<tr>
+											<td>sqrt</td>
+											<td>Raíz quadrada</td>
+											<td>sqrt(...)</td>
+										</tr>
+										<tr>
+											<td>tan</td>
+											<td>Tangente</td>
+											<td>tan(...)</td>
+										</tr>
+										<tr>
+											<td>tanh</td>
+											<td>Tangente hiperbólico</td>
+											<td>tanh(...)</td>
+										</tr>
+	
+										<tr>
+											<td>x^y</td>
+											<td>x elevado a y</td>
+											<td>(..)x^y(...)</td>
+										</tr>
+										<tr>
+											<td>xSQRTy</td>
+											<td>Raíz indíce x de y</td>
+											<td>(y)xSQRTy(x)</td>
+										</tr>
+										<tr>
+											<td>!</td>
+											<td>Factorial</td>
+											<td>(...)!</td>
+										</tr>
+										<tr>
+											<td>!</td>
+											<td>(!)+(..)</td>
+											<td>Não permite o cálculo de ! numa expressão sem o
+												factorial estar inserido em()</td>
+										</tr>
+									</tbody>
+								</table>
+							</h:panelGrid>
 						</p:panel>
-						<br />
 					</p:panelGrid>
 				</div>
 
@@ -482,7 +482,7 @@
 								
 								<f:ajax render="@form" execute="setfrase">
 									<h:commandButton id="btnsend" styleClass="btn" type="submit"
-										value="Enviar" action="#{chatinterface.btnsend()}" />
+										value="Enviar" action="#{chatinterface.btnsend()}" style="margin-left:20px"/>
 								</f:ajax>
 
 							</h:panelGrid>

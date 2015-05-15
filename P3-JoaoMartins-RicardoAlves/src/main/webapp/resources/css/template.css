@@ -29,9 +29,6 @@ body {
 	font: normal 1.0em Arial;
 }
 
-
-
-
 .ui-widget-content {
 	background-image: url("../imagens/fundo-painel.jpg");
 }
@@ -53,13 +50,19 @@ body {
 
 .painel-ajuda {
 	background-image: url("../imagens/fundo-display.png");
-	width: 280px;
+	color:#777777;
+	width:100%;
+	max-height: 280px;
+	height: 280px;
+	text-align: center;
+    font:18px Arial;
+	overflow-y: scroll;
 }
 
 .painel-send {
 	background-image: url("../imagens/fundo-display.png");
 	width: 100%;
-	margin-right: auto;
+	margin-right: 10px;
 }
 
 .painel-com-fundo {
@@ -76,8 +79,8 @@ body {
 	width:280px;
 	max-height: 320px;
 	height: 320px;
-    align: left;
-    valign: top;
+    text-align: left;
+    vertical-align: button;
     font:18px Arial;
 	overflow-y: scroll;
 }
