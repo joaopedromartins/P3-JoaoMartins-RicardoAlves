@@ -36,5 +36,21 @@ public class LogaritmoTest {
 		String result = calc.getExp();
 		assertThat(result, Matchers.is(Matchers.equalTo ("4.605170185988092")));
 	}
+	
+	@Test
+	public void testLogaritmo10() {
+		//Testa se a expressão introduzida acima tem o valor calculado abaixo
+		calc.setExp("log10(100)");
+		String result = calc.getExp();
+		assertThat(result, Matchers.is(Matchers.equalTo ("2.0")));
+	}
+	
+	@Test
+	public void testLogaritmo2() {
+		//Testa se a expressão introduzida acima tem o valor calculado abaixo
+		calc.setExp("log2(100)");
+		String result = calc.getExp();
+		assertThat(result, Matchers.is(Matchers.equalTo ("6.643856189774725")));
+	}
 
 }
