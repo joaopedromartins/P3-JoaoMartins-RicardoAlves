@@ -98,18 +98,26 @@ public class Calcinterface implements Serializable {
 			this.resultado=calc.getExp();
 			tempo = calc.getTempo();
 		}
-
-		//envio para os dados estatisticos
-		setValor(this.display);
-		this.setFirstdigit(true);
 		
-		// FALTA TESTAR SE O RESULTADO E NUMERICO ANTES DE ENVIAR PARA HISTORICO
+		// VERIFICAR SE O RESULTADO E NUMERICO ANTES DE ENVIAR PARA A ESTATISTICA
+		if (resultado.matches("[\\x00-\\x20]*[+-]?(NaN|Infinity|((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)" +
+						    "([eE][+-]?(\\p{Digit}+))?)|(\\.((\\p{Digit}+))([eE][+-]?(\\p{Digit}+))?)|" +
+						    "(((0[xX](\\p{XDigit}+)(\\.)?)|(0[xX](\\p{XDigit}+)?(\\.)(\\p{XDigit}+)))" +
+						    "[pP][+-]?(\\p{Digit}+)))[fFdD]?))[\\x00-\\x20]*")) {
+			//envio para os dados estatisticos
+			setValor(this.display);
+		}
 		
-		//envia o valor da expressÃ£o introduzida para o historico
+		// NOTA: ENVIAR SEMPRE PARA A HISTORICO PARA QUE SEJA POSSIVEL CORRIGIR A EXPRESSAO
+		
+		//envia o valor da expressao introduzida para o historico
 		pickHist.init(this.display);
-				
+		
 		//acrescentar tempo do calculo ao historico
 		pickHist.addTime(String.valueOf(tempo));
+		
+		//Sinaliza que proxima tecla e primeiro digito
+		this.setFirstdigit(true);
 		
 		//devolve pagina destino que e a propria pagina
 		return "calculadora";
@@ -202,7 +210,7 @@ public class Calcinterface implements Serializable {
 		this.resultado=display;
 	}
 	
-	//metodo que liga teclado Ã  expressao/display 
+	//metodo que liga teclado a  expressao/display 
 	public void key(ActionEvent event) {
 		String add = "";
 		switch(event.getComponent().getId()) {
