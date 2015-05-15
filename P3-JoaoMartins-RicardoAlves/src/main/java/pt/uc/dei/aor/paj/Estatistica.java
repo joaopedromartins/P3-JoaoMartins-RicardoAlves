@@ -70,9 +70,7 @@ public class Estatistica implements Serializable{
 	
 	public void setResultado(String exp){
 		decompoe(exp);
-		this.mapa=mapaOrdenado();
-		estatistica();
-		
+		this.mapa=mapaOrdenado();		
 	}
 	
 	//decomposição da expressão caracter a caracter para contagem dos operadores
@@ -219,12 +217,14 @@ public class Estatistica implements Serializable{
 		if(result.size()>0){
 			int total=0;
 			for(String s:result){
+				s.replaceAll("\\s+","");
 				String[] ps = s.split(":");
 				String p2 = ps[1];
 				total += Integer.parseInt(p2);
 			}
 			if(total>0){
 				for(String s:result){
+					s.replaceAll("\\s+","");
 					String[] parts = s.split(":");
 					String part1 = parts[0];
 					String part2 = parts[1];
@@ -244,14 +244,17 @@ public class Estatistica implements Serializable{
 	}
 	
 	public synchronized ArrayList<String> getOperador(){
+		estatistica();
 		return this.operador;
 	}
 	
 	public synchronized ArrayList<String> getVezes(){
+		estatistica();
 		return this.vezes;
 	}
 	
 	public synchronized ArrayList<String> getPercentagem(){
+		estatistica();
 		return this.percentagem;
 	}
 	
