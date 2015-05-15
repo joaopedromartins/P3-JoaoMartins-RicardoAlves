@@ -63,34 +63,38 @@
 							toggleable="true" toggleOrientation="vertical" collapsed="true" >
 
 							<h:form id="estatisticaform">
-								<h:panelGrid columns="3" cellpadding="10" styleClass="painel-interior">
-									<h:dataTable value="#{calcinterface.operador}" var="operador">
-										<h:column>
-											<f:facet name="header">Função</f:facet>
-											#{operador}
-										</h:column>
-									</h:dataTable>
+								<h:panelGroup>
+									<h:panelGrid columns="3" cellpadding="10" styleClass="painel-interior">
+										<h:dataTable value="#{calcinterface.operador}" var="operador">
+											<center>
+												<h:column>
+													<f:facet name="header">Função</f:facet>
+													#{operador}
+												</h:column>
+											</center>
+										</h:dataTable>
+											
+										<h:dataTable value="#{calcinterface.vezes}" var="vezes">
+											<h:column>
+												<f:facet name="header">Quantidade</f:facet>
+												#{vezes}
+											</h:column>
+										</h:dataTable>
 										
-									<h:dataTable value="#{calcinterface.vezes}" var="vezes">
-										<h:column>
-											<f:facet name="header">Quantidade</f:facet>
-											#{vezes}
-										</h:column>
-									</h:dataTable>
-									
-									<h:dataTable value="#{calcinterface.percentagem}" var="percentagem">
-										<h:column>
-											<f:facet name="header">Percentagem</f:facet>
-											#{percentagem} %
-										</h:column>
-									</h:dataTable>
-											
-									<f:ajax render="estatisticaform">
-										<h:commandButton id="btnhidden2" type="submit"
-											style="display:none;" value="Hidden2" action="calculadora" />
-									</f:ajax>
-											
-								</h:panelGrid>			
+										<h:dataTable value="#{calcinterface.percentagem}" var="percentagem">
+											<h:column>
+												<f:facet name="header">Percentagem</f:facet>
+												#{percentagem} %
+											</h:column>
+										</h:dataTable>
+	
+										<f:ajax render="estatisticaform">
+											<h:commandButton id="btnhidden2" type="submit"
+												style="display:none;" value="Hidden2" action="calculadora" />
+										</f:ajax>
+												
+									</h:panelGrid>		
+								</h:panelGroup>	
 							</h:form>
 							
 							
@@ -226,7 +230,7 @@
 
 				<div class="ui-grid-col-1"></div>
 
-				<div class="ui-grid-col-4">
+				<div class="ui-grid-col-3">
 
 					<p:panelGrid columns="1" styleClass="painel-com-fundo">
 						<f:facet name="header">
