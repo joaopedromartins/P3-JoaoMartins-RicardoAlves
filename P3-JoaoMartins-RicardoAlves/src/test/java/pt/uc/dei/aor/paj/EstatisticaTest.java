@@ -29,15 +29,36 @@ public class EstatisticaTest {
 	
 	@Before
 	public void start() {
-//		s.setResultado("2+3-4");
+		s.setResultado("2+3-4+7");
 	}
 	
 	
 	@Test
-	public void testArrayEstatistica() {
-//		int size = s.getResultado().size();
+	public void testArrayResultado() {
 		//Número de itens do Array da Estatística deverá ser 23
-//		assertEquals(23 , size);
+		int size = s.getResultado().size();
+		assertEquals(23 , size);
+	}
+	
+	@Test
+	public void testArrayOperador() {
+		//Número de itens do Array da Estatística deverá ser 2
+		int size = s.getOperador().size();
+		assertEquals(2 , size);
+	}
+	
+	@Test
+	public void testArrayVezes() {
+		//Número de itens do Array da Estatística deverá ser 2
+		int size = s.getVezes().size();
+		assertEquals(2 , size);
+	}
+	
+	@Test
+	public void testArrayPercentagem() {
+		//Número de itens do Array da Estatística deverá ser 2
+		int size = s.getPercentagem().size();
+		assertEquals(2 , size);
 	}
 
 }
