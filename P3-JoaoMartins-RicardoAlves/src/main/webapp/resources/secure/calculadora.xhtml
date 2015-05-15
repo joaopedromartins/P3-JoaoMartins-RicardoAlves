@@ -23,7 +23,6 @@
 			<div class="ui-grid-row ">
 				<div class="ui-grid-col-3">
 					
-					
 					<p:panelGrid columns="1" styleClass="painel"
 						style="margin-left:100px" cellpadding="20" cellspacing="20">
 						<f:facet name="header"> Utilidades </f:facet>
@@ -34,14 +33,15 @@
 							
 							<h:form id="formhistorico">
 								<h:panelGroup id="historicoexp">
-									<h:panelGrid columns="2" cellpadding="10" styleClass="painelinterior">
+									<h:panelGrid columns="2" cellpadding="10" styleClass="painel-interior">
 								
 										<h:dataTable value="#{pickListView.hist}" var="item">
 											<h:column>
 												<f:facet name="header">Expressão</f:facet>
 												<h:commandButton styleClass="btn-historico"
 													actionListener="#{calcinterface.reuse}" value="#{item}">
-													<f:attribute name="reut" value="#{item}" />
+													<f:attribute name="exphist" value="#{item}" />
+													<f:ajax execute="calculadoraform:calcdisplay" render="calculadoraform:calcdisplay" />
 												</h:commandButton>
 											</h:column>
 										</h:dataTable>
@@ -407,7 +407,6 @@
 										 
 											<h:commandButton id="btnequal" styleClass="btn-equal" value="=" 
 												action="#{calcinterface.btnequal()}" >
-<!-- 		ESTE FUNCIONA										<f:ajax execute="calculadoraform:calcdisplay" render="@form"/> -->
 												<f:ajax execute="calculadoraform:calcdisplay" render="calculadoraform:calcdisplay formhistorico:historicoexp" />
 											</h:commandButton>
 										 
@@ -431,7 +430,7 @@
 
 							<p:panel id="pnlchat" toggleable="true"
 								toggleOrientation="vertical" style="margin-bottom:0px">
-								<h:panelGrid columns="1" cellpadding="10">
+								<h:panelGrid columns="1" cellpadding="10" styleClass="painel-interior">
 
 									<ul id="allchat">
 										<ui:repeat value="#{chatinterface.todasConversas()}"

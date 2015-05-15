@@ -18,9 +18,7 @@ public class Calcinterface implements Serializable {
 	@Inject PickListView pickHist;
 	@Inject Conversor conv;
 
-	private String display;   /*APAGAR DEPOIS DE CONVERTER*/
-	
-	private String expression;
+	private String display;   
 	private boolean firstdigit;
 	private String btnradio;
 	private String resultado;
@@ -58,7 +56,7 @@ public class Calcinterface implements Serializable {
 		this.firstdigit = firstdigit;
 	}
 
-	//Getter e Setter associados Ã  variÃ¡vel graus/radianos
+	//Getter e Setter associados a  variavel graus/radianos
 	public String getBtnradio() {
 		return btnradio;
 	}
@@ -66,7 +64,7 @@ public class Calcinterface implements Serializable {
 		this.btnradio = btnradio;
 	}
 
-	//Getter e Setter associados Ã  variÃ¡vel basica/cientifica
+	//Getter e Setter associados a variavel tipocalc
 	public String getTipocalc() {
 		//System.out.println("get tipoclac");
 		return tipocalc;
@@ -76,14 +74,6 @@ public class Calcinterface implements Serializable {
 		//System.out.println("set tipoclac");
 	}
 	
-	//Getter e Setter associados Ã  variÃ¡vel expression
-	public String getExpression() {
-		return expression;
-	}
-	public void setExpression(String expression) {
-		this.expression = expression;
-	}
-
 	//funcao de interface entre o cliente e o servidor
 	public String btnequal() {
 		String aux1, aux2;
@@ -135,7 +125,7 @@ public class Calcinterface implements Serializable {
 	
 	//metodo que liga tecla AC Ã  expressao/display 
 	public String ackey() {
-		this.expression = "0.0";
+		this.display = "0.0";
 		this.resultado = "0.0";
 		this.firstdigit=true;
 		return "calculadora";
@@ -145,25 +135,25 @@ public class Calcinterface implements Serializable {
 	//metodo que liga tecla C Ã  expressao/display 
 	public String ckey() {
 		//Se display tem 0 ou 1 caracter
-		if ( this.expression.length() < 2) {
-			this.expression="";
+		if ( this.display.length() < 2) {
+			this.display="";
 		}
 		//Se display tem mais do que 1 caracter
 		else {
-			String lastchar=this.expression.substring(this.expression.length()-1, this.expression.length()); 
+			String lastchar=this.display.substring(this.display.length()-1, this.display.length()); 
 			//Se for operador
 			if (lastchar=="-" || lastchar=="+" || lastchar=="*" || lastchar=="/" || lastchar=="." || lastchar=="^" || lastchar=="!" ) {
-				this.expression=this.expression.substring(0, this.expression.length()-1);
+				this.display=this.display.substring(0, this.display.length()-1);
 			}
 			//Se for numero
 			else if ( lastchar.matches("[0-9]") ){
-				for (int i=this.expression.length()-1;i>=0;i--) {
-					lastchar=this.expression.substring(i,i+1); 
+				for (int i=this.display.length()-1;i>=0;i--) {
+					lastchar=this.display.substring(i,i+1); 
 					if (  lastchar.matches("[0-9]") ) {
-						this.expression=this.expression.substring(0, this.expression.length()-1);
+						this.display=this.display.substring(0, this.display.length()-1);
 					}
 					else if ( lastchar=="." ) {
-						this.expression=this.expression.substring(0, this.expression.length()-1);
+						this.display=this.display.substring(0, this.display.length()-1);
 					}
 					else {
 						break;
@@ -172,14 +162,14 @@ public class Calcinterface implements Serializable {
 			}
 			//se for parentices
 			else if (lastchar=="(" || lastchar==")") {
-				this.expression=this.expression.substring(0, this.expression.length()-1);
+				this.display=this.display.substring(0, this.display.length()-1);
 			}
 			//se for funcao
 			else if ( lastchar.matches("[a-z]") ) {
-				for (int i=this.expression.length()-1;i>=0;i--) {
-					lastchar=this.expression.substring(i,i+1); //substr(number, lenght)
+				for (int i=this.display.length()-1;i>=0;i--) {
+					lastchar=this.display.substring(i,i+1); //substr(number, lenght)
 					if ( lastchar.matches("[a-z]") ) {
-						this.expression=this.expression.substring(0, this.expression.length()-1);
+						this.display=this.display.substring(0, this.display.length()-1);
 						//alert("TEST: this.expression="+this.expression);
 					}
 					else {
@@ -189,26 +179,26 @@ public class Calcinterface implements Serializable {
 			}
 			//qq outra situacao apaga ultimo caracter
 			else {
-				this.expression=this.expression.substring(0, this.expression.length()-1);
+				this.display=this.display.substring(0, this.display.length()-1);
 			}
 		}
-		this.resultado=expression;
+		this.resultado=display;
 		return "calculadora";
 	}
 	
 	//metodo que liga tecla ! Ã  expressao/display 
 	public void btnfactorial(ActionEvent event) {
 		if ( firstdigit == true){
-			this.expression = "("+ this.expression +"!)";
+			this.display = "("+ this.display +"!)";
 			firstdigit = false;
-		} else if ( this.expression.length() < 1){
-			this.expression = "(0!)";
+		} else if ( this.display.length() < 1){
+			this.display = "(0!)";
 		}
 		else {
-			this.expression += "!";
+			this.display += "!";
 		}
 		
-		this.resultado=expression;
+		this.resultado=display;
 	}
 	
 	//metodo que liga teclado Ã  expressao/display 
@@ -344,36 +334,40 @@ public class Calcinterface implements Serializable {
 			return;
 		} else if (this.firstdigit) {
 			if( e.matches("[0-9]") || e.equals("(") ) {
-				this.expression=""+e;
+				this.display=""+e;
 			} else if(e.equals("PI")) {
 				//System.out.println("TEST: Match: PI");
-				this.expression="3.141592653589793";
+				this.display="3.141592653589793";
 			} else if (e.equals("!") ) {
-				this.expression = "(" + resultado + e + ")";
+				this.display = "(" + resultado + e + ")";
 			} else if (e.equals(")") ) {
-				this.expression = "(" + resultado + e;	
+				this.display = "(" + resultado + e;	
 			} else if (e.equals("-") || e.equals("+") || e.equals("/") || e.equals("*") || e.equals("^") || e.equals("^(1/") ) {
 				//System.out.println("TEST: Match: + - * / ");
-				this.expression = resultado + e;
-			} else if (this.expression.equals("0.0") ){
+				this.display = resultado + e;
+			} else if (this.display.equals("0.0") ){
 				//System.out.println("TEST: VALIDAR FUNCOES 0.0");
-				this.expression = e + "";
+				this.display = e + "";
 			} else {
 				//System.out.println("TEST: FALTA VALIDAR FUNCOES");
-				this.expression = e + resultado;
+				this.display = e + resultado;
 			}
 		} else if(e.equals("PI")) {
 			//System.out.println("TEST: Match: PI");
-			this.expression += "3.141592653589793238";
+			this.display += "3.141592653589793238";
 		} else {
-			this.expression += e;
+			this.display += e;
 		}
 		this.firstdigit=false;
-		this.resultado=expression;
+		this.resultado=display;
 	}
 
 	public void reuse(ActionEvent ae) {
-		expression += (String)ae.getComponent().getAttributes().get("reut");
-		resultado = expression;
+		if (this.firstdigit) {
+			display = (String)ae.getComponent().getAttributes().get("exphist");
+		} else {
+			display += (String)ae.getComponent().getAttributes().get("exphist");
+		}
+		resultado = display;
 	}
 }
