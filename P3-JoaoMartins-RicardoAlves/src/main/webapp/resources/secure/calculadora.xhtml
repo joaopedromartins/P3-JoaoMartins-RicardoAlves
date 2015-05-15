@@ -22,11 +22,11 @@
 		<div id="container" class="ui-grid ui-grid-responsive">
 			<div class="ui-grid-row ">
 				<div class="ui-grid-col-3">
-					
+					<br />
 					<p:panelGrid columns="1" styleClass="painel"
 						style="margin-left:100px" cellpadding="20" cellspacing="20">
 						<f:facet name="header"> Utilidades </f:facet>
-
+						<!-- linha em branco -->
 						<p:panel id="pnlhistorico" header="Histórico de Operações"
 							footer="Clique na expressão para reutilizar" toggleable="true"
 							toggleOrientation="vertical" style="margin-bottom:20px">
@@ -58,13 +58,14 @@
 							</h:form>
 						</p:panel>
 
-
+						<br />
+						
 						<p:panel class="est" id="pnlestatistica" header="Estatística"
-							toggleable="true" toggleOrientation="vertical">
+							toggleable="true" toggleOrientation="vertical" collapsed="true" styleClass="painel-interior">
 
-							<h:form id="estatisticaform">
+							<h:form id="estatisticaform" >
 								<ul>
-									<ui:repeat value="#{estatistica.resultado}" var="item">
+									<ui:repeat value="#{estatistica.resultado}" var="item" >
 										<li>#{item}</li>
 									</ui:repeat>
 								</ul>
@@ -79,8 +80,8 @@
 						<br />
 
 						<p:panel class="est" id="pnlajuda" header="Funções Disponíveis"
-							toggleable="true" toggleOrientation="vertical">
-							<table class="tabela">
+							toggleable="true" toggleTitle="true" toggleOrientation="vertical" collapsed="true" styleClass="painel-interior">
+							<table class="tabela" >
 								<tbody>
 									<tr>
 										<td>abs</td>
@@ -197,6 +198,7 @@
 								</tbody>
 							</table>
 						</p:panel>
+						<br />
 					</p:panelGrid>
 				</div>
 
@@ -424,7 +426,7 @@
 
 						<!-- 							<p:poll interval="3" update="chatform"/> -->
 
-						<p:panelGrid columns="1" styleClass="painel" id="painelChat">
+						<p:panelGrid columns="1" styleClass="painel" id="painelChat" style="margin-right:100px">
 							<f:facet name="header"> Fórum de cálculo </f:facet>
 
 
@@ -444,7 +446,7 @@
 
 
 							<h:panelGrid columns="2">
-								<h:inputText id="setfrase" value="#{chatinterface.frase}" />
+								<h:inputText id="setfrase" value="#{chatinterface.frase}" styleClass="painel-interior" />
 
 								<f:ajax render="@form" execute="setfrase">
 									<h:commandButton id="btnsend" styleClass="btn" type="submit"
