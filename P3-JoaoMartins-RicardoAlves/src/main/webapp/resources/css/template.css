@@ -32,38 +32,17 @@ body {
 .ui-widget-content {
 	background-image: url("../imagens/fundo-painel.jpg");
 }
+
 .ui-panel .ui-panel-content {
 	padding: 0px !important;
 }
 
-.max_height_painel {
-	max-height: 320px;
-	height: 320px;
-	overflow-y: scroll;
+#container {
+	margin-top: 40px !important;
+	margin: 40px auto 0px auto;
+	align: center;
 }
 
-.painel-interior {
-	background-image: url("../imagens/fundo-display.png");
-	width: 100%;
-	min-height: 50px;
-}
-
-.painel-ajuda {
-	background-image: url("../imagens/fundo-display.png");
-	color:#777777;
-	width:100%;
-	max-height: 280px;
-	height: 280px;
-	text-align: center;
-    font:18px Arial;
-	overflow-y: scroll;
-}
-
-.painel-send {
-	background-image: url("../imagens/fundo-display.png");
-	width: 100%;
-	margin-right: 10px;
-}
 
 .painel-com-fundo {
 	background-image: url("../imagens/fundo-painel.jpg");
@@ -71,7 +50,33 @@ body {
 	margin: auto auto auto auto;
 }
 
+
+
+/* painel coluna1 */
+.max_height_col1 {
+	max-height: 200px;
+ 	width:97%; 
+	overflow-y: auto;
+}
+
+.painel-interior {
+	background-image: url("../imagens/fundo-display.png");
+	color:#777777;
+	width:100%; 
+	max-height: 200px;
+	text-align: center;
+    font:18px Arial;
+	overflow-y: scroll;
+}
+
+
 /*display chat*/
+.painel-send {
+	background-image: url("../imagens/fundo-display.png");
+	width: 100%;
+	margin-right: 10px;
+}
+
 .painel-interior-chat {
 	background-image: url("../imagens/fundo-display.png");
 	color:#777777;
@@ -82,14 +87,15 @@ body {
     text-align: left;
     vertical-align: button;
     font:18px Arial;
+	overflow-y: scroll;	
+}
+
+.max_height_painel {
+	max-height: 320px;
+	height: 320px;
 	overflow-y: scroll;
 }
 
-#container {
-	margin-top: 40px !important;
-	margin: 40px auto 0px auto;
-	align: center;
-}
 
 /* Janela login */
 #login_table {
