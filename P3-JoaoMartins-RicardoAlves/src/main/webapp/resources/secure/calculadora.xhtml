@@ -63,7 +63,20 @@
 						<p:panel class="est" id="pnlestatistica" header="Estatística"
 							toggleable="true" toggleOrientation="vertical" collapsed="true" >
 
-							<h:form id="estatisticaform" >
+							<h:form id="estatisticaform">
+								<ul>
+									<ui:repeat value="#{estatistica.resultado}" var="item">
+										<li>#{item}</li>
+									</ui:repeat>
+								</ul>
+								<f:ajax render="estatisticaform">
+									<h:commandButton id="btnhidden2" type="submit"
+										style="display:none;" value="Hidden2" action="calculadora" />
+								</f:ajax>
+							</h:form>
+							
+							
+							<h:form id="estatisticaform2">
 								<h:panelGrid columns="3" cellpadding="10" styleClass="painel-interior">
 									<h:dataTable value="#{calcinterface.operador}" var="operador">
 										<h:column>
@@ -86,13 +99,16 @@
 										</h:column>
 									</h:dataTable>
 											
-									<f:ajax render="estatisticaform">
-										<h:commandButton id="btnhidden2" type="submit"
+									<f:ajax render="estatisticaform2">
+										<h:commandButton id="btnhidden3" type="submit"
 											style="display:none;" value="Hidden2" action="calculadora" />
 									</f:ajax>
 											
 								</h:panelGrid>			
 							</h:form>
+							
+							
+							
 						</p:panel>
 
 
