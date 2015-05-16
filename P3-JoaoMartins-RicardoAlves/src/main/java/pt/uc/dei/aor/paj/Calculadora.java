@@ -25,7 +25,7 @@ public class Calculadora implements Serializable{
 	}
 
 	//implementação da função factorial
-	Operator factorial = new Operator("!", 1, true, Operator.PRECEDENCE_POWER + 1) {
+	private Operator factorial = new Operator("!", 1, true, Operator.PRECEDENCE_POWER + 1) {
 
 		@Override
 		public double apply(double... args) {
